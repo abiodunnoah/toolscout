@@ -34,7 +34,7 @@ promising ones for later.
 - **Tailwind CSS** — styling
 - **Vitest** + **Vue Test Utils** — tests (from Week 3)
 - **JSON Server** — mock API for the curated tool dataset (from Week 2)
-- Hosting: Vercel / Netlify  _(TODO: confirm)_
+- **Hosting:** Netlify
 
 ## Getting started
 
@@ -57,6 +57,13 @@ Then open the local URL it prints (usually http://localhost:5173).
 
 > Live URL: _TODO_  ·  Backup release: git tag `week-1`
 
+### Deploy (Netlify)
+
+- Build command: `npm run build`
+- Publish directory: `dist`
+- Config lives in [`netlify.toml`](netlify.toml), which also holds the SPA redirect
+  needed once Vue Router views land in Week 3.
+
 ## Project structure
 
     src/
@@ -65,7 +72,7 @@ Then open the local URL it prints (usually http://localhost:5173).
       App.vue       # key screen: search, filters, results, shortlist
       main.js
       style.css     # Tailwind entry + base focus styles
-    docs/           # key-screen sketch (one-pager + reflection later)
+    docs/           # idea one-pager, key-screen sketch, reflection (later)
     public/
 
 ## Roadmap (3 weeks)
@@ -78,40 +85,10 @@ Then open the local URL it prints (usually http://localhost:5173).
 
 ---
 
-## Idea one-pager
+## Planning docs
 
-**Stack:** Vue 3 + Vite + Vue Router + Pinia, Tailwind CSS, Vitest + Vue Test Utils; deployed on Vercel/Netlify
-
-**Target user:** A student or early-career researcher who has a specific task — summarise
-papers, transcribe interviews, generate diagrams, clean up survey data — and doesn't
-know which AI tool to trust, or which are free / student-friendly.
-
-**Problem:** Choosing an AI tool for one specific task is slow and noisy. Directories list
-thousands of tools in dense marketing copy, with no easy way to compare shortlisted
-options side by side or remember promising ones for later.
-
-**Core flow:** task search → filter results → compare 2–3 tools → tool detail → save to shortlist.
-
-**Data source:** a curated JSON dataset (~40–60 tools), served through a JSON Server mock API.
-
-**In scope:**
-- Task-first search + filtering by category, price (free/freemium/paid) and student-friendliness
-- Tool detail: pricing, platforms, best-for, notes/pros, link out
-- Side-by-side comparison of 2–3 tools
-- "Shortlist" of saved tools, persisted locally
-- Responsive, accessible, deployed, tested
-
-**Out of scope:**
-- Accounts, login, server-side persistence
-- Real-time data or scraping third-party directories
-- Submitting/moderating new tools (admin panel)
-- Payments or subscriptions
-- LLM-generated recommendations
-
-**Top 3 risks:**
-1. **Dataset authoring time** — fix the schema first, then batch entries.
-2. **Compare feature scope** — cap at 3 tools and a fixed attribute set.
-3. **"Mock data" perception** — real async loading/empty/error+retry states, honest docs.
+- [Idea one-pager](docs/idea-one-pager.md) — problem, target user, core flow, scope, risks
+- [Key-screen sketch](docs/key-screen-sketch.md) — the Week 1 screen design
 
 ## Work plan
 
