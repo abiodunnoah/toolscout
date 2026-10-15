@@ -60,12 +60,13 @@ Then open the local URL it prints (usually http://localhost:5173).
 ## Project structure
 
     src/
-      components/   # reusable UI (added Week 2)
-      views/        # routed views (added Week 3)
-      stores/       # Pinia stores
-      assets/
-    data/           # curated tools dataset (added Week 2)
-    docs/           # idea one-pager, work plan, reflection
+      components/   # ToolCard (more extracted in Week 2)
+      data/         # seed dataset for Week 1 (JSON Server mock in Week 2)
+      App.vue       # key screen: search, filters, results, shortlist
+      main.js
+      style.css     # Tailwind entry + base focus styles
+    docs/           # key-screen sketch (one-pager + reflection later)
+    public/
 
 ## Roadmap (3 weeks)
 
@@ -122,8 +123,26 @@ options side by side or remember promising ones for later.
 
 ## Key decisions
 
-- _TODO (from Week 1): why Vue, why Tailwind, why a curated dataset._
-- Week 1 interactivity: _TODO — explain how each behaviour works (required for task 1.2)._
+- **Vue 3 + Vite** — component model and a fast dev loop; the team/guide stack I know best.
+- **Tailwind CSS** — utility classes keep the responsive work (mobile-first + one breakpoint) explicit and avoid a separate stylesheet to maintain.
+- **Curated dataset** — no free public "AI tools" API exists, so I author a small JSON dataset (Week 2) that I fully control; the fields I need for comparison are guaranteed to be present.
+
+## How the interaction works (Week 1, task 1.2)
+
+All three behaviours are hand-written in `src/App.vue` — no plugin does the work for me.
+
+1. **Live search** — a `computed` (`filteredTools`) runs on every keystroke and matches the
+   query against a tool's name, description and tags. Empty or whitespace-only input is
+   treated as "no query" and shows everything.
+2. **Filters (category + price)** — clicking a filter button toggles that value in an array
+   of active filters (via `toggleValue`). Multiple filters combine with AND, and each button
+   reflects its state through `aria-pressed`.
+   - **Edge cases:** when the search and filters match nothing, the list is replaced by a
+     friendly empty state with a **Clear filters** button, rather than a blank page or a crash.
+3. **Shortlist** — the **Save** button on each card toggles the tool's id in a `savedIds`
+   array; the footer shows the live count and each button's `aria-pressed` tracks its state.
+4. **Theme toggle** — flips a `dark` class on `<html>` (Tailwind's class-based dark mode).
+   The choice is *not* persisted yet — that arrives in Week 3 with `localStorage`.
 
 ## Known limitations
 
