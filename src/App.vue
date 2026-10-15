@@ -126,7 +126,7 @@ function toggleTheme() {
             v-model="query"
             type="search"
             placeholder="e.g. summarise a long PDF"
-            class="w-full rounded-lg border border-slate-300 bg-white px-4 py-2 text-slate-900 placeholder:text-slate-400 dark:border-slate-600 dark:bg-slate-900 dark:text-slate-100"
+            class="w-full rounded-lg border border-slate-300 bg-white px-4 py-2 text-slate-900 placeholder:text-slate-500 dark:border-slate-600 dark:bg-slate-900 dark:text-slate-100"
           />
           <button
             type="submit"

@@ -14,4 +14,9 @@
     outline: 2px solid var(--color-indigo-600);
     outline-offset: 2px;
   }
+
+  /* Lighter ring in dark mode so it stays visible on dark surfaces */
+  .dark :focus-visible {
+    outline-color: var(--color-indigo-400);
+  }
 }
