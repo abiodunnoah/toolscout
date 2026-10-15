@@ -87,7 +87,7 @@ Below that, filters collapse to horizontal chips and cards stack in one column.
 |---------------|-------------------------------------------------|---------------------------------------------------|
 | Page chrome   | `header`, `main`, `footer`                      | one `main` per page                               |
 | Branding      | `header` > logo text/`svg`                      | `aria-label` on the home link                     |
-| Theme toggle  | `button` with `aria-pressed`                    | behaviour 2 / a11y                                 |
+| Theme toggle  | `button` with `aria-pressed`                    | behaviour 3 / a11y                                 |
 | Title         | `h1` (and `h2` for section headings)            | one `h1`                                          |
 | Search        | `form` > `label` + `input[type=search]` + `button` | label tied via `for`/`id`; `button type=submit` |
 | Filters       | `fieldset`/`legend` or a labelled group of `button`s | `aria-pressed` reflects on/off state          |
@@ -116,7 +116,7 @@ focus outline on all interactive elements; body-text contrast ≥ 4.5:1.
 
 ---
 
-## Two interactive behaviours (task 1.2)
+## Three interactive behaviours (task 1.2)
 
 **Behaviour 1 — Live search + category/price filter**
 - Typing in the search box filters the visible tool cards by name, description and tags.
@@ -130,6 +130,11 @@ focus outline on all interactive elements; body-text contrast ≥ 4.5:1.
   live count and the button's `aria-pressed` reflects state.
 - Clicking already-saved removes it.
 - *(Week 3 will lift this state into Pinia and persist it; Week 1 keeps it in the view.)*
+
+**Behaviour 3 — Theme toggle**
+- A header button flips the `dark` class on `<html>` (Tailwind's class-based dark mode);
+  its `aria-pressed` reflects the current state.
+- *(Persistence via `localStorage` arrives in Week 3.)*
 
 ### Edge cases to handle
 - Empty search + no filters → full list, count correct.

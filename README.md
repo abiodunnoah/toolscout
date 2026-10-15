@@ -39,7 +39,7 @@ promising ones for later.
 ## Getting started
 
 ### Prerequisites
-- Node.js 18+ and npm
+- Node.js 20.19+ or 22.12+ and npm
 
 ### Run locally
 
@@ -72,7 +72,7 @@ Then open the local URL it prints (usually http://localhost:5173).
       App.vue       # key screen: search, filters, results, shortlist
       main.js
       style.css     # Tailwind entry + base focus styles
-    docs/           # idea one-pager, key-screen sketch, reflection (later)
+    docs/           # planning docs: one-pager, work plan, sketch, weekly updates
     public/
 
 ## Roadmap (3 weeks)
