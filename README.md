@@ -88,15 +88,9 @@ Then open the local URL it prints (usually http://localhost:5173).
 ## Planning docs
 
 - [Idea one-pager](docs/idea-one-pager.md) — problem, target user, core flow, scope, risks
+- [Work plan](docs/work-plan.md) — deliverables for Weeks 1–3 and top risks
 - [Key-screen sketch](docs/key-screen-sketch.md) — the Week 1 screen design
-
-## Work plan
-
-| Week | Deliverables | Notes |
-|------|--------------|-------|
-| 1 | Idea one-pager + work plan; repo + README; key screen mobile-first, semantic, accessible; JS interactivity (live search/filter + empty state); tag `week-1`; 5-min mentor demo | Sketch the screen before coding |
-| 2 | Feedback response; issue log (≥5); components (`SearchBar`, `ToolCard`, `TagFilter`, `CompareTable`); async data with loading/empty/error+retry; component map | Data integration is the focus |
-| 3 | Routes `/`, `/tool/:slug`, `/compare?ids=a,b`, `/saved`, 404; shortlist + compare state persisted; Lighthouse/axe before/after; ≥3 tests; deploy; final README, video, reflection, declaration; tag `week-3` | Deep-linked compare is the showcase |
+- [Weekly update notes](docs/weekly-updates.md) — the status note submitted each week
 
 ## Key decisions
 
