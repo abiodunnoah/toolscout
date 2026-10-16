@@ -100,20 +100,24 @@ Then open the local URL it prints (usually http://localhost:5173).
 
 ## How the interaction works (Week 1, task 1.2)
 
-All three behaviours are hand-written in `src/App.vue` — no plugin does the work for me.
+Every behaviour is hand-written in `src/App.vue` — no plugin does the work for me.
 
 1. **Live search** — a `computed` (`filteredTools`) runs on every keystroke and matches the
    query against a tool's name, description and tags. Empty or whitespace-only input is
-   treated as "no query" and shows everything.
+   treated as "no query" and shows everything. A clear (x) button empties the field and
+   returns focus to it.
 2. **Filters (category + price)** — clicking a filter button toggles that value in an array
    of active filters (via `toggleValue`). Multiple filters combine with AND, and each button
    reflects its state through `aria-pressed`.
    - **Edge cases:** when the search and filters match nothing, the list is replaced by a
      friendly empty state with a **Clear filters** button, rather than a blank page or a crash.
-3. **Shortlist** — the **Save** button on each card toggles the tool's id in a `savedIds`
+3. **Sort** — a plain `<select>` reorders the filtered list (Featured / Name / Price); price
+   sorts free-first through a small lookup object.
+4. **Shortlist** — the **Save** button on each card toggles the tool's id in a `savedIds`
    array; the footer shows the live count and each button's `aria-pressed` tracks its state.
-4. **Theme toggle** — flips a `dark` class on `<html>` (Tailwind's class-based dark mode).
-   The choice is *not* persisted yet — that arrives in Week 3 with `localStorage`.
+5. **Theme** — starts from the OS setting (`prefers-color-scheme`); the header button
+   overrides it by toggling the `dark` class on `<html>`. The choice is *not* persisted yet —
+   that arrives in Week 3 with `localStorage`.
 
 ## Known limitations
 
