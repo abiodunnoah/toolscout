@@ -156,3 +156,37 @@ focus outline on all interactive elements; body-text contrast ≥ 4.5:1.
 - Compare view (`/compare?ids=`) — Week 3
 - Shortlist page (`/saved`) — Week 3
 - Async loading/error states — Week 2
+
+---
+
+## Revision 2 — UI redesign (2026-10-16)
+
+After reviewing the first build, the screen was redesigned for a cleaner "modern SaaS"
+look and to fix dark mode. The wireframes above are the **v1** design; this section
+records what changed and why.
+
+**Why**
+- Dark mode looked broken: the page background was never themed, there was no elevation
+  between surfaces, and the theme ignored the OS preference.
+- The layout was flat, with weak hierarchy and cramped spacing.
+
+**What changed**
+- **Typeface:** Inter (self-hosted), tighter tracking on headings.
+- **Dark mode fixed:** themed page background (`slate-50` → `slate-950`), **elevation by
+  lightening surfaces** (page → card → raised), no pure white/black, `color-scheme` so
+  native controls adapt, and a smooth transition that respects `prefers-reduced-motion`.
+- **System-aware theme:** starts from `prefers-color-scheme`; the toggle overrides it
+  (persistence still deferred to Week 3).
+- **Header:** sticky and translucent (backdrop blur), brand mark, icon theme toggle.
+- **Hero:** larger title, muted subtitle, subtle gradient, and a prominent rounded search
+  bar with a search icon and a **clear (x)** button.
+- **Filters:** moved into a card; desktop uses a **sticky sidebar** at the `lg` breakpoint
+  (1024px, previously 768px); mobile shows pill rows.
+- **Results:** added a **count + sort** control (Featured / Name / Price).
+- **Card:** avatar initials, category + price chips, description, tags and footer actions;
+  hover lift and elevation.
+- **Empty state:** icon, copy and a prominent Clear filters button.
+
+**Accessibility kept/strengthened:** focus rings (indigo-600 light / indigo-400 dark),
+labelled search field, `aria-pressed` on filters/save/theme, `role="status"` results count,
+and contrast >= 4.5:1 in both modes.
