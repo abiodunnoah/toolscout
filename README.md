@@ -92,6 +92,13 @@ Then open the local URL it prints (usually http://localhost:5173).
 - [Key-screen sketch](docs/key-screen-sketch.md) — the Week 1 screen design
 - [Weekly update notes](docs/weekly-updates.md) — the status note submitted each week
 
+## Screenshots
+
+| Mobile (375px) | Desktop (1280px) |
+|---|---|
+| ![ToolScout at 375px in light mode](docs/screenshots/week-1-mobile-375-light.png) | ![ToolScout at 1280px in light mode](docs/screenshots/week-1-desktop-1280-light.png) |
+| ![ToolScout at 375px in dark mode](docs/screenshots/week-1-mobile-375-dark.png) | ![ToolScout at 1280px in dark mode](docs/screenshots/week-1-desktop-1280-dark.png) |
+
 ## Key decisions
 
 - **Vue 3 + Vite** — component model and a fast dev loop; the team/guide stack I know best.
