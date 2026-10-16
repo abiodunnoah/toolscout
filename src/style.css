@@ -1,21 +1,56 @@
 @import 'tailwindcss';
 
-/* Enable class-based dark mode (toggled on <html class="dark">) */
+/* Class-based dark mode (toggled on <html class="dark">) */
 @custom-variant dark (&:where(.dark, .dark *));
 
+/* Inter is the app's typeface (self-hosted via @fontsource-variable/inter) */
+@theme {
+  --font-sans: 'Inter Variable', ui-sans-serif, system-ui, -apple-system, 'Segoe UI',
+    Roboto, sans-serif;
+}
+
 @layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  .dark {
+    color-scheme: dark;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     background-color: var(--color-slate-50);
     color: var(--color-slate-700);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
   }
 
-  /* Consistent, visible focus indicator for keyboard users (WCAG 2.4.7) */
+  /* Themed page background — the missing piece that broke dark mode */
+  .dark body {
+    background-color: var(--color-slate-950);
+    color: var(--color-slate-400);
+  }
+
+  /* Smooth theme change, but not for people who ask for less motion */
+  @media (prefers-reduced-motion: no-preference) {
+    body {
+      transition:
+        background-color 0.3s ease,
+        color 0.3s ease;
+    }
+  }
+
+  /* Visible focus indicator for keyboard users (WCAG 2.4.7) */
   :focus-visible {
     outline: 2px solid var(--color-indigo-600);
     outline-offset: 2px;
   }
 
-  /* Lighter ring in dark mode so it stays visible on dark surfaces */
   .dark :focus-visible {
     outline-color: var(--color-indigo-400);
   }
