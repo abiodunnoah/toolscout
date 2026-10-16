@@ -13,7 +13,7 @@ Week 1 - Noah - Frontend - ToolScout
 - One-page work plan
 - Key screen: responsive, accessible search + tool list (task 1.1)
 - Interactivity: live search, category/price filters with empty state, shortlist, theme toggle (task 1.2)
-- Repo: github.com/abiodunnoah/toolscout · Live URL: _<paste Netlify URL>_
+- Repo: github.com/abiodunnoah/toolscout · Live URL: https://toolscoutt.netlify.app/
 
 **Changed after feedback:**
 - N/A this week (first submission). Mentor feedback from the 5-minute demo will be logged here and actioned at the start of Week 2.

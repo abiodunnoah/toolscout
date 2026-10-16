@@ -55,7 +55,7 @@ Then open the local URL it prints (usually http://localhost:5173).
     npm run test       # run tests (Vitest) — added in Week 3
     npm run mock       # serve the mock API — added in Week 2
 
-> Live URL: _TODO_  ·  Backup release: git tag `week-1`
+> Live URL: <https://toolscoutt.netlify.app/>  ·  Backup release: git tag `week-1`
 
 ### Deploy (Netlify)
 
