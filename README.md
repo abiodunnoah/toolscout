@@ -67,7 +67,7 @@ Then open the local URL it prints (usually http://localhost:5173).
 ## Project structure
 
     data/
-      tools.json    # curated dataset (42 tools) served by JSON Server
+      tools.json    # curated dataset (48 tools) served by JSON Server
     src/
       components/   # ToolCard; more extracted in Week 2
       data/         # Week 1 seed (replaced by the mock API fetch)
@@ -79,8 +79,8 @@ Then open the local URL it prints (usually http://localhost:5173).
 
 ## Dataset (Week 2)
 
-The mock API is a curated dataset at [`data/tools.json`](data/tools.json): **42 AI tools**,
-**7 per category**, served by JSON Server.
+The mock API is a curated dataset at [`data/tools.json`](data/tools.json): **48 AI tools**,
+**7–9 per category**, served by JSON Server.
 
     npm run mock      # http://localhost:3001
 
