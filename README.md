@@ -53,7 +53,7 @@ Then open the local URL it prints (usually http://localhost:5173).
     npm run build      # production build
     npm run preview    # preview the production build
     npm run test       # run tests (Vitest) — added in Week 3
-    npm run mock       # serve the mock API — added in Week 2
+    npm run mock       # serve the mock API at http://localhost:3001 (JSON Server)
 
 > Live URL: <https://toolscoutt.netlify.app/>  ·  Backup release: git tag `week-1`
 
@@ -66,21 +66,68 @@ Then open the local URL it prints (usually http://localhost:5173).
 
 ## Project structure
 
+    data/
+      tools.json    # curated dataset (42 tools) served by JSON Server
     src/
-      components/   # ToolCard (more extracted in Week 2)
-      data/         # seed dataset for Week 1 (JSON Server mock in Week 2)
+      components/   # ToolCard; more extracted in Week 2
+      data/         # Week 1 seed (replaced by the mock API fetch)
       App.vue       # key screen: search, filters, results, shortlist
       main.js
       style.css     # Tailwind entry + base focus styles
-    docs/           # planning docs: one-pager, work plan, sketch, weekly updates
+    docs/           # planning docs, screenshots, weekly updates
     public/
+
+## Dataset (Week 2)
+
+The mock API is a curated dataset at [`data/tools.json`](data/tools.json): **42 AI tools**,
+**7 per category**, served by JSON Server.
+
+    npm run mock      # http://localhost:3001
+
+**Endpoints:** `GET /tools` · `GET /tools/:id`
+
+**Record shape**
+
+| Field | Type | Notes |
+|---|---|---|
+| `id` | string (slug) | unique; used by `/tool/:id` and `?ids=` |
+| `name` | string | display name |
+| `category` | enum | see below |
+| `price` | enum | `Free` · `Freemium` · `Paid` |
+| `freeTier` | boolean | has a usable free tier |
+| `studentFriendly` | boolean | see honesty note |
+| `pricingNote` | string | short, qualitative |
+| `tagline` | string | card summary (<= 60 chars) |
+| `description` | string | 2-3 sentences for the detail view |
+| `tasks` | string[] | powers task-first search |
+| `tags` | string[] | keywords / chips |
+| `bestFor` | string | one line |
+| `platforms` | enum[] | see below |
+| `features` | string[] | compared side by side in Week 3 |
+| `pros` / `limitations` | string[] | detail view |
+| `editorScore` | number 0-5 | see honesty note |
+| `url` | string | https only |
+| `updatedAt` | ISO date | freshness |
+
+**Enums**
+- `category`: `Research`, `Writing`, `Coding`, `Study`, `Design`, `Productivity`
+- `price`: `Free`, `Freemium`, `Paid`
+- `platforms`: `Web`, `iOS`, `Android`, `Windows`, `macOS`, `Linux`, `Browser extension`, `API`
+
+**Two honesty notes**
+- `editorScore` is **my own assessment**, not scraped review data.
+- `studentFriendly` is a manual flag: `true` when a tool has a free tier or an official
+  student discount.
+
+Set `VITE_API_URL` from [`.env.example`](.env.example) (defaults to
+`http://localhost:3001`); `.env` is gitignored.
 
 ## Roadmap (3 weeks)
 
 | Week | Focus | Status |
 |------|-------|--------|
-| 1 | Idea one-pager, work plan, responsive + accessible key screen, JS interactivity | in progress |
-| 2 | Component build, data integration (loading / empty / error states) | not started |
+| 1 | Idea one-pager, work plan, responsive + accessible key screen, JS interactivity | done |
+| 2 | Component build, data integration (loading / empty / error states) | in progress |
 | 3 | Routing + state, accessibility pass, tests, deploy, final package | not started |
 
 ---
