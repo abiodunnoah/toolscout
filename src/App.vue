@@ -1,6 +1,5 @@
 <script setup>
-import { ref } from 'vue'
-import tools from './data/tools.js'
+import { computed, ref } from 'vue'
 import AppHeader from './components/AppHeader.vue'
 import AppFooter from './components/AppFooter.vue'
 import SearchBar from './components/SearchBar.vue'
@@ -8,12 +7,17 @@ import FilterGroup from './components/FilterGroup.vue'
 import SortSelect from './components/SortSelect.vue'
 import ToolGrid from './components/ToolGrid.vue'
 import EmptyState from './components/EmptyState.vue'
+import LoadingState from './components/LoadingState.vue'
+import ErrorState from './components/ErrorState.vue'
 import { useFilters } from './composables/useFilters.js'
 import { useShortlist } from './composables/useShortlist.js'
 import { useTheme } from './composables/useTheme.js'
+import { useTools } from './composables/useTools.js'
 
 const { isDark, toggle: toggleTheme } = useTheme()
 const { savedIds, savedCount, toggleSave } = useShortlist()
+const { tools, loading, error, retry } = useTools()
+
 const {
   query,
   activeCategories,
@@ -24,10 +28,16 @@ const {
   toggleCategory,
   togglePrice,
   clearFilters,
-} = useFilters(() => tools)
+} = useFilters(() => tools.value)
 
-const categories = [...new Set(tools.map((tool) => tool.category))]
+const categories = computed(() => [
+  ...new Set(tools.value.map((tool) => tool.category)),
+])
 const prices = ['Free', 'Freemium', 'Paid']
+
+const errorMessage = computed(() =>
+  error.value ? `We couldn't load the tools (${error.value}).` : undefined,
+)
 
 const resultsSection = ref(null)
 function onSearch() {
@@ -109,6 +119,7 @@ function onSearch() {
           <div class="flex flex-wrap items-center justify-between gap-3">
             <h2 id="results-heading" class="sr-only">Results</h2>
             <p
+              v-if="!loading && !error"
               class="text-sm text-slate-500 dark:text-slate-400"
               role="status"
               aria-live="polite"
@@ -121,8 +132,10 @@ function onSearch() {
             <SortSelect v-model="sortBy" />
           </div>
 
+          <LoadingState v-if="loading" />
+          <ErrorState v-else-if="error" :message="errorMessage" @retry="retry" />
           <ToolGrid
-            v-if="sortedTools.length"
+            v-else-if="sortedTools.length"
             :tools="sortedTools"
             :saved-ids="savedIds"
             @toggle-save="toggleSave"
