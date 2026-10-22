@@ -44,13 +44,15 @@ promising ones for later.
 ### Run locally
 
     npm install
-    npm run dev        # start dev server (Vite)
-    npm run mock       # (second terminal) JSON Server on :3001
+    npm run dev:full   # starts JSON Server (:3001) + Vite (:5173) together
 
 Then open the local URL it prints (usually http://localhost:5173).
 
+Prefer separate terminals? Run `npm run mock` and `npm run dev` in two shells.
+
 ### Other scripts
 
+    npm run dev:full   # run the mock API and the dev server together
     npm run build      # production build
     npm run preview    # preview the production build
     npm run test       # run tests (Vitest) — added in Week 3

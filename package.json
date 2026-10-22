@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "dev:full": "concurrently -k -n mock,dev -c magenta,cyan \"npm:mock\" \"npm:dev\"",
     "prebuild": "node scripts/sync-data.mjs",
     "build": "vite build",
     "preview": "vite preview",
@@ -18,6 +19,7 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^6.0.8",
+    "concurrently": "^10.0.6",
     "json-server": "^1.0.0-beta.15",
     "vite": "^8.3.0"
   }
