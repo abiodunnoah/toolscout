@@ -183,6 +183,32 @@ Every behaviour is hand-written in `src/composables/` (`useFilters`, `useShortli
    overrides it by toggling the `dark` class on `<html>`. The choice is *not* persisted yet —
    that arrives in Week 3 with `localStorage`.
 
+## Component map (Week 2)
+
+The key screen is assembled from single-purpose components; shared state lives in composables.
+
+| Component | Responsibility | Interface |
+|---|---|---|
+| `AppHeader` | Brand and theme control | prop `isDark`; emits `toggle-theme` |
+| `SearchBar` | Labelled search form and clear button | `v-model`; emits `submit` |
+| `FilterGroup` | Reusable filter pills (used for category and price) | props `legend`, `options`, `active`; emits `toggle` |
+| `SortSelect` | Sort control | `v-model` |
+| `ToolGrid` | Results list and responsive grid | props `tools`, `savedIds`; emits `toggle-save` |
+| `ToolCard` | A single tool | props `tool`, `saved`; emits `toggle-save` |
+| `EmptyState` | No-results message | emits `clear` |
+| `LoadingState` | Skeleton grid with an accessible status | — |
+| `ErrorState` | Error message and retry | prop `message`; emits `retry` |
+| `AppFooter` | Shortlist count | prop `savedCount` |
+
+**Composables**
+
+| Composable | Owns |
+|---|---|
+| `useTools` | Fetching, `loading`, `error`, `retry` and defensive parsing |
+| `useFilters` | Query, active filters, sort, filtered and sorted list |
+| `useShortlist` | Saved ids and count (in memory) |
+| `useTheme` | System-aware dark mode |
+
 ## Week 1 feedback response
 
 The mentor check-in had not produced notes at the time of writing, so there is no
