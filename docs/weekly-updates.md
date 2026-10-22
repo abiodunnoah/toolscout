@@ -55,8 +55,10 @@ Week 2 - Noah - Frontend - ToolScout
 - Defensive parsing drops malformed records so bad data cannot crash the UI
 
 **Blockers / risks:**
-- No mentor feedback yet
-- Tag `week-2` still to be created after final QA
+- No mentor feedback yet, so the feedback-response section is provisional
+- The dataset is curated and static; it can go stale and is not live data
+- No automated tests until Week 3, so regressions rely on manual QA
+- Shortlist state is in-memory until Week 3
 
 **AI and sources used:**
 - AI assistant (opencode) used for scaffolding, component extraction, dataset authoring and documentation; I reviewed and adapted the code.
