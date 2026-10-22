@@ -22,6 +22,13 @@
     scroll-behavior: smooth;
   }
 
+  /* Hide the browser's built-in search clear button; we render our own */
+  input[type='search']::-webkit-search-cancel-button,
+  input[type='search']::-webkit-search-decoration {
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
   body {
     background-color: var(--color-slate-50);
     color: var(--color-slate-700);
