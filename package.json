@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "prebuild": "node scripts/sync-data.mjs",
     "build": "vite build",
     "preview": "vite preview",
     "mock": "json-server data/tools.json --port 3001"

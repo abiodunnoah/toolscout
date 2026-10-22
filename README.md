@@ -45,6 +45,7 @@ promising ones for later.
 
     npm install
     npm run dev        # start dev server (Vite)
+    npm run mock       # (second terminal) JSON Server on :3001
 
 Then open the local URL it prints (usually http://localhost:5173).
 
@@ -79,12 +80,18 @@ Then open the local URL it prints (usually http://localhost:5173).
 
 ## Dataset (Week 2)
 
-The mock API is a curated dataset at [`data/tools.json`](data/tools.json): **48 AI tools**,
-**7–9 per category**, served by JSON Server.
+The data is a curated dataset at [`data/tools.json`](data/tools.json): **48 AI tools**,
+**7–9 per category**.
+
+**Development — JSON Server**
 
     npm run mock      # http://localhost:3001
 
-**Endpoints:** `GET /tools` · `GET /tools/:id`
+**Production — no server needed.** `npm run build` runs `scripts/sync-data.mjs`, which
+copies the dataset to `public/api/tools.json`; the app fetches that static endpoint
+instead, so the deployed site works without JSON Server.
+
+**Endpoints:** `GET /tools` and `GET /tools/:id` (dev) · `GET /api/tools.json` (prod)
 
 **Record shape**
 

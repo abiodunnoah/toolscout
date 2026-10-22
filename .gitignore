@@ -21,6 +21,9 @@ pnpm-debug.log*
 # Test coverage
 coverage/
 
+# Generated static API (built from data/tools.json by scripts/sync-data.mjs)
+public/api/
+
 # Editor / OS
 .vscode/*
 !.vscode/extensions.json
