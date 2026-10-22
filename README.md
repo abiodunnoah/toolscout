@@ -163,7 +163,8 @@ Set `VITE_API_URL` from [`.env.example`](.env.example) (defaults to
 
 ## How the interaction works (Week 1, task 1.2)
 
-Every behaviour is hand-written in `src/App.vue` — no plugin does the work for me.
+Every behaviour is hand-written in `src/composables/` (`useFilters`, `useShortlist`,
+`useTheme`) — no plugin does the work for me.
 
 1. **Live search** — a `computed` (`filteredTools`) runs on every keystroke and matches the
    query against a tool's name, description and tags. Empty or whitespace-only input is
@@ -182,9 +183,32 @@ Every behaviour is hand-written in `src/App.vue` — no plugin does the work for
    overrides it by toggling the `dark` class on `<html>`. The choice is *not* persisted yet —
    that arrives in Week 3 with `localStorage`.
 
+## Week 1 feedback response
+
+The mentor check-in had not produced notes at the time of writing, so there is no
+feedback list to act on yet. Interim improvements came from self-review and the Week 1
+demo. Any guidance received before submission will be added here with the action taken.
+
+## Issue log
+
+Bugs found, options considered and how each was fixed during Week 2.
+
+| # | Issue | Options considered | Fix |
+|---|---|---|---|
+| 1 | Dark mode left light gutters behind dark components | Per-component dark overrides vs theming the page background | Themed `body` + `.dark` override + `color-scheme` |
+| 2 | JSON Server v1 returned 404 for `/tools` | Downgrade to 0.17 vs reshape the dataset | Wrapped the file as `{ "tools": [...] }` |
+| 3 | `json-server` rejected the dataset ("Unexpected token") | Strip the BOM on read vs write without one | Wrote the file with `UTF8Encoding(false)` |
+| 4 | Price data too thin (2 Free / 36 Freemium) | Keep as-is vs rebalance | Added 4 genuinely free and 2 paid-only tools; corrected Elicit to Freemium |
+| 5 | Local dev showed "Failed to fetch" (`ERR_CONNECTION_REFUSED`) | Document two terminals vs one command | Added `dev:full` using `concurrently` |
+| 6 | Retry could race an in-flight request | Ignore vs abort and guard | `AbortController` + request-id guard in `useTools` |
+| 7 | Production has no JSON Server | Require a server vs ship a static endpoint | `prebuild` copies the dataset to `public/api/tools.json`; the client picks dev or prod |
+
 ## Known limitations
 
-- _TODO_
+- The dataset is curated and static, not live data; `editorScore` is subjective.
+- The shortlist is in-memory only — persistence arrives in Week 3.
+- Detail and compare views are not built yet (Week 3).
+- The deployed build reads a generated static endpoint, so it does not exercise a real API under load.
 
 ## Licence
 

@@ -31,3 +31,33 @@ Week 1 - Noah - Frontend - ToolScout
 **AI and sources used:**
 - AI assistant (opencode) used to scaffold the Vite project, draft the README and the initial App.vue structure; I reviewed and adapted all the code myself.
 - Sources: Vue 3 docs, Tailwind CSS docs, MDN (semantic HTML and ARIA).
+
+---
+
+## Week 2
+
+Week 2 - Noah - Frontend - ToolScout
+
+**Delivered:**
+- Curated dataset of 48 tools with a JSON Server mock API (task 2.2)
+- Reusable components: AppHeader, SearchBar, FilterGroup, SortSelect, ToolGrid, ToolCard, EmptyState, LoadingState, ErrorState and AppFooter (task 2.1)
+- Composable state: useFilters, useShortlist, useTheme and useTools
+- Async data with loading, empty, error and retry states
+- Static production data endpoint and a `dev:full` script
+- Repo: github.com/abiodunnoah/toolscout · Live URL: https://toolscoutt.netlify.app/
+
+**Changed after feedback:**
+- Mentor check-in pending; no feedback received at the time of writing. Any feedback received before submission will be actioned and recorded here.
+
+**Key technical decisions:**
+- JSON Server for development and a generated static endpoint for production, so the live site needs no server
+- Composables keep search, filter, sort and shortlist state out of the components
+- Defensive parsing drops malformed records so bad data cannot crash the UI
+
+**Blockers / risks:**
+- No mentor feedback yet
+- Tag `week-2` still to be created after final QA
+
+**AI and sources used:**
+- AI assistant (opencode) used for scaffolding, component extraction, dataset authoring and documentation; I reviewed and adapted the code.
+- Sources: Vue 3 docs, Tailwind CSS docs, JSON Server docs, MDN (fetch, AbortController, ARIA).
