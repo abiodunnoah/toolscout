@@ -137,7 +137,7 @@ try {
   )
 
   const mobile = await browser.newContext({
-    viewport: { width: 375, height: 812 },
+    viewport: { width: 320, height: 800 },
     colorScheme: 'light',
   })
   const small = await mobile.newPage()
@@ -146,7 +146,7 @@ try {
     const overflow = await small.evaluate(
       () => document.body.scrollWidth - document.documentElement.clientWidth,
     )
-    check(overflow <= 1, `No horizontal page scroll at 375px on ${path} (${overflow}px)`)
+    check(overflow <= 1, `No horizontal page scroll at 320px on ${path} (${overflow}px)`)
   }
   await mobile.close()
 } finally {
