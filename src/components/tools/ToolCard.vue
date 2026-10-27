@@ -1,5 +1,6 @@
 <script setup>
 import { computed } from 'vue'
+import { RouterLink } from 'vue-router'
 import Badge from '../ui/Badge.vue'
 import Button from '../ui/Button.vue'
 import Card from '../ui/Card.vue'
@@ -37,7 +38,12 @@ const priceVariant = computed(() => PRICE_VARIANTS[props.tool.price] ?? 'neutral
         </span>
         <div class="min-w-0">
           <h3 class="truncate font-semibold text-slate-900 dark:text-white">
-            {{ tool.name }}
+            <RouterLink
+              :to="`/tool/${tool.id}`"
+              class="rounded transition hover:text-indigo-700 dark:hover:text-indigo-300"
+            >
+              {{ tool.name }}
+            </RouterLink>
           </h3>
           <p
             class="text-xs font-medium uppercase tracking-wide text-slate-600 dark:text-slate-400"
@@ -66,31 +72,35 @@ const priceVariant = computed(() => PRICE_VARIANTS[props.tool.price] ?? 'neutral
     <div
       class="mt-4 flex items-center justify-between gap-2 border-t border-slate-100 pt-4 dark:border-slate-800"
     >
-      <Button
-        :href="tool.url"
-        target="_blank"
-        rel="noopener noreferrer"
-        variant="ghost"
-        size="sm"
-      >
-        Visit
-        <svg
-          class="h-3.5 w-3.5"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke-width="2"
-          stroke="currentColor"
-          aria-hidden="true"
+      <div class="flex items-center gap-1">
+        <Button
+          :href="tool.url"
+          target="_blank"
+          rel="noopener noreferrer"
+          variant="ghost"
+          size="sm"
         >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M13.5 6H18m0 0v4.5M18 6l-6.75 6.75M15 15v2.25A2.25 2.25 0 0 1 12.75 19.5h-6A2.25 2.25 0 0 1 4.5 17.25v-6A2.25 2.25 0 0 1 6.75 9H9"
-          />
-        </svg>
-        <span class="sr-only"> {{ tool.name }} (opens in a new tab)</span>
-      </Button>
+          Visit
+          <svg
+            class="h-3.5 w-3.5"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="2"
+            stroke="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M13.5 6H18m0 0v4.5M18 6l-6.75 6.75M15 15v2.25A2.25 2.25 0 0 1 12.75 19.5h-6A2.25 2.25 0 0 1 4.5 17.25v-6A2.25 2.25 0 0 1 6.75 9H9"
+            />
+          </svg>
+          <span class="sr-only"> {{ tool.name }} (opens in a new tab)</span>
+        </Button>
+
+        <Button :to="`/tool/${tool.id}`" variant="ghost" size="sm">Details</Button>
+      </div>
 
       <Button
         :variant="saved ? 'primary' : 'secondary'"

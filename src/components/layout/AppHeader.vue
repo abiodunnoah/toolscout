@@ -1,4 +1,5 @@
 <script setup>
+import { RouterLink } from 'vue-router'
 import Button from '../ui/Button.vue'
 
 defineProps({
@@ -13,8 +14,8 @@ defineEmits(['toggle-theme'])
     class="sticky top-0 z-20 border-b border-slate-200/80 bg-white/80 backdrop-blur dark:border-slate-800/80 dark:bg-slate-950/70"
   >
     <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
-      <a
-        href="/"
+      <RouterLink
+        to="/"
         class="flex items-center gap-2 rounded-lg text-lg font-bold tracking-tight text-slate-900 dark:text-white"
       >
         <span
@@ -37,7 +38,7 @@ defineEmits(['toggle-theme'])
           </svg>
         </span>
         ToolScout
-      </a>
+      </RouterLink>
 
       <nav aria-label="Main" class="flex items-center gap-1">
         <Button
