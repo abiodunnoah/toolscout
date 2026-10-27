@@ -25,6 +25,19 @@ research the whole market first.
 
     search by task  ->  filter the list  ->  compare 2-3 tools  ->  read a tool page  ->  save it
 
+## Screens
+
+| Path | Screen | What you can do |
+|---|---|---|
+| `/` | Find tools | Search by task, filter by category and price, sort, save |
+| `/tool/:id` | Tool page | Read the full entry, visit the site, save it |
+| `/saved` | Shortlist | See saved tools, remove them, pick tools to compare |
+| `/compare?ids=a,b` | Compare | Compare two or three tools in a table |
+| anything else | 404 | Get a way back to the finder |
+
+Every path is a real URL. You can open it directly, bookmark it or send it to
+someone. Netlify sends `index.html` for unknown paths so deep links work in production.
+
 ## Try it
 
 The live site is built and hosted on Netlify:
@@ -54,7 +67,8 @@ If you prefer two terminals, run `npm run mock` in one and `npm run dev` in the 
 | `npm run mock` | Runs the fake API on port 3001 |
 | `npm run build` | Builds the production site into `dist/` |
 | `npm run preview` | Serves the production build locally |
-| `npm run test` | Runs the automated tests |
+| `npm run test` | Runs the Vitest tests |
+| `npm run check:app` | Drives the built site in Chrome. Needs `npm run preview` running and Chrome installed |
 
 ### If port 3001 is busy
 
@@ -62,7 +76,7 @@ Stop the process that is using it, then start again:
 
     Get-NetTCPConnection -LocalPort 3001 -State Listen | ForEach-Object { Stop-Process -Id $_.OwningProcess -Force }
 
-## How it works today
+## How it works
 
 1. The app asks the data endpoint for the list of tools.
 2. While it waits, it shows six grey placeholder cards.
@@ -71,17 +85,12 @@ Stop the process that is using it, then start again:
    It looks in the tool name, description, tags and tasks.
 5. Category and price chips narrow the list. Chips can be combined.
 6. Sort changes the order: Featured, Name or Price (free first).
-7. Save adds a tool to the shortlist. The footer shows how many tools you saved.
-8. If nothing matches, an empty state appears with a Clear filters button.
-
-The home screen is the only screen so far. Week 3 adds:
-
-| Path | Screen |
-|---|---|
-| `/tool/:id` | One tool, with full details |
-| `/compare?ids=a,b` | Two or three tools side by side |
-| `/saved` | Everything on your shortlist |
-| anything else | A 404 page |
+7. Save adds a tool to the shortlist. The header and footer show the count.
+8. The shortlist is kept in `localStorage`, so it is still there after a reload.
+   It stays in one browser because there are no accounts.
+9. On the shortlist page you can tick two or three tools and open the compare page.
+   The selection is in the URL, so the comparison can be bookmarked or shared.
+10. If nothing matches a search, an empty state appears with a Clear filters button.
 
 ## Decisions and why
 
@@ -94,6 +103,7 @@ This section explains each choice in plain words. It also says what the choice c
 | **Vue Router** | Each screen gets its own URL. Links can be shared and the back button works. | The host must send `index.html` for unknown paths. Netlify does this with one redirect rule. |
 | **Pinia for the shortlist** | The shortlist is used on several screens. One shared store is simpler than passing data through every component. | One more dependency, and one more concept to learn. |
 | **localStorage for the shortlist** | There is no login and no server to store data. The browser can remember the list for next time. | The list stays on one browser and one device. Clearing site data removes it. |
+| **Compare selection in the URL** | A link with `?ids=a,b` can be refreshed, bookmarked and shared. No extra store is needed. | Only the ids are saved. If a tool leaves the dataset, its column disappears. |
 | **Curated JSON dataset** | There is no free public API that lists AI tools with the fields I need. I can control the data and keep it honest. | The data is not live. It can go stale. |
 | **JSON Server in development, static file in production** | Development uses a real HTTP request. The live site has no server to run, so it needs a plain file. | The two paths can differ. The production build copies the same file, so the shapes match. |
 | **Small local UI components instead of shadcn/ui** | The mentor suggested shadcn/ui. That library is for React. Its Vue port is shadcn-vue, but adding a component library in the last week adds risk and code I do not fully know. A few local components give the same consistency. | I write the variants myself. There are fewer ready-made parts. |
@@ -107,16 +117,24 @@ This section explains each choice in plain words. It also says what the choice c
     public/api/         # generated copy of the data (not committed)
     scripts/
       sync-data.mjs     # copies the data for the production build
+      check-app.mjs     # keyboard, routing and layout check in Chrome
     src/
-      components/       # all Vue components
-      composables/      # reusable state and behaviour
-      App.vue           # page shell: header, content, footer
-      main.js           # starts the app
+      components/
+        ui/             # Button, Badge, Card, Input
+        layout/         # AppHeader, AppFooter
+        tools/          # search, filters, cards and state panels
+      composables/      # useTools, useFilters, useTheme
+      router/           # routes, page titles and focus
+      services/         # tools.js: the only file that fetches data
+      stores/           # the shortlist store
+      views/            # one file per route
+      App.vue           # page shell: header, main, footer
+      main.js           # starts Vue, Pinia and the router
       style.css         # Tailwind entry and base styles
-    docs/               # planning notes, screenshots and records
+    tests/              # Vitest tests
+    docs/               # planning notes, reports and records
 
-Week 3 moves components into `ui/`, `layout/` and `tools/`, and moves data access into
-`src/services/tools.js`.
+The full component map is in [`docs/component-map.md`](docs/component-map.md).
 
 ## The data
 
@@ -168,35 +186,65 @@ The file must stay in the shape `{ "tools": [...] }` and must not start with a B
 
 ## Accessibility
 
-The app aims to meet WCAG 2.2 level AA. These parts are in place:
+The app aims to meet WCAG 2.2 level AA. Lighthouse scored the Week 2 site at **0.96**.
+The Week 3 build scores **1.00** on all five screens. The one automated failure was
+dark-mode label contrast at 3.74:1. That is now at least 6.9:1.
 
-- semantic landmarks: `header`, `main`, `footer` and one `h1` per page
-- a visible label on the search field
-- a visible focus outline on every control
-- `aria-pressed` on toggle buttons
-- a live region that announces the result count
-- text contrast of at least 4.5:1
-- a dark theme that follows the operating system by default
+Other changes in the pass:
 
-The Week 3 pass records before and after scores in
+- a skip link, a visible search label and a visible focus ring
+- focus moves to the new page after a route change
+- `aria-pressed` on filter, save and theme buttons
+- `aria-current="page"` on the active nav link
+- live regions for the result count and the empty state
+- a real table for the comparison, with row and column headers
+- one `h1` per page and a title that matches the page
+- a theme that follows the operating system and remembers your choice
+
+`npm run check:app` presses keys in Chrome and checks 20 things, including Tab
+order, Enter on filters, focus after removing a compare column and the 375px layout.
+All 20 pass.
+
+The full record, including what is still untested, is in
 [`docs/accessibility.md`](docs/accessibility.md).
 
 ## Tests
 
-The automated tests use Vitest and Vue Test Utils. They cover a component render, a user
-interaction and a data state.
-
     npm run test
+
+There are 4 test files and 13 tests:
+
+- a component render (`Button` in three forms)
+- a user interaction (`ToolCard` Save click and saved state)
+- data state (`fetchTools` with good data, bad data, an HTTP error and a retry path)
+- the shortlist store: toggle, persistence and broken stored data
+
+`npm run check:app` is a separate end-to-end check. It is not part of `npm run test`
+because it needs a built site, a preview server and Chrome.
+
+## Docs
+
+- [Component map](docs/component-map.md)
+- [Accessibility pass](docs/accessibility.md)
+- [Technical reflection](docs/reflection.md)
+- [AI use declaration](docs/ai-use.md)
+- [Weekly update notes](docs/weekly-updates.md)
+- [Idea one-pager](docs/idea-one-pager.md)
+- [Work plan](docs/work-plan.md)
+- [Key-screen sketch](docs/key-screen-sketch.md)
 
 ## Known limitations
 
 - The dataset is static and hand-written. It is not live and it can go stale.
 - `editorScore` is a personal opinion, not a survey.
-- The shortlist lives in one browser. It does not follow you to another device, because
-  there are no accounts.
+- The shortlist lives in one browser. It does not follow you to another device,
+  because there are no accounts.
+- Search and filters are not in the URL. They reset when you leave the home page.
+  The compare selection is in the URL.
 - The compare view caps the selection at three tools. This keeps the table readable.
 - The production build reads a static file. It does not test a real API under load.
 - Search is a simple text match. It does not understand synonyms.
+- No screen-reader or real-device test has been run yet.
 
 ## Glossary
 
@@ -215,12 +263,12 @@ interaction and a data state.
 | **Mock API** | A fake server that returns sample data during development |
 | **Pinia** | The official state store for Vue. Holds data that many components need |
 | **Prop** | Data passed from a parent component into a child |
+| **Query string** | The part of a URL after `?`. In `/compare?ids=a,b` it holds the tools to compare |
+| **Route** | A URL pattern matched to a view, such as `/tool/:id` |
 | **Single-page app (SPA)** | A site that loads once and swaps screens in the browser without full page reloads |
+| **Skip link** | The first link on a page. It jumps keyboard users past the header to the content |
 | **Store** | A shared container for state, in this project a Pinia store |
-| **Tailwind** | A CSS framework where small utility classes style elements directly in the markup |
 | **Variant** | A named style option on a component, such as `primary` or `ghost` on a button |
-| **Vite** | The build tool and dev server for this project |
-| **Vitest** | The test runner |
 | **WCAG** | Web Content Accessibility Guidelines. The standard used for the accessibility pass |
 
 ## Licence
