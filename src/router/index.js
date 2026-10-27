@@ -1,7 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import { nextTick } from 'vue'
 import HomeView from '../views/HomeView.vue'
 import ToolDetailView from '../views/ToolDetailView.vue'
 import SavedView from '../views/SavedView.vue'
+import CompareView from '../views/CompareView.vue'
 import NotFoundView from '../views/NotFoundView.vue'
 
 const routes = [
@@ -25,6 +27,12 @@ const routes = [
     meta: { title: 'Your shortlist' },
   },
   {
+    path: '/compare',
+    name: 'compare',
+    component: CompareView,
+    meta: { title: 'Compare tools' },
+  },
+  {
     path: '/:pathMatch(.*)*',
     name: 'not-found',
     component: NotFoundView,
@@ -37,11 +45,19 @@ export const router = createRouter({
   routes,
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) return savedPosition
+    // A query-only change (for example, removing a compare column) keeps the page in place.
+    if (to.path === from.path) return false
     if (to.hash) return { el: to.hash, behavior: 'smooth' }
     return { top: 0 }
   },
 })
 
-router.afterEach((to) => {
+router.afterEach(async (to, from) => {
   document.title = to.meta.title ? `${to.meta.title} · ToolScout` : 'ToolScout'
+
+  // A single-page app changes the page without a reload. Move focus to the main
+  // region so keyboard and screen-reader users start at the new content.
+  if (to.name === from.name) return
+  await nextTick()
+  document.getElementById('main')?.focus({ preventScroll: true })
 })

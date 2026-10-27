@@ -1,17 +1,22 @@
 <script setup>
-import { computed } from 'vue'
+import { computed, ref, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import ToolGrid from '../components/tools/ToolGrid.vue'
 import EmptyState from '../components/tools/EmptyState.vue'
 import LoadingState from '../components/tools/LoadingState.vue'
 import ErrorState from '../components/tools/ErrorState.vue'
 import Button from '../components/ui/Button.vue'
+import Card from '../components/ui/Card.vue'
 import { useTools } from '../composables/useTools.js'
 import { useShortlistStore } from '../stores/shortlist.js'
+
+const MAX_COMPARE = 3
 
 const router = useRouter()
 const shortlist = useShortlistStore()
 const { tools, loading, error, retry } = useTools()
+
+const compareIds = ref([])
 
 /** Keep the order the user saved them in, and skip ids that are no longer in the data. */
 const savedTools = computed(() =>
@@ -20,13 +25,25 @@ const savedTools = computed(() =>
     .filter(Boolean),
 )
 
+/** Drop a comparison pick as soon as its tool leaves the shortlist. */
+watch(savedTools, (list) => {
+  const available = new Set(list.map((tool) => tool.id))
+  compareIds.value = compareIds.value.filter((id) => available.has(id))
+})
+
+function openCompare() {
+  if (compareIds.value.length >= 2) {
+    router.push({ name: 'compare', query: { ids: compareIds.value.join(',') } })
+  }
+}
+
 const errorMessage = computed(() =>
   error.value ? `We couldn't load the tools (${error.value}).` : undefined,
 )
 </script>
 
 <template>
-  <section aria-labelledby="saved-heading">
+  <section aria-labelledby="saved-heading" :aria-busy="loading">
     <div class="flex flex-wrap items-end justify-between gap-3">
       <div>
         <h1
@@ -62,6 +79,42 @@ const errorMessage = computed(() =>
     />
 
     <div v-else-if="savedTools.length" class="mt-6">
+      <Card v-if="savedTools.length > 1" as="section" aria-labelledby="compare-heading">
+        <h2
+          id="compare-heading"
+          class="text-lg font-semibold text-slate-900 dark:text-white"
+        >
+          Compare saved tools
+        </h2>
+        <p class="mt-1 text-sm text-slate-600 dark:text-slate-400">
+          Pick two or three tools. You can change the selection on the compare page.
+        </p>
+
+        <ul class="mt-4 flex flex-wrap gap-x-6 gap-y-2">
+          <li v-for="tool in savedTools" :key="tool.id">
+            <label class="flex items-center gap-2 text-sm text-slate-700 dark:text-slate-300">
+              <input
+                v-model="compareIds"
+                type="checkbox"
+                :value="tool.id"
+                :disabled="compareIds.length >= MAX_COMPARE && !compareIds.includes(tool.id)"
+                class="h-4 w-4 accent-indigo-600"
+              />
+              {{ tool.name }}
+            </label>
+          </li>
+        </ul>
+
+        <div class="mt-4 flex flex-wrap items-center gap-3">
+          <Button :disabled="compareIds.length < 2" @click="openCompare">
+            Compare {{ compareIds.length }} selected
+          </Button>
+          <p class="text-sm text-slate-600 dark:text-slate-400" aria-live="polite">
+            {{ compareIds.length }} of {{ MAX_COMPARE }} selected
+          </p>
+        </div>
+      </Card>
+
       <ToolGrid
         :tools="savedTools"
         :saved-ids="shortlist.ids"
