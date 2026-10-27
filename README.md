@@ -203,7 +203,7 @@ Other changes in the pass:
 - a theme that follows the operating system and remembers your choice
 
 `npm run check:app` presses keys in Chrome and checks 20 things, including Tab
-order, Enter on filters, focus after removing a compare column and the 375px layout.
+order, Enter on filters, focus after removing a compare column and the 320px layout.
 All 20 pass.
 
 `npm run check:a11y` runs axe on five screens in both light and dark mode. It finds

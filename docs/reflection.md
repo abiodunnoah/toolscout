@@ -55,6 +55,12 @@ compare page. The page could not actually scroll: `window.scrollX` stayed at 0.
 The number was the inner table's scroll width. I switched the check to
 `document.body.scrollWidth`, which matches what the user sees.
 
+**The narrowest width was broken.** At 320px the home page scrolled sideways by
+58px. Two plain `grid` containers let their single track grow to the widest child,
+even though the child would wrap. The fix is a fixed grid track: `grid-cols-1` at
+the base and `minmax(0,1fr)` on the wide layout. The 375px check passed, so I
+lowered the check to 320px. A wider test would not have found this.
+
 **One bulk edit broke `package.json`.** A scripted find-and-replace wrote a
 literal `\n` into the file. `npm run build` refused to run. That is a good reason
 to keep the build step before every commit: it caught the mistake immediately.
@@ -63,11 +69,10 @@ to keep the build step before every commit: it caught the mistake immediately.
 
 1. Put the search and filters in the URL, so a filtered list can be shared.
 2. Test with a real screen reader and a real phone. The script uses Chrome at
-   375px, which is not the same thing.
+   320px, which is not the same thing.
 3. Add a "last checked" badge and a small process for refreshing stale tool data.
 4. Lazy-load the views if the bundle grows. At 48KB gzipped it does not matter yet.
-5. Add an axe check to the script. Lighthouse covers most of it, but axe has a few
-   extra rules.
+5. Move the checks into CI, so axe and the keyboard script run on every push.
 
 ## What I would do differently
 

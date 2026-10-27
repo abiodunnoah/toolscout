@@ -98,8 +98,9 @@ Week 3 - Noah - Frontend - ToolScout
 - **Peer: check keyboard use.** Added a script that presses Tab and Enter in Chrome, checks focus
   order, toggles a filter, saves a tool and removes a compare column. It found a real focus bug on
   first load. All 20 checks pass.
-- **Peer: test on real mobile and desktop.** The script checks 375px and 1280px. A real phone and
-  a screen reader are still open; they are listed in the accessibility page.
+- **Peer: test on real mobile and desktop.** The script checks 320px and 1280px. A real phone and
+  a screen reader are still open; they are listed in the accessibility page. The 320px run found a
+  sideways-scroll bug in the grid, which is now fixed.
 
 **Key technical decisions:**
 - Vue Router with real paths, so deep links and the back button work.

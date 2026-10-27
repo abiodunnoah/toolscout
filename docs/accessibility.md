@@ -59,6 +59,7 @@ Because the labels are 12px, they count as normal text and need the full 4.5:1.
 | Every page had the same document title | all views | Each route sets a title. The tool page uses the tool name. |
 | The theme choice was forgotten | every page | The choice is stored in `localStorage` and restored on the next visit. |
 | The active nav link looked like the others | header | The active link uses `aria-current="page"` and a visible background. |
+| The page scrolled sideways at 320px | home, tool, saved | Bare `grid` containers let their track grow to the widest child. `grid-cols-1` at the base and `minmax(0,1fr)` on the wide layout keep every track inside the viewport. |
 
 ## Keyboard and layout check
 
@@ -80,7 +81,7 @@ What it checks:
 - `/compare?ids=a,b` is a real deep link and renders a real table
 - removing a compare column moves focus to the heading
 - an unknown path shows the 404 view
-- no horizontal page scroll at 375px on any of the four main screens
+- no horizontal page scroll at 320px on any of the four main screens
 
 Run it with the preview server up:
 
@@ -107,8 +108,8 @@ Result: **0 violations, 0 console errors** in both colour schemes.
 - **Screen readers.** I did not run NVDA, VoiceOver or TalkBack. The markup uses
   native elements and standard ARIA, but a real screen-reader test is still the
   best next step.
-- **Real phones.** The script uses Chrome's 375px viewport, not a physical
+- **Real phones.** The script uses Chrome's 320px viewport, not a physical
   device. Safari on iOS may handle focus and sticky headers differently.
-- **Zoom and reflow.** The layout was checked at 375px, not at 400% zoom.
+- **Zoom and reflow.** The layout was checked at 320px, not at 400% zoom.
 - **Reduced motion.** The CSS respects `prefers-reduced-motion`, but I did not
   capture a before/after comparison.
