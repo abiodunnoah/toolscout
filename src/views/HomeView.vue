@@ -109,6 +109,7 @@ function onSearch() {
       <section
         ref="resultsSection"
         aria-labelledby="results-heading"
+        :aria-busy="loading"
         class="scroll-mt-24"
       >
         <div class="flex flex-wrap items-center justify-between gap-3">

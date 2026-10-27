@@ -57,7 +57,8 @@ router.afterEach(async (to, from) => {
 
   // A single-page app changes the page without a reload. Move focus to the main
   // region so keyboard and screen-reader users start at the new content.
-  if (to.name === from.name) return
+  // Skip the first load: the page starts at the top and Tab should reach the skip link.
+  if (!from.matched.length || to.name === from.name) return
   await nextTick()
   document.getElementById('main')?.focus({ preventScroll: true })
 })

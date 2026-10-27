@@ -12,7 +12,7 @@ defineEmits(['action'])
 </script>
 
 <template>
-  <Card :padded="false" class="border-dashed px-6 py-16 text-center">
+  <Card :padded="false" role="status" class="border-dashed px-6 py-16 text-center">
     <div
       class="mx-auto grid h-12 w-12 place-items-center rounded-full bg-slate-100 text-slate-500 dark:bg-slate-800 dark:text-slate-400"
       aria-hidden="true"
