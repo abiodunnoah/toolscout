@@ -4,6 +4,7 @@ import Button from '../ui/Button.vue'
 
 defineProps({
   isDark: { type: Boolean, default: false },
+  savedCount: { type: Number, default: 0 },
 })
 
 defineEmits(['toggle-theme'])
@@ -41,6 +42,26 @@ defineEmits(['toggle-theme'])
       </RouterLink>
 
       <nav aria-label="Main" class="flex items-center gap-1">
+        <RouterLink
+          to="/"
+          class="hidden items-center gap-1.5 rounded-lg px-3 py-1.5 text-sm font-medium text-slate-600 transition hover:bg-slate-100 hover:text-slate-900 aria-[current=page]:bg-slate-100 aria-[current=page]:text-slate-900 sm:inline-flex dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white dark:aria-[current=page]:bg-slate-800 dark:aria-[current=page]:text-white"
+        >
+          Find tools
+        </RouterLink>
+
+        <RouterLink
+          to="/saved"
+          class="inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-sm font-medium text-slate-600 transition hover:bg-slate-100 hover:text-slate-900 aria-[current=page]:bg-slate-100 aria-[current=page]:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white dark:aria-[current=page]:bg-slate-800 dark:aria-[current=page]:text-white"
+        >
+          Saved
+          <span
+            v-if="savedCount"
+            class="rounded-full bg-indigo-600 px-1.5 text-xs font-semibold text-white"
+          >
+            {{ savedCount }}
+          </span>
+        </RouterLink>
+
         <Button
           variant="ghost"
           size="icon"

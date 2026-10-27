@@ -18,7 +18,11 @@ const shortlist = useShortlistStore()
       Skip to content
     </a>
 
-    <AppHeader :is-dark="isDark" @toggle-theme="toggleTheme" />
+    <AppHeader
+      :is-dark="isDark"
+      :saved-count="shortlist.count"
+      @toggle-theme="toggleTheme"
+    />
 
     <main
       id="main"

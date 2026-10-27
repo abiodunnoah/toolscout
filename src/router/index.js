@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import ToolDetailView from '../views/ToolDetailView.vue'
+import SavedView from '../views/SavedView.vue'
 import NotFoundView from '../views/NotFoundView.vue'
 
 const routes = [
@@ -16,6 +17,12 @@ const routes = [
     component: ToolDetailView,
     props: true,
     meta: { title: 'Tool details' },
+  },
+  {
+    path: '/saved',
+    name: 'saved',
+    component: SavedView,
+    meta: { title: 'Your shortlist' },
   },
   {
     path: '/:pathMatch(.*)*',
