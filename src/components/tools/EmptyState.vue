@@ -1,13 +1,20 @@
 <script setup>
-defineEmits(['clear'])
+import Button from '../ui/Button.vue'
+import Card from '../ui/Card.vue'
+
+defineProps({
+  title: { type: String, default: 'No tools match your search' },
+  message: { type: String, default: 'Try a different task, or clear your filters.' },
+  actionLabel: { type: String, default: 'Clear filters' },
+})
+
+defineEmits(['action'])
 </script>
 
 <template>
-  <div
-    class="rounded-2xl border border-dashed border-slate-300 px-6 py-16 text-center dark:border-slate-700"
-  >
+  <Card :padded="false" class="border-dashed px-6 py-16 text-center">
     <div
-      class="mx-auto grid h-12 w-12 place-items-center rounded-full bg-slate-100 text-slate-400 dark:bg-slate-800 dark:text-slate-500"
+      class="mx-auto grid h-12 w-12 place-items-center rounded-full bg-slate-100 text-slate-500 dark:bg-slate-800 dark:text-slate-400"
       aria-hidden="true"
     >
       <svg
@@ -25,18 +32,8 @@ defineEmits(['clear'])
         />
       </svg>
     </div>
-    <p class="mt-4 font-semibold text-slate-900 dark:text-white">
-      No tools match your search
-    </p>
-    <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">
-      Try a different task, or clear your filters.
-    </p>
-    <button
-      type="button"
-      class="mt-5 rounded-xl bg-indigo-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-indigo-700"
-      @click="$emit('clear')"
-    >
-      Clear filters
-    </button>
-  </div>
+    <p class="mt-4 font-semibold text-slate-900 dark:text-white">{{ title }}</p>
+    <p class="mt-1 text-sm text-slate-600 dark:text-slate-400">{{ message }}</p>
+    <Button class="mt-5" @click="$emit('action')">{{ actionLabel }}</Button>
+  </Card>
 </template>

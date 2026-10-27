@@ -1,5 +1,8 @@
 <script setup>
 import { computed } from 'vue'
+import Badge from '../ui/Badge.vue'
+import Button from '../ui/Button.vue'
+import Card from '../ui/Card.vue'
 
 const props = defineProps({
   tool: { type: Object, required: true },
@@ -17,26 +20,17 @@ const initials = computed(() =>
     .toUpperCase(),
 )
 
-const priceClass = computed(() => {
-  switch (props.tool.price) {
-    case 'Free':
-      return 'bg-emerald-50 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300'
-    case 'Paid':
-      return 'bg-rose-50 text-rose-700 dark:bg-rose-950 dark:text-rose-300'
-    default:
-      return 'bg-amber-50 text-amber-700 dark:bg-amber-950 dark:text-amber-300'
-  }
-})
+const PRICE_VARIANTS = { Free: 'success', Freemium: 'warning', Paid: 'danger' }
+
+const priceVariant = computed(() => PRICE_VARIANTS[props.tool.price] ?? 'neutral')
 </script>
 
 <template>
-  <article
-    class="group flex h-full flex-col rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition duration-200 hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-md dark:border-slate-800 dark:bg-slate-900 dark:hover:border-slate-700"
-  >
+  <Card as="article" interactive class="flex h-full flex-col">
     <div class="flex items-start justify-between gap-3">
       <div class="flex min-w-0 items-center gap-3">
         <span
-          class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-indigo-50 text-sm font-bold text-indigo-600 dark:bg-indigo-950 dark:text-indigo-300"
+          class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-indigo-50 text-sm font-bold text-indigo-700 dark:bg-indigo-950 dark:text-indigo-300"
           aria-hidden="true"
         >
           {{ initials }}
@@ -45,17 +39,14 @@ const priceClass = computed(() => {
           <h3 class="truncate font-semibold text-slate-900 dark:text-white">
             {{ tool.name }}
           </h3>
-          <p class="text-xs font-medium uppercase tracking-wide text-slate-400 dark:text-slate-500">
+          <p
+            class="text-xs font-medium uppercase tracking-wide text-slate-600 dark:text-slate-400"
+          >
             {{ tool.category }}
           </p>
         </div>
       </div>
-      <span
-        class="shrink-0 rounded-full px-2.5 py-1 text-xs font-semibold"
-        :class="priceClass"
-      >
-        {{ tool.price }}
-      </span>
+      <Badge :variant="priceVariant" class="shrink-0">{{ tool.price }}</Badge>
     </div>
 
     <p class="mt-3 flex-1 text-sm leading-relaxed text-slate-600 dark:text-slate-400">
@@ -66,7 +57,7 @@ const priceClass = computed(() => {
       <li
         v-for="tag in tool.tags"
         :key="tag"
-        class="rounded-md bg-slate-100 px-2 py-1 text-xs text-slate-500 dark:bg-slate-800 dark:text-slate-400"
+        class="rounded-md bg-slate-100 px-2 py-1 text-xs text-slate-700 dark:bg-slate-800 dark:text-slate-300"
       >
         #{{ tag }}
       </li>
@@ -75,11 +66,12 @@ const priceClass = computed(() => {
     <div
       class="mt-4 flex items-center justify-between gap-2 border-t border-slate-100 pt-4 dark:border-slate-800"
     >
-      <a
+      <Button
         :href="tool.url"
         target="_blank"
         rel="noopener noreferrer"
-        class="inline-flex items-center gap-1 rounded-lg px-2 py-1 text-sm font-medium text-slate-600 transition hover:bg-slate-100 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white"
+        variant="ghost"
+        size="sm"
       >
         Visit
         <svg
@@ -98,21 +90,16 @@ const priceClass = computed(() => {
           />
         </svg>
         <span class="sr-only"> {{ tool.name }} (opens in a new tab)</span>
-      </a>
+      </Button>
 
-      <button
-        type="button"
+      <Button
+        :variant="saved ? 'primary' : 'secondary'"
+        size="sm"
         :aria-pressed="saved"
-        class="rounded-lg px-3 py-1.5 text-sm font-medium transition"
-        :class="
-          saved
-            ? 'bg-indigo-600 text-white hover:bg-indigo-700'
-            : 'border border-slate-200 text-slate-600 hover:bg-slate-100 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800'
-        "
         @click="$emit('toggle-save', tool.id)"
       >
         {{ saved ? 'Saved' : 'Save' }}
-      </button>
+      </Button>
     </div>
-  </article>
+  </Card>
 </template>

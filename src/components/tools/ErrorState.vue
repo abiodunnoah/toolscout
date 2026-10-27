@@ -1,4 +1,6 @@
 <script setup>
+import Button from '../ui/Button.vue'
+
 defineProps({
   message: { type: String, default: "We couldn't load the tools." },
 })
@@ -34,12 +36,6 @@ defineEmits(['retry'])
     <p class="mt-1 text-sm text-rose-700 dark:text-rose-300">
       Check your connection and try again.
     </p>
-    <button
-      type="button"
-      class="mt-5 rounded-xl bg-rose-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-rose-700"
-      @click="$emit('retry')"
-    >
-      Try again
-    </button>
+    <Button variant="danger" class="mt-5" @click="$emit('retry')">Try again</Button>
   </div>
 </template>

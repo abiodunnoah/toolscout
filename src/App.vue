@@ -13,6 +13,7 @@ import { useFilters } from './composables/useFilters.js'
 import { useShortlist } from './composables/useShortlist.js'
 import { useTheme } from './composables/useTheme.js'
 import { useTools } from './composables/useTools.js'
+import Button from './components/ui/Button.vue'
 
 const { isDark, toggle: toggleTheme } = useTheme()
 const { savedIds, savedCount, toggleSave } = useShortlist()
@@ -99,14 +100,15 @@ function onSearch() {
                 @toggle="togglePrice"
               />
 
-              <button
+              <Button
                 v-if="hasActiveFilters"
-                type="button"
-                class="w-full rounded-lg border border-slate-200 px-3 py-1.5 text-sm font-medium text-slate-600 transition hover:bg-slate-100 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800"
+                variant="secondary"
+                size="sm"
+                class="w-full"
                 @click="clearFilters"
               >
                 Clear filters
-              </button>
+              </Button>
             </div>
           </div>
         </aside>
@@ -140,7 +142,7 @@ function onSearch() {
             :saved-ids="savedIds"
             @toggle-save="toggleSave"
           />
-          <EmptyState v-else @clear="clearFilters" />
+          <EmptyState v-else @action="clearFilters" />
         </section>
       </div>
     </main>
