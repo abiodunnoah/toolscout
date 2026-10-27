@@ -118,6 +118,7 @@ try {
   await page.keyboard.press('Enter')
   await page.waitForURL(/\/compare\?ids=/)
   check(page.url().includes('/compare?ids='), `Compare link is deep-linkable (${page.url()})`)
+  await page.locator('table').waitFor({ state: 'visible' })
   check((await page.locator('table').count()) === 1, 'Compare page renders a real table')
 
   const remove = page.getByRole('button', { name: /Remove .* from the comparison/ }).first()
