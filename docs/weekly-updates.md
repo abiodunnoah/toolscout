@@ -82,7 +82,8 @@ Week 3 - Noah - Frontend - ToolScout
   visible labels, focus after route changes, page titles.
 - 13 Vitest tests in 4 files, plus a 20-check keyboard and layout script.
 - axe run on five screens in both light and dark mode: no violations.
-- Repo: github.com/abiodunnoah/toolscout (tag `week-3`) · Live URL: https://toolscoutt.netlify.app/
+- Repo: github.com/abiodunnoah/toolscout · Live URL: https://toolscoutt.netlify.app/
+  (the live site is still the Week 2 build until `main` is pushed)
 
 **Changed after feedback:**
 - **Mentor: "some of the AI-generated documentation is difficult to understand".** I rewrote the
@@ -110,7 +111,7 @@ Week 3 - Noah - Frontend - ToolScout
 - The dataset is hand-written and can go stale.
 - No screen-reader or physical-device test yet.
 - Search and filters are not in the URL, so a filtered list cannot be shared.
-- The deployed site is still the Week 2 build until `main` is pushed.
+- The `week-3` tag and the push to `main` are still to do.
 
 **AI and sources used:**
 - AI assistant (opencode) used for the docs rewrite, the file move, the first versions of the
