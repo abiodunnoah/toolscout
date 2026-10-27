@@ -10,13 +10,13 @@ import EmptyState from './components/tools/EmptyState.vue'
 import LoadingState from './components/tools/LoadingState.vue'
 import ErrorState from './components/tools/ErrorState.vue'
 import { useFilters } from './composables/useFilters.js'
-import { useShortlist } from './composables/useShortlist.js'
 import { useTheme } from './composables/useTheme.js'
 import { useTools } from './composables/useTools.js'
+import { useShortlistStore } from './stores/shortlist.js'
 import Button from './components/ui/Button.vue'
 
 const { isDark, toggle: toggleTheme } = useTheme()
-const { savedIds, savedCount, toggleSave } = useShortlist()
+const shortlist = useShortlistStore()
 const { tools, loading, error, retry } = useTools()
 
 const {
@@ -139,14 +139,14 @@ function onSearch() {
           <ToolGrid
             v-else-if="sortedTools.length"
             :tools="sortedTools"
-            :saved-ids="savedIds"
-            @toggle-save="toggleSave"
+            :saved-ids="shortlist.ids"
+            @toggle-save="shortlist.toggle"
           />
           <EmptyState v-else @action="clearFilters" />
         </section>
       </div>
     </main>
 
-    <AppFooter :saved-count="savedCount" />
+    <AppFooter :saved-count="shortlist.count" />
   </div>
 </template>
