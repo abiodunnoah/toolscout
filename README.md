@@ -1,241 +1,228 @@
 # ToolScout
 
-Find the right AI tool for a specific task — compare options side by side and keep a shortlist.
+ToolScout helps you find an AI tool for one job. You type the task you need to do.
+The app shows tools that fit. You can filter the list, compare tools side by side and
+save a shortlist.
 
-> Track: Frontend Development · Week 1 of 3 · _status: in progress_
-
-## What it is
-
-ToolScout helps a student or early-career researcher who has one specific task to get
-done — summarise papers, transcribe interviews, generate diagrams, clean up survey
-data — find and compare AI tools for it, instead of wading through thousands of
-listings written in marketing copy.
-
-## Who it's for
-
-A student or early-career researcher who has a specific task and doesn't know which AI
-tool to trust, or which are free / student-friendly.
+Live site: <https://toolscoutt.netlify.app/>
 
 ## The problem
 
-Choosing an AI tool for one specific task is slow and noisy. Directories list thousands
-of tools with no easy way to compare shortlisted options side by side, or to remember
-promising ones for later.
+Most AI tool directories list thousands of products. The listings are written like adverts.
+It is hard to tell which tool is good for one specific job, which ones are free, and which
+ones are worth a second look.
+
+ToolScout starts with the task instead. It shows a short, readable list. It lets you compare
+the final two or three options and keep the ones you like.
+
+## Who it is for
+
+Students and early-career researchers. They often have one concrete task, such as
+summarising papers, transcribing interviews or cleaning survey data. They do not want to
+research the whole market first.
 
 ## Core flow
 
-    task search  →  filter results  →  compare 2–3 tools  →  tool detail  →  save to shortlist
+    search by task  ->  filter the list  ->  compare 2-3 tools  ->  read a tool page  ->  save it
 
-## Tech stack
+## Try it
 
-- **Vue 3** (Composition API) + **Vite**
-- **Vue Router** — multiple views, deep links
-- **Pinia** — shortlist / compare state
-- **Tailwind CSS** — styling
-- **Vitest** + **Vue Test Utils** — tests (from Week 3)
-- **JSON Server** — mock API for the curated tool dataset (from Week 2)
-- **Hosting:** Netlify
+The live site is built and hosted on Netlify:
+<https://toolscoutt.netlify.app/>
 
-## Getting started
+## Run it on your computer
 
-### Prerequisites
-- Node.js 20.19+ or 22.12+ and npm
-
-### Run locally
+You need Node.js 20.19 or newer. Then run:
 
     npm install
-    npm run dev:full   # starts JSON Server (:3001) + Vite (:5173) together
+    npm run dev:full
 
-Then open the local URL it prints (usually http://localhost:5173).
+Open the URL the dev server prints. It is usually <http://localhost:5173>.
+`dev:full` starts two things at once:
 
-Prefer separate terminals? Run `npm run mock` and `npm run dev` in two shells.
+- the dev server, which serves the app
+- JSON Server, a small fake API on port 3001 that serves the tool data
 
-### Other scripts
+If you prefer two terminals, run `npm run mock` in one and `npm run dev` in the other.
 
-    npm run dev:full   # run the mock API and the dev server together
-    npm run build      # production build
-    npm run preview    # preview the production build
-    npm run test       # run tests (Vitest) — added in Week 3
-    npm run mock       # serve the mock API at http://localhost:3001 (JSON Server)
+### Scripts
 
-> Live URL: <https://toolscoutt.netlify.app/>  ·  Backup release: git tag `week-1`
+| Command | What it does |
+|---|---|
+| `npm run dev:full` | Runs the fake API and the dev server together |
+| `npm run dev` | Runs the dev server only. You need the API running too |
+| `npm run mock` | Runs the fake API on port 3001 |
+| `npm run build` | Builds the production site into `dist/` |
+| `npm run preview` | Serves the production build locally |
+| `npm run test` | Runs the automated tests |
 
-### Deploy (Netlify)
+### If port 3001 is busy
 
-- Build command: `npm run build`
-- Publish directory: `dist`
-- Config lives in [`netlify.toml`](netlify.toml), which also holds the SPA redirect
-  needed once Vue Router views land in Week 3.
+Stop the process that is using it, then start again:
+
+    Get-NetTCPConnection -LocalPort 3001 -State Listen | ForEach-Object { Stop-Process -Id $_.OwningProcess -Force }
+
+## How it works today
+
+1. The app asks the data endpoint for the list of tools.
+2. While it waits, it shows six grey placeholder cards.
+3. If the request fails, it shows an error panel with a Try again button.
+4. When the list arrives, you can type a task. The list updates on every keystroke.
+   It looks in the tool name, description, tags and tasks.
+5. Category and price chips narrow the list. Chips can be combined.
+6. Sort changes the order: Featured, Name or Price (free first).
+7. Save adds a tool to the shortlist. The footer shows how many tools you saved.
+8. If nothing matches, an empty state appears with a Clear filters button.
+
+The home screen is the only screen so far. Week 3 adds:
+
+| Path | Screen |
+|---|---|
+| `/tool/:id` | One tool, with full details |
+| `/compare?ids=a,b` | Two or three tools side by side |
+| `/saved` | Everything on your shortlist |
+| anything else | A 404 page |
+
+## Decisions and why
+
+This section explains each choice in plain words. It also says what the choice costs.
+
+| Decision | Why | Cost or risk |
+|---|---|---|
+| **Vue 3 + Vite** | I know Vue best. The component model fits a screen made of repeated cards. Vite starts quickly and makes small builds. | New tools in this stack change often. I keep the versions pinned in `package-lock.json`. |
+| **Tailwind CSS** | Styles sit next to the markup they style. Responsive rules are easy to see and change. | Class lists in markup are long. |
+| **Vue Router** | Each screen gets its own URL. Links can be shared and the back button works. | The host must send `index.html` for unknown paths. Netlify does this with one redirect rule. |
+| **Pinia for the shortlist** | The shortlist is used on several screens. One shared store is simpler than passing data through every component. | One more dependency, and one more concept to learn. |
+| **localStorage for the shortlist** | There is no login and no server to store data. The browser can remember the list for next time. | The list stays on one browser and one device. Clearing site data removes it. |
+| **Curated JSON dataset** | There is no free public API that lists AI tools with the fields I need. I can control the data and keep it honest. | The data is not live. It can go stale. |
+| **JSON Server in development, static file in production** | Development uses a real HTTP request. The live site has no server to run, so it needs a plain file. | The two paths can differ. The production build copies the same file, so the shapes match. |
+| **Small local UI components instead of shadcn/ui** | The mentor suggested shadcn/ui. That library is for React. Its Vue port is shadcn-vue, but adding a component library in the last week adds risk and code I do not fully know. A few local components give the same consistency. | I write the variants myself. There are fewer ready-made parts. |
+| **Vitest + Vue Test Utils** | They use the same Vite setup. Tests can render components and click buttons the way a user would. | Tests need a browser-like environment, so the config includes jsdom. |
+| **Netlify** | It builds from GitHub for free and supports the redirect rule a single-page app needs. | Deploys depend on the Netlify build service. |
 
 ## Project structure
 
     data/
-      tools.json    # curated dataset (48 tools) served by JSON Server
+      tools.json        # the 48-tool dataset
+    public/api/         # generated copy of the data (not committed)
+    scripts/
+      sync-data.mjs     # copies the data for the production build
     src/
-      components/   # ToolCard; more extracted in Week 2
-      data/         # Week 1 seed (replaced by the mock API fetch)
-      App.vue       # key screen: search, filters, results, shortlist
-      main.js
-      style.css     # Tailwind entry + base focus styles
-    docs/           # planning docs, screenshots, weekly updates
-    public/
+      components/       # all Vue components
+      composables/      # reusable state and behaviour
+      App.vue           # page shell: header, content, footer
+      main.js           # starts the app
+      style.css         # Tailwind entry and base styles
+    docs/               # planning notes, screenshots and records
 
-## Dataset (Week 2)
+Week 3 moves components into `ui/`, `layout/` and `tools/`, and moves data access into
+`src/services/tools.js`.
 
-The data is a curated dataset at [`data/tools.json`](data/tools.json): **48 AI tools**,
-**7–9 per category**.
+## The data
 
-**Development — JSON Server**
+The dataset is [`data/tools.json`](data/tools.json). It holds 48 tools across six categories,
+with 7 to 9 tools in each category.
 
-    npm run mock      # http://localhost:3001
+Each tool has these fields:
 
-**Production — no server needed.** `npm run build` runs `scripts/sync-data.mjs`, which
-copies the dataset to `public/api/tools.json`; the app fetches that static endpoint
-instead, so the deployed site works without JSON Server.
-
-**Endpoints:** `GET /tools` and `GET /tools/:id` (dev) · `GET /api/tools.json` (prod)
-
-**Record shape**
-
-| Field | Type | Notes |
+| Field | Type | Meaning |
 |---|---|---|
-| `id` | string (slug) | unique; used by `/tool/:id` and `?ids=` |
-| `name` | string | display name |
-| `category` | enum | see below |
-| `price` | enum | `Free` · `Freemium` · `Paid` |
-| `freeTier` | boolean | has a usable free tier |
-| `studentFriendly` | boolean | see honesty note |
-| `pricingNote` | string | short, qualitative |
-| `tagline` | string | card summary (<= 60 chars) |
-| `description` | string | 2-3 sentences for the detail view |
-| `tasks` | string[] | powers task-first search |
-| `tags` | string[] | keywords / chips |
-| `bestFor` | string | one line |
-| `platforms` | enum[] | see below |
-| `features` | string[] | compared side by side in Week 3 |
-| `pros` / `limitations` | string[] | detail view |
-| `editorScore` | number 0-5 | see honesty note |
-| `url` | string | https only |
-| `updatedAt` | ISO date | freshness |
+| `id` | text | Unique slug. Used in URLs |
+| `name` | text | Display name |
+| `category` | one of six | Research, Writing, Coding, Study, Design, Productivity |
+| `price` | one of three | Free, Freemium or Paid |
+| `freeTier` | true/false | Has a usable free tier |
+| `studentFriendly` | true/false | Has a free tier or a student discount |
+| `pricingNote` | text | A short note about pricing |
+| `tagline` | text | One line for cards |
+| `description` | text | Two or three sentences for the detail page |
+| `tasks` | list of text | The jobs this tool is good for |
+| `tags` | list of text | Keywords for search |
+| `bestFor` | text | Who gets the most from it |
+| `platforms` | list | Web, iOS, Android, Windows, macOS, Linux, browser extension or API |
+| `features` | list of text | Points used in the compare table |
+| `pros` | list of text | Strengths |
+| `limitations` | list of text | Weaknesses |
+| `editorScore` | number 0-5 | My own rating |
+| `url` | text | The tool's website |
+| `updatedAt` | date | When I last checked the entry |
 
-**Enums**
-- `category`: `Research`, `Writing`, `Coding`, `Study`, `Design`, `Productivity`
-- `price`: `Free`, `Freemium`, `Paid`
-- `platforms`: `Web`, `iOS`, `Android`, `Windows`, `macOS`, `Linux`, `Browser extension`, `API`
+### Development and production data
 
-**Two honesty notes**
-- `editorScore` is **my own assessment**, not scraped review data.
-- `studentFriendly` is a manual flag: `true` when a tool has a free tier or an official
+- **Development:** `npm run mock` serves `data/tools.json` at `http://localhost:3001/tools`.
+- **Production:** `npm run build` first copies the dataset to `public/api/tools.json`.
+  The live site reads that file. No server is needed.
+- `VITE_API_URL` can point the app at another endpoint. Copy [`.env.example`](.env.example)
+  to `.env` to use it. `.env` is not committed.
+
+### Two honesty notes
+
+- `editorScore` is my own assessment. It is not scraped review data.
+- `studentFriendly` is a manual flag. It is true when a tool has a free tier or an official
   student discount.
 
-Set `VITE_API_URL` from [`.env.example`](.env.example) (defaults to
-`http://localhost:3001`); `.env` is gitignored.
+### One format rule
 
-## Roadmap (3 weeks)
+The file must stay in the shape `{ "tools": [...] }` and must not start with a BOM
+(an invisible marker some editors add). JSON Server v1 rejects a root array and a BOM.
 
-| Week | Focus | Status |
-|------|-------|--------|
-| 1 | Idea one-pager, work plan, responsive + accessible key screen, JS interactivity | done |
-| 2 | Component build, data integration (loading / empty / error states) | in progress |
-| 3 | Routing + state, accessibility pass, tests, deploy, final package | not started |
+## Accessibility
 
----
+The app aims to meet WCAG 2.2 level AA. These parts are in place:
 
-## Planning docs
+- semantic landmarks: `header`, `main`, `footer` and one `h1` per page
+- a visible label on the search field
+- a visible focus outline on every control
+- `aria-pressed` on toggle buttons
+- a live region that announces the result count
+- text contrast of at least 4.5:1
+- a dark theme that follows the operating system by default
 
-- [Idea one-pager](docs/idea-one-pager.md) — problem, target user, core flow, scope, risks
-- [Work plan](docs/work-plan.md) — deliverables for Weeks 1–3 and top risks
-- [Key-screen sketch](docs/key-screen-sketch.md) — the Week 1 screen design
-- [Weekly update notes](docs/weekly-updates.md) — the status note submitted each week
+The Week 3 pass records before and after scores in
+[`docs/accessibility.md`](docs/accessibility.md).
 
-## Screenshots
+## Tests
 
-| Mobile (375px) | Desktop (1280px) |
-|---|---|
-| ![ToolScout at 375px in light mode](docs/screenshots/week-1-mobile-375-light.png) | ![ToolScout at 1280px in light mode](docs/screenshots/week-1-desktop-1280-light.png) |
-| ![ToolScout at 375px in dark mode](docs/screenshots/week-1-mobile-375-dark.png) | ![ToolScout at 1280px in dark mode](docs/screenshots/week-1-desktop-1280-dark.png) |
+The automated tests use Vitest and Vue Test Utils. They cover a component render, a user
+interaction and a data state.
 
-## Key decisions
-
-- **Vue 3 + Vite** — component model and a fast dev loop; the team/guide stack I know best.
-- **Tailwind CSS** — utility classes keep the responsive work (mobile-first + one breakpoint) explicit and avoid a separate stylesheet to maintain.
-- **Curated dataset** — no free public "AI tools" API exists, so I author a small JSON dataset (Week 2) that I fully control; the fields I need for comparison are guaranteed to be present.
-
-## How the interaction works (Week 1, task 1.2)
-
-Every behaviour is hand-written in `src/composables/` (`useFilters`, `useShortlist`,
-`useTheme`) — no plugin does the work for me.
-
-1. **Live search** — a `computed` (`filteredTools`) runs on every keystroke and matches the
-   query against a tool's name, description and tags. Empty or whitespace-only input is
-   treated as "no query" and shows everything. A clear (x) button empties the field and
-   returns focus to it.
-2. **Filters (category + price)** — clicking a filter button toggles that value in an array
-   of active filters (via `toggleValue`). Multiple filters combine with AND, and each button
-   reflects its state through `aria-pressed`.
-   - **Edge cases:** when the search and filters match nothing, the list is replaced by a
-     friendly empty state with a **Clear filters** button, rather than a blank page or a crash.
-3. **Sort** — a plain `<select>` reorders the filtered list (Featured / Name / Price); price
-   sorts free-first through a small lookup object.
-4. **Shortlist** — the **Save** button on each card toggles the tool's id in a `savedIds`
-   array; the footer shows the live count and each button's `aria-pressed` tracks its state.
-5. **Theme** — starts from the OS setting (`prefers-color-scheme`); the header button
-   overrides it by toggling the `dark` class on `<html>`. The choice is *not* persisted yet —
-   that arrives in Week 3 with `localStorage`.
-
-## Component map (Week 2)
-
-The key screen is assembled from single-purpose components; shared state lives in composables.
-
-| Component | Responsibility | Interface |
-|---|---|---|
-| `AppHeader` | Brand and theme control | prop `isDark`; emits `toggle-theme` |
-| `SearchBar` | Labelled search form and clear button | `v-model`; emits `submit` |
-| `FilterGroup` | Reusable filter pills (used for category and price) | props `legend`, `options`, `active`; emits `toggle` |
-| `SortSelect` | Sort control | `v-model` |
-| `ToolGrid` | Results list and responsive grid | props `tools`, `savedIds`; emits `toggle-save` |
-| `ToolCard` | A single tool | props `tool`, `saved`; emits `toggle-save` |
-| `EmptyState` | No-results message | emits `clear` |
-| `LoadingState` | Skeleton grid with an accessible status | — |
-| `ErrorState` | Error message and retry | prop `message`; emits `retry` |
-| `AppFooter` | Shortlist count | prop `savedCount` |
-
-**Composables**
-
-| Composable | Owns |
-|---|---|
-| `useTools` | Fetching, `loading`, `error`, `retry` and defensive parsing |
-| `useFilters` | Query, active filters, sort, filtered and sorted list |
-| `useShortlist` | Saved ids and count (in memory) |
-| `useTheme` | System-aware dark mode |
-
-## Week 1 feedback response
-
-The mentor check-in had not produced notes at the time of writing, so there is no
-feedback list to act on yet. Interim improvements came from self-review and the Week 1
-demo. Any guidance received before submission will be added here with the action taken.
-
-## Issue log
-
-Bugs found, options considered and how each was fixed during Week 2.
-
-| # | Issue | Options considered | Fix |
-|---|---|---|---|
-| 1 | Dark mode left light gutters behind dark components | Per-component dark overrides vs theming the page background | Themed `body` + `.dark` override + `color-scheme` |
-| 2 | JSON Server v1 returned 404 for `/tools` | Downgrade to 0.17 vs reshape the dataset | Wrapped the file as `{ "tools": [...] }` |
-| 3 | `json-server` rejected the dataset ("Unexpected token") | Strip the BOM on read vs write without one | Wrote the file with `UTF8Encoding(false)` |
-| 4 | Price data too thin (2 Free / 36 Freemium) | Keep as-is vs rebalance | Added 4 genuinely free and 2 paid-only tools; corrected Elicit to Freemium |
-| 5 | Local dev showed "Failed to fetch" (`ERR_CONNECTION_REFUSED`) | Document two terminals vs one command | Added `dev:full` using `concurrently` |
-| 6 | Retry could race an in-flight request | Ignore vs abort and guard | `AbortController` + request-id guard in `useTools` |
-| 7 | Production has no JSON Server | Require a server vs ship a static endpoint | `prebuild` copies the dataset to `public/api/tools.json`; the client picks dev or prod |
+    npm run test
 
 ## Known limitations
 
-- The dataset is curated and static, not live data; `editorScore` is subjective.
-- The shortlist is in-memory only — persistence arrives in Week 3.
-- Detail and compare views are not built yet (Week 3).
-- The deployed build reads a generated static endpoint, so it does not exercise a real API under load.
+- The dataset is static and hand-written. It is not live and it can go stale.
+- `editorScore` is a personal opinion, not a survey.
+- The shortlist lives in one browser. It does not follow you to another device, because
+  there are no accounts.
+- The compare view caps the selection at three tools. This keeps the table readable.
+- The production build reads a static file. It does not test a real API under load.
+- Search is a simple text match. It does not understand synonyms.
+
+## Glossary
+
+| Term | Plain meaning |
+|---|---|
+| **API** | A way for one program to ask another for data |
+| **axe** | A tool that checks a page for accessibility problems |
+| **BOM** | An invisible marker at the start of some text files. It can break JSON parsers |
+| **Composable** | A small function in `src/composables/` that holds reusable state or behaviour |
+| **Contrast ratio** | A measure of how easy text is to read against its background. WCAG asks for at least 4.5:1 for body text |
+| **Deep link** | A URL that opens a specific screen, not just the home page |
+| **Emit** | A child component sending an event to its parent |
+| **JSON** | A plain text format for structured data |
+| **Lighthouse** | A Chrome tool that scores a page on performance, accessibility and more |
+| **localStorage** | Built-in browser storage. Data stays after a reload and is not sent to a server |
+| **Mock API** | A fake server that returns sample data during development |
+| **Pinia** | The official state store for Vue. Holds data that many components need |
+| **Prop** | Data passed from a parent component into a child |
+| **Single-page app (SPA)** | A site that loads once and swaps screens in the browser without full page reloads |
+| **Store** | A shared container for state, in this project a Pinia store |
+| **Tailwind** | A CSS framework where small utility classes style elements directly in the markup |
+| **Variant** | A named style option on a component, such as `primary` or `ghost` on a button |
+| **Vite** | The build tool and dev server for this project |
+| **Vitest** | The test runner |
+| **WCAG** | Web Content Accessibility Guidelines. The standard used for the accessibility pass |
 
 ## Licence
 
-MIT — see [LICENSE](LICENSE).
+MIT. See [LICENSE](LICENSE).
