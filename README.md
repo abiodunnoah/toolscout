@@ -69,6 +69,7 @@ If you prefer two terminals, run `npm run mock` in one and `npm run dev` in the 
 | `npm run preview` | Serves the production build locally |
 | `npm run test` | Runs the Vitest tests |
 | `npm run check:app` | Drives the built site in Chrome. Needs `npm run preview` running and Chrome installed |
+| `npm run check:a11y` | Runs axe on every screen in light and dark mode. Same requirements |
 
 ### If port 3001 is busy
 
@@ -204,6 +205,10 @@ Other changes in the pass:
 `npm run check:app` presses keys in Chrome and checks 20 things, including Tab
 order, Enter on filters, focus after removing a compare column and the 375px layout.
 All 20 pass.
+
+`npm run check:a11y` runs axe on five screens in both light and dark mode. It finds
+0 violations and no console errors. Together the two scripts cover what Lighthouse
+cannot: keyboard use, the light theme and the screens that only exist in Week 3.
 
 The full record, including what is still untested, is in
 [`docs/accessibility.md`](docs/accessibility.md).

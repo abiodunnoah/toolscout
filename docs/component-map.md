@@ -98,3 +98,4 @@ comparison can be bookmarked, shared and reloaded without extra state.
 
 `scripts/check-app.mjs` is not a unit test. It drives the built site in Chrome
 and checks keyboard use, routing, persistence and layout.
+`scripts/check-a11y.mjs` runs axe on every screen in light and dark mode.

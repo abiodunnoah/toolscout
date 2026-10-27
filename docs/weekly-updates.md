@@ -81,6 +81,7 @@ Week 3 - Noah - Frontend - ToolScout
 - Accessibility pass: Lighthouse 0.96 before, 1.00 after on five screens. Contrast, skip link,
   visible labels, focus after route changes, page titles.
 - 13 Vitest tests in 4 files, plus a 20-check keyboard and layout script.
+- axe run on five screens in both light and dark mode: no violations.
 - Repo: github.com/abiodunnoah/toolscout (tag `week-3`) · Live URL: https://toolscoutt.netlify.app/
 
 **Changed after feedback:**

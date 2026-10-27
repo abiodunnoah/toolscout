@@ -88,6 +88,20 @@ Run it with the preview server up:
     npm run preview          # in one terminal
     npm run check:app        # in another
 
+## axe check
+
+Lighthouse covers one colour scheme at a time. I also ran **axe-core** on every
+screen in both light and dark mode. The check is in
+[`scripts/check-a11y.mjs`](../scripts/check-a11y.mjs).
+
+It visits `/`, `/tool/chatpdf`, `/saved`, `/compare?ids=chatpdf,elicit` and a
+404 path. On each page it runs the WCAG 2.0, 2.1 and 2.2 A and AA rules, then
+looks for console errors and warnings.
+
+    npm run check:a11y
+
+Result: **0 violations, 0 console errors** in both colour schemes.
+
 ## Still not tested
 
 - **Screen readers.** I did not run NVDA, VoiceOver or TalkBack. The markup uses
