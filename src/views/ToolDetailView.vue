@@ -133,7 +133,7 @@ const errorMessage = computed(() =>
         {{ tool.description }}
       </p>
 
-      <dl class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <dl class="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <Card>
           <dt class="text-xs font-semibold uppercase tracking-wide text-slate-600 dark:text-slate-400">
             Best for
@@ -169,7 +169,7 @@ const errorMessage = computed(() =>
         </Card>
       </dl>
 
-      <div class="mt-8 grid gap-6 lg:grid-cols-2">
+      <div class="mt-8 grid grid-cols-1 gap-6 lg:grid-cols-2">
         <section aria-labelledby="tasks-heading">
           <h2 id="tasks-heading" class="text-lg font-semibold text-slate-900 dark:text-white">
             Good for these tasks
@@ -201,7 +201,7 @@ const errorMessage = computed(() =>
         </section>
       </div>
 
-      <div class="mt-8 grid gap-6 sm:grid-cols-2">
+      <div class="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2">
         <Card>
           <h2 class="text-lg font-semibold text-slate-900 dark:text-white">Strengths</h2>
           <ul class="mt-3 list-disc space-y-1.5 pl-5 text-sm text-slate-700 dark:text-slate-300">

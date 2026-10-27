@@ -68,7 +68,7 @@ function onSearch() {
     </section>
 
     <!-- Filters + results -->
-    <div class="mt-8 grid gap-6 lg:grid-cols-[240px_1fr]">
+    <div class="mt-8 grid grid-cols-1 gap-6 lg:grid-cols-[240px_minmax(0,1fr)]">
       <aside aria-labelledby="filters-heading" class="lg:sticky lg:top-24 lg:self-start">
         <div
           class="rounded-2xl border border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900"

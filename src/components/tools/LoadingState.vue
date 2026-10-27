@@ -2,7 +2,7 @@
   <div role="status" aria-live="polite" class="mt-4">
     <span class="sr-only">Loading tools…</span>
     <ul
-      class="grid gap-4 sm:grid-cols-2 xl:grid-cols-3"
+      class="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3"
       aria-hidden="true"
     >
       <li
