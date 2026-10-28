@@ -33,6 +33,21 @@ Lighthouse only runs automated checks. It cannot tell whether a focus ring is
 easy to see, whether the order makes sense, or whether a screen reader reads the
 right thing. The manual checks below try to cover those gaps.
 
+## Redesign pass (28 October)
+
+The page was rebuilt in black and white after a design review. Every surface
+changed, so I re-ran the same checks.
+
+- Lighthouse: **1.00** on all five screens. The `lighthouse-after-*.json` reports
+  in this folder were regenerated for the redesign.
+- axe: **0 violations** in light and dark mode.
+- Keyboard and layout script: **20 of 20** checks pass at 320px.
+- Console: no errors or warnings.
+
+The redesign does not use colour to carry meaning. Price is written as text, the
+saved state adds a check icon and `aria-pressed`, and the error state is labelled
+in words.
+
 ## What failed in the before run
 
 The only automated failure was text contrast. These elements used `slate-500` on
@@ -60,6 +75,8 @@ Because the labels are 12px, they count as normal text and need the full 4.5:1.
 | The theme choice was forgotten | every page | The choice is stored in `localStorage` and restored on the next visit. |
 | The active nav link looked like the others | header | The active link uses `aria-current="page"` and a visible background. |
 | The page scrolled sideways at 320px | home, tool, saved | Bare `grid` containers let their track grow to the widest child. `grid-cols-1` at the base and `minmax(0,1fr)` on the wide layout keep every track inside the viewport. |
+| Control borders were too faint to see | search, sort | Inputs and selects use the `muted` token (5.3:1 on paper). Decorative card rules stay on the lighter `line` token. |
+| Colour used to mark price and saved state | cards, detail | Price is plain text. The saved state adds a check icon, the word "Saved" and `aria-pressed`. Nothing depends on colour alone. |
 
 ## Keyboard and layout check
 

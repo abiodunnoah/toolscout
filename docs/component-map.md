@@ -43,7 +43,7 @@ Rules I followed:
 | `tools/FilterGroup.vue` | `legend`, `options`, `active` | `toggle` | Filter chips in a fieldset |
 | `tools/SortSelect.vue` | `v-model` | none | Sort order |
 | `tools/ToolGrid.vue` | `tools`, `savedIds` | `toggle-save` | Responsive list of cards |
-| `tools/ToolCard.vue` | `tool`, `saved` | `toggle-save` | One tool, price badge and actions |
+| `tools/ToolCard.vue` | `tool`, `saved` | `toggle-save` | One tool: name, price, summary and actions |
 | `tools/EmptyState.vue` | `title`, `message`, `actionLabel` | `action` | Friendly "nothing here" panel |
 | `tools/LoadingState.vue` | none | none | Six skeleton cards with a status |
 | `tools/ErrorState.vue` | `message` | `retry` | Error panel with a retry button |
@@ -54,8 +54,8 @@ These are small on purpose. They do not fetch, route or know about tools.
 
 | Component | Main props | Renders |
 |---|---|---|
-| `ui/Button.vue` | `variant` (`primary`, `secondary`, `ghost`, `danger`, `chip`), `size` (`sm`, `md`, `lg`, `icon`), `to`, `href`, `type` | `button`, `a` or `RouterLink` |
-| `ui/Badge.vue` | `variant` (`neutral`, `info`, `success`, `warning`, `danger`), `size` (`sm`, `md`) | Inline status pill |
+| `ui/Button.vue` | `variant` (`primary`, `secondary`, `ghost`, `chip`), `size` (`sm`, `md`, `lg`, `icon`), `to`, `href`, `type` | `button`, `a` or `RouterLink` |
+| `ui/Badge.vue` | `variant` (`outline`, `solid`), `size` (`sm`, `md`) | Inline label |
 | `ui/Card.vue` | `as`, `padded`, `interactive` | Any container with the shared card style |
 | `ui/Input.vue` | `v-model`, `id`, `label`, `labelHidden`, `size`, `type`, `hint`, `placeholder`, plus `leading` and `trailing` slots | Label, input and hint |
 
@@ -65,8 +65,23 @@ These are small on purpose. They do not fetch, route or know about tools.
 - `href` renders an `a` (external links).
 - neither renders a `button`.
 
-`aria-pressed` is passed through to the chip variant, so a filter button styles
-itself when it is on. No extra state class is needed.
+`aria-pressed` is passed through to the chip and secondary variants. A filter
+button or a saved button styles itself when it is on; no extra state class is needed.
+
+### Theme tokens
+
+Colour is not set per component. Five names live in `src/style.css`:
+
+| Token | Light | Dark | Used for |
+|---|---|---|---|
+| `paper` | `#ffffff` | `#0a0a0a` | Page and card background |
+| `ink` | `#0a0a0a` | `#fafafa` | Main text and primary buttons |
+| `muted` | `#6b6b6b` | `#a3a3a3` | Secondary text and control borders |
+| `line` | `#e5e5e5` | `#262626` | Hairlines and card borders |
+| `raised` | `#f7f7f7` | `#141414` | Hover and error backgrounds |
+
+`.dark` swaps the values. Components use `bg-paper`, `text-ink`, `border-line`
+and so on, so there are no per-component dark overrides.
 
 ## State
 

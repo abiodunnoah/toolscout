@@ -31,6 +31,22 @@ shadcn-vue exists, but adding a component library in the last week would have
 added generated code I did not understand. Four small components gave the same
 consistency and a much smaller surface.
 
+## The monochrome redesign
+
+After the Week 3 checks passed, the page was rebuilt in black and white. The
+routes, store and tests did not change; only the design tokens, primitives and
+page layouts did.
+
+Three things stood out:
+
+- A monochrome page has nowhere to hide. A separator dot left at the start of a
+  line, a border that disappears, or three solid buttons competing are obvious.
+  All three went.
+- Colour was doing accessibility work. Price used to be green, amber or red. Now
+  the word and a check icon carry the meaning, so nothing depends on colour.
+- Simple is not empty. The first screen is mostly space, but the search is still
+  the only action above the fold.
+
 ## What was hard
 
 **Writing simply is slow.** My first README draft still used words like

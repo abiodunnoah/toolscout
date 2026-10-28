@@ -93,6 +93,13 @@ Stop the process that is using it, then start again:
    The selection is in the URL, so the comparison can be bookmarked or shared.
 10. If nothing matches a search, an empty state appears with a Clear filters button.
 
+## Screenshots
+
+| Mobile (375px) | Desktop (1280px) |
+|---|---|
+| ![ToolScout at 375px in light mode](docs/screenshots/week-3-mobile-375-light.png) | ![ToolScout at 1280px in light mode](docs/screenshots/week-3-desktop-1280-light.png) |
+| ![ToolScout at 375px in dark mode](docs/screenshots/week-3-mobile-375-dark.png) | ![ToolScout at 1280px in dark mode](docs/screenshots/week-3-desktop-1280-dark.png) |
+
 ## Decisions and why
 
 This section explains each choice in plain words. It also says what the choice costs.
@@ -101,6 +108,7 @@ This section explains each choice in plain words. It also says what the choice c
 |---|---|---|
 | **Vue 3 + Vite** | I know Vue best. The component model fits a screen made of repeated cards. Vite starts quickly and makes small builds. | New tools in this stack change often. I keep the versions pinned in `package-lock.json`. |
 | **Tailwind CSS** | Styles sit next to the markup they style. Responsive rules are easy to see and change. | Class lists in markup are long. |
+| **Black-and-white theme** | A monochrome page is calmer and makes the tools the focus. It matches the simple, classy references I was given. | Colour can no longer mark price or status, so labels and icons have to carry that meaning. |
 | **Vue Router** | Each screen gets its own URL. Links can be shared and the back button works. | The host must send `index.html` for unknown paths. Netlify does this with one redirect rule. |
 | **Pinia for the shortlist** | The shortlist is used on several screens. One shared store is simpler than passing data through every component. | One more dependency, and one more concept to learn. |
 | **localStorage for the shortlist** | There is no login and no server to store data. The browser can remember the list for next time. | The list stays on one browser and one device. Clearing site data removes it. |
@@ -188,8 +196,9 @@ The file must stay in the shape `{ "tools": [...] }` and must not start with a B
 ## Accessibility
 
 The app aims to meet WCAG 2.2 level AA. Lighthouse scored the Week 2 site at **0.96**.
-The Week 3 build scores **1.00** on all five screens. The one automated failure was
-dark-mode label contrast at 3.74:1. That is now at least 6.9:1.
+The current build scores **1.00** on all five screens, both before and after the
+monochrome redesign. The one automated failure was dark-mode label contrast at
+3.74:1. That is now at least 6.9:1.
 
 Other changes in the pass:
 
@@ -261,6 +270,7 @@ because it needs a built site, a preview server and Chrome.
 | **Composable** | A small function in `src/composables/` that holds reusable state or behaviour |
 | **Contrast ratio** | A measure of how easy text is to read against its background. WCAG asks for at least 4.5:1 for body text |
 | **Deep link** | A URL that opens a specific screen, not just the home page |
+| **Design token** | A named value, such as `paper` or `ink`, kept in one place so every component uses the same colour |
 | **Emit** | A child component sending an event to its parent |
 | **JSON** | A plain text format for structured data |
 | **Lighthouse** | A Chrome tool that scores a page on performance, accessibility and more |

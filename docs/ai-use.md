@@ -12,12 +12,15 @@ same tool for scaffolding, dataset authoring and documentation drafts.
 - Wrote the first versions of the UI primitives, the router, the views, the Pinia
   store and the tests.
 - Ran the production build, Vitest, Lighthouse and the keyboard script.
+- Rebuilt the interface in black and white after the design review, using design
+  tokens and the existing primitives rather than new components.
 - Drafted this declaration and the weekly note.
 
 ## What I did
 
 - Set the requirements: no extension, no library added in the last week, do not
   move the frozen tags, ask before a large refactor.
+- Chose the black-and-white direction and supplied the reference sites.
 - Chose the compare limit (three tools) and the decision to keep the comparison
   in the URL rather than in a store.
 - Read the diffs before each commit and rejected or changed parts that were

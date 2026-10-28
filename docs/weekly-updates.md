@@ -121,3 +121,31 @@ Week 3 - Noah - Frontend - ToolScout
 - Sources: Vue 3 docs, Vue Router docs, Pinia docs, Vitest docs, Vue Test Utils docs,
   Tailwind CSS docs, WCAG 2.2 quick reference, MDN (ARIA, localStorage, focus), Lighthouse docs.
 
+---
+
+## Redesign (28 October)
+
+**Changed:**
+- Replaced the indigo/slate palette with five black-and-white tokens: `paper`, `ink`, `muted`,
+  `line` and `raised`.
+- Centred the home hero and removed the gradient, the rounded panel and the sidebar.
+- Filters, results count and sort now sit in one hairline toolbar. Cards are flat with a 1px border.
+- Tool cards drop the avatar and tag chips. Price is plain text; the saved state uses a check,
+  the word "Saved" and `aria-pressed`.
+- Detail, saved, compare and 404 follow the same rules.
+- New screenshots at 375 and 1280, light and dark.
+
+**Why:**
+- The references I was given were simple and classy: white space, large type and very little
+  decoration. A monochrome system is the clearest version of that.
+- All colour now comes from one place (`src/style.css`), so the mentor's maintainability point
+  still holds: no component invents its own palette.
+
+**Checks after the redesign:**
+- Lighthouse **1.00** on five screens.
+- axe **0 violations** in light and dark.
+- Keyboard/layout script **20/20** at 320px. Tests **13/13**.
+
+**Still open:**
+- `week-3` tag and the push to `main`. `master` is the working branch.
+
