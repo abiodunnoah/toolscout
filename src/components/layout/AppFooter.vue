@@ -13,7 +13,6 @@ defineProps({
         Shortlist:
         <span class="font-semibold text-slate-900 dark:text-white">{{ savedCount }}</span>
       </p>
-      <p>ToolScout · Vue 3 + Vue Router + Tailwind CSS</p>
     </div>
   </footer>
 </template>

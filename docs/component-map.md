@@ -33,7 +33,7 @@ Rules I followed:
 | Component | Props | Emits | Job |
 |---|---|---|---|
 | `layout/AppHeader.vue` | `isDark`, `savedCount` | `toggle-theme` | Brand, main nav, theme button |
-| `layout/AppFooter.vue` | `savedCount` | none | Shortlist count and stack note |
+| `layout/AppFooter.vue` | `savedCount` | none | Shortlist count |
 
 ## Tools components
 
