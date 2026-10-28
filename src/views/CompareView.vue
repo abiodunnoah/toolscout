@@ -1,9 +1,7 @@
 <script setup>
 import { computed, nextTick, ref } from 'vue'
 import { RouterLink, useRoute, useRouter } from 'vue-router'
-import Badge from '../components/ui/Badge.vue'
 import Button from '../components/ui/Button.vue'
-import Card from '../components/ui/Card.vue'
 import LoadingState from '../components/tools/LoadingState.vue'
 import ErrorState from '../components/tools/ErrorState.vue'
 import { useTools } from '../composables/useTools.js'
@@ -49,26 +47,26 @@ const errorMessage = computed(() =>
   error.value ? `We couldn't load the tools (${error.value}).` : undefined,
 )
 
-const PRICE_VARIANTS = { Free: 'success', Freemium: 'warning', Paid: 'danger' }
-const priceVariant = (price) => PRICE_VARIANTS[price] ?? 'neutral'
-
 const yesNo = (value) => (value ? 'Yes' : 'No')
 </script>
 
 <template>
   <section aria-labelledby="compare-heading">
-    <h1
-      id="compare-heading"
-      ref="heading"
-      tabindex="-1"
-      class="text-3xl font-bold tracking-tight text-slate-900 dark:text-white"
-    >
-      Compare tools
-    </h1>
-    <p class="mt-2 max-w-2xl text-slate-600 dark:text-slate-400">
-      Up to three tools side by side. Each column comes from your shortlist and the
-      comparison is saved in the URL, so you can bookmark or share it.
-    </p>
+    <header class="border-b border-line pb-8">
+      <p class="text-xs uppercase tracking-[0.2em] text-muted">Compare</p>
+      <h1
+        id="compare-heading"
+        ref="heading"
+        tabindex="-1"
+        class="mt-3 text-3xl font-medium tracking-[-0.03em] text-ink sm:text-5xl"
+      >
+        Compare tools
+      </h1>
+      <p class="mt-4 max-w-2xl text-sm leading-6 text-muted">
+        Up to three tools side by side. Each column comes from your shortlist and the
+        comparison is saved in the URL, so you can bookmark or share it.
+      </p>
+    </header>
 
     <LoadingState v-if="loading" />
 
@@ -79,181 +77,212 @@ const yesNo = (value) => (value ? 'Yes' : 'No')
       @retry="retry"
     />
 
-    <Card v-else-if="selected.length < 2" :padded="false" class="mt-6 px-6 py-16 text-center">
-      <h2 class="text-xl font-semibold text-slate-900 dark:text-white">
+    <div v-else-if="selected.length < 2" class="py-20 text-center">
+      <h2 class="text-xl font-medium tracking-tight text-ink">
         Pick at least two tools
       </h2>
-      <p class="mx-auto mt-2 max-w-md text-slate-600 dark:text-slate-400">
+      <p class="mx-auto mt-3 max-w-md text-sm leading-6 text-muted">
         A comparison needs two or three tools. Choose them from your shortlist.
       </p>
-      <div class="mt-6 flex flex-wrap justify-center gap-3">
+      <div class="mt-8 flex flex-wrap justify-center gap-3">
         <Button v-if="shortlist.count >= 2" to="/saved">Choose from your shortlist</Button>
         <Button v-else to="/">Find tools to save</Button>
       </div>
-    </Card>
+    </div>
 
-    <div v-else class="mt-6">
-      <div class="overflow-x-auto rounded-2xl border border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900">
+    <div v-else class="mt-8">
+      <div class="overflow-x-auto border-b border-line">
         <table class="w-full min-w-[640px] border-collapse text-left text-sm">
           <caption class="sr-only">
             Comparison of {{ selected.map((tool) => tool.name).join(', ') }}
           </caption>
 
           <thead>
-            <tr class="bg-slate-50 dark:bg-slate-800/60">
-              <th scope="col" class="w-40 p-4">
+            <tr class="border-b border-line">
+              <th scope="col" class="w-40 p-5">
                 <span class="sr-only">Attribute</span>
               </th>
               <th
                 v-for="tool in selected"
                 :key="tool.id"
                 scope="col"
-                class="p-4 align-top"
+                class="p-5 align-top"
               >
-                <div class="flex flex-col items-start gap-2">
-                  <RouterLink
-                    :to="`/tool/${tool.id}`"
-                    class="rounded text-base font-semibold text-slate-900 hover:text-indigo-700 dark:text-white dark:hover:text-indigo-300"
-                  >
-                    {{ tool.name }}
-                  </RouterLink>
-                  <Badge :variant="priceVariant(tool.price)">{{ tool.price }}</Badge>
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    :aria-label="`Remove ${tool.name} from the comparison`"
-                    @click="remove(tool.id)"
-                  >
-                    Remove
-                  </Button>
-                </div>
+                <RouterLink
+                  :to="`/tool/${tool.id}`"
+                  class="text-base font-medium text-ink underline-offset-4 hover:underline"
+                >
+                  {{ tool.name }}
+                </RouterLink>
+                <p class="mt-1 text-xs uppercase tracking-[0.14em] text-muted">
+                  {{ tool.price }}
+                </p>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  class="-ml-3 mt-3"
+                  :aria-label="`Remove ${tool.name} from the comparison`"
+                  @click="remove(tool.id)"
+                >
+                  Remove
+                </Button>
               </th>
             </tr>
           </thead>
 
-          <tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+          <tbody class="divide-y divide-line">
             <tr>
-              <th scope="row" class="p-4 align-top font-medium text-slate-900 dark:text-white">
+              <th
+                scope="row"
+                class="p-5 align-top text-xs font-medium uppercase tracking-[0.14em] text-muted"
+              >
                 Category
               </th>
               <td
                 v-for="tool in selected"
                 :key="tool.id"
-                class="p-4 align-top text-slate-700 dark:text-slate-300"
+                class="p-5 align-top text-ink"
               >
                 {{ tool.category }}
               </td>
             </tr>
             <tr>
-              <th scope="row" class="p-4 align-top font-medium text-slate-900 dark:text-white">
+              <th
+                scope="row"
+                class="p-5 align-top text-xs font-medium uppercase tracking-[0.14em] text-muted"
+              >
                 Best for
               </th>
               <td
                 v-for="tool in selected"
                 :key="tool.id"
-                class="p-4 align-top text-slate-700 dark:text-slate-300"
+                class="p-5 align-top leading-6 text-ink"
               >
                 {{ tool.bestFor }}
               </td>
             </tr>
             <tr>
-              <th scope="row" class="p-4 align-top font-medium text-slate-900 dark:text-white">
+              <th
+                scope="row"
+                class="p-5 align-top text-xs font-medium uppercase tracking-[0.14em] text-muted"
+              >
                 Pricing
               </th>
               <td
                 v-for="tool in selected"
                 :key="tool.id"
-                class="p-4 align-top text-slate-700 dark:text-slate-300"
+                class="p-5 align-top leading-6 text-ink"
               >
                 {{ tool.pricingNote }}
               </td>
             </tr>
             <tr>
-              <th scope="row" class="p-4 align-top font-medium text-slate-900 dark:text-white">
+              <th
+                scope="row"
+                class="p-5 align-top text-xs font-medium uppercase tracking-[0.14em] text-muted"
+              >
                 Free tier
               </th>
               <td
                 v-for="tool in selected"
                 :key="tool.id"
-                class="p-4 align-top text-slate-700 dark:text-slate-300"
+                class="p-5 align-top text-ink"
               >
                 {{ yesNo(tool.freeTier) }}
               </td>
             </tr>
             <tr>
-              <th scope="row" class="p-4 align-top font-medium text-slate-900 dark:text-white">
+              <th
+                scope="row"
+                class="p-5 align-top text-xs font-medium uppercase tracking-[0.14em] text-muted"
+              >
                 Student friendly
               </th>
               <td
                 v-for="tool in selected"
                 :key="tool.id"
-                class="p-4 align-top text-slate-700 dark:text-slate-300"
+                class="p-5 align-top text-ink"
               >
                 {{ yesNo(tool.studentFriendly) }}
               </td>
             </tr>
             <tr>
-              <th scope="row" class="p-4 align-top font-medium text-slate-900 dark:text-white">
+              <th
+                scope="row"
+                class="p-5 align-top text-xs font-medium uppercase tracking-[0.14em] text-muted"
+              >
                 Editor score
               </th>
               <td
                 v-for="tool in selected"
                 :key="tool.id"
-                class="p-4 align-top text-slate-700 dark:text-slate-300"
+                class="p-5 align-top text-ink"
               >
                 {{ tool.editorScore }} / 5
               </td>
             </tr>
             <tr>
-              <th scope="row" class="p-4 align-top font-medium text-slate-900 dark:text-white">
+              <th
+                scope="row"
+                class="p-5 align-top text-xs font-medium uppercase tracking-[0.14em] text-muted"
+              >
                 Platforms
               </th>
               <td
                 v-for="tool in selected"
                 :key="tool.id"
-                class="p-4 align-top text-slate-700 dark:text-slate-300"
+                class="p-5 align-top leading-6 text-ink"
               >
                 {{ tool.platforms.join(', ') }}
               </td>
             </tr>
             <tr>
-              <th scope="row" class="p-4 align-top font-medium text-slate-900 dark:text-white">
+              <th
+                scope="row"
+                class="p-5 align-top text-xs font-medium uppercase tracking-[0.14em] text-muted"
+              >
                 Features
               </th>
               <td
                 v-for="tool in selected"
                 :key="tool.id"
-                class="p-4 align-top text-slate-700 dark:text-slate-300"
+                class="p-5 align-top"
               >
-                <ul class="space-y-1">
+                <ul class="space-y-1.5 text-muted">
                   <li v-for="feature in tool.features" :key="feature">{{ feature }}</li>
                 </ul>
               </td>
             </tr>
             <tr>
-              <th scope="row" class="p-4 align-top font-medium text-slate-900 dark:text-white">
+              <th
+                scope="row"
+                class="p-5 align-top text-xs font-medium uppercase tracking-[0.14em] text-muted"
+              >
                 Strengths
               </th>
               <td
                 v-for="tool in selected"
                 :key="tool.id"
-                class="p-4 align-top text-slate-700 dark:text-slate-300"
+                class="p-5 align-top"
               >
-                <ul class="space-y-1">
+                <ul class="space-y-1.5 text-muted">
                   <li v-for="pro in tool.pros" :key="pro">{{ pro }}</li>
                 </ul>
               </td>
             </tr>
             <tr>
-              <th scope="row" class="p-4 align-top font-medium text-slate-900 dark:text-white">
+              <th
+                scope="row"
+                class="p-5 align-top text-xs font-medium uppercase tracking-[0.14em] text-muted"
+              >
                 Limitations
               </th>
               <td
                 v-for="tool in selected"
                 :key="tool.id"
-                class="p-4 align-top text-slate-700 dark:text-slate-300"
+                class="p-5 align-top"
               >
-                <ul class="space-y-1">
+                <ul class="space-y-1.5 text-muted">
                   <li v-for="limitation in tool.limitations" :key="limitation">
                     {{ limitation }}
                   </li>
@@ -261,19 +290,22 @@ const yesNo = (value) => (value ? 'Yes' : 'No')
               </td>
             </tr>
             <tr>
-              <th scope="row" class="p-4 align-top font-medium text-slate-900 dark:text-white">
+              <th
+                scope="row"
+                class="p-5 align-top text-xs font-medium uppercase tracking-[0.14em] text-muted"
+              >
                 Website
               </th>
               <td
                 v-for="tool in selected"
                 :key="tool.id"
-                class="p-4 align-top"
+                class="p-5 align-top"
               >
                 <a
                   :href="tool.url"
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="font-medium text-indigo-700 underline-offset-2 hover:underline dark:text-indigo-300"
+                  class="font-medium text-ink underline underline-offset-4 hover:opacity-70"
                 >
                   Visit {{ tool.name }}
                   <span class="sr-only"> (opens in a new tab)</span>
@@ -284,7 +316,7 @@ const yesNo = (value) => (value ? 'Yes' : 'No')
         </table>
       </div>
 
-      <div class="mt-4 flex flex-wrap items-center gap-3">
+      <div class="mt-6 flex flex-wrap items-center gap-3">
         <Button
           v-if="selected.length < MAX_TOOLS && shortlist.count > selected.length"
           to="/saved"

@@ -3,18 +3,14 @@ import Button from '../components/ui/Button.vue'
 </script>
 
 <template>
-  <section class="mx-auto max-w-xl py-16 text-center">
-    <p
-      class="text-sm font-semibold uppercase tracking-wide text-indigo-700 dark:text-indigo-300"
-    >
-      404
-    </p>
-    <h1 class="mt-2 text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
+  <section class="py-24 text-center">
+    <p class="text-xs uppercase tracking-[0.2em] text-muted">404</p>
+    <h1 class="mt-4 text-4xl font-medium tracking-[-0.03em] text-ink sm:text-5xl">
       We can't find that page
     </h1>
-    <p class="mt-3 text-slate-600 dark:text-slate-400">
+    <p class="mx-auto mt-4 max-w-md text-sm leading-6 text-muted">
       The link may be old, or the address may have a typo.
     </p>
-    <Button to="/" class="mt-6">Back to the tool finder</Button>
+    <Button to="/" class="mt-8">Back to the tool finder</Button>
   </section>
 </template>

@@ -6,7 +6,6 @@ import EmptyState from '../components/tools/EmptyState.vue'
 import LoadingState from '../components/tools/LoadingState.vue'
 import ErrorState from '../components/tools/ErrorState.vue'
 import Button from '../components/ui/Button.vue'
-import Card from '../components/ui/Card.vue'
 import { useTools } from '../composables/useTools.js'
 import { useShortlistStore } from '../stores/shortlist.js'
 
@@ -44,30 +43,31 @@ const errorMessage = computed(() =>
 
 <template>
   <section aria-labelledby="saved-heading" :aria-busy="loading">
-    <div class="flex flex-wrap items-end justify-between gap-3">
-      <div>
-        <h1
-          id="saved-heading"
-          class="text-3xl font-bold tracking-tight text-slate-900 dark:text-white"
+    <header class="border-b border-line pb-8">
+      <div class="flex flex-wrap items-end justify-between gap-4">
+        <div>
+          <p class="text-xs uppercase tracking-[0.2em] text-muted">Saved</p>
+          <h1
+            id="saved-heading"
+            class="mt-3 text-3xl font-medium tracking-[-0.03em] text-ink sm:text-5xl"
+          >
+            Your shortlist
+          </h1>
+          <p class="mt-4 max-w-xl text-sm leading-6 text-muted">
+            Tools you saved. They stay in this browser until you remove them.
+          </p>
+        </div>
+        <p
+          v-if="shortlist.count && !loading && !error"
+          class="text-sm text-muted"
+          role="status"
+          aria-live="polite"
         >
-          Your shortlist
-        </h1>
-        <p class="mt-2 text-slate-600 dark:text-slate-400">
-          Tools you saved. They stay in this browser until you remove them.
+          <span class="tabular-nums text-ink">{{ shortlist.count }}</span>
+          {{ shortlist.count === 1 ? 'tool' : 'tools' }} saved
         </p>
       </div>
-      <p
-        v-if="shortlist.count && !loading && !error"
-        class="text-sm text-slate-600 dark:text-slate-400"
-        role="status"
-        aria-live="polite"
-      >
-        <span class="font-semibold text-slate-900 dark:text-white">
-          {{ shortlist.count }}
-        </span>
-        {{ shortlist.count === 1 ? 'tool saved' : 'tools saved' }}
-      </p>
-    </div>
+    </header>
 
     <LoadingState v-if="loading" />
 
@@ -78,42 +78,48 @@ const errorMessage = computed(() =>
       @retry="retry"
     />
 
-    <div v-else-if="savedTools.length" class="mt-6">
-      <Card v-if="savedTools.length > 1" as="section" aria-labelledby="compare-heading">
-        <h2
-          id="compare-heading"
-          class="text-lg font-semibold text-slate-900 dark:text-white"
-        >
-          Compare saved tools
-        </h2>
-        <p class="mt-1 text-sm text-slate-600 dark:text-slate-400">
-          Pick two or three tools. You can change the selection on the compare page.
-        </p>
+    <div v-else-if="savedTools.length">
+      <section
+        v-if="savedTools.length > 1"
+        aria-labelledby="compare-heading"
+        class="mt-8 border-y border-line py-6"
+      >
+        <div class="flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <h2 id="compare-heading" class="text-sm font-medium text-ink">
+              Compare saved tools
+            </h2>
+            <p class="mt-1 text-sm text-muted">Pick two or three tools.</p>
+          </div>
+          <div class="flex flex-wrap items-center gap-4">
+            <p class="text-sm text-muted" aria-live="polite">
+              {{ compareIds.length }} of {{ MAX_COMPARE }}
+            </p>
+            <Button
+              :variant="compareIds.length >= 2 ? 'primary' : 'secondary'"
+              :disabled="compareIds.length < 2"
+              @click="openCompare"
+            >
+              Compare {{ compareIds.length }} selected
+            </Button>
+          </div>
+        </div>
 
-        <ul class="mt-4 flex flex-wrap gap-x-6 gap-y-2">
+        <ul class="mt-5 flex flex-wrap gap-x-6 gap-y-2">
           <li v-for="tool in savedTools" :key="tool.id">
-            <label class="flex items-center gap-2 text-sm text-slate-700 dark:text-slate-300">
+            <label class="flex items-center gap-2 text-sm text-ink">
               <input
                 v-model="compareIds"
                 type="checkbox"
                 :value="tool.id"
                 :disabled="compareIds.length >= MAX_COMPARE && !compareIds.includes(tool.id)"
-                class="h-4 w-4 accent-indigo-600"
+                class="h-4 w-4 accent-ink"
               />
               {{ tool.name }}
             </label>
           </li>
         </ul>
-
-        <div class="mt-4 flex flex-wrap items-center gap-3">
-          <Button :disabled="compareIds.length < 2" @click="openCompare">
-            Compare {{ compareIds.length }} selected
-          </Button>
-          <p class="text-sm text-slate-600 dark:text-slate-400" aria-live="polite">
-            {{ compareIds.length }} of {{ MAX_COMPARE }} selected
-          </p>
-        </div>
-      </Card>
+      </section>
 
       <ToolGrid
         :tools="savedTools"
@@ -121,9 +127,9 @@ const errorMessage = computed(() =>
         @toggle-save="shortlist.toggle"
       />
 
-      <div class="mt-6 flex flex-wrap items-center gap-3">
+      <div class="mt-10 flex flex-wrap items-center gap-4 border-t border-line pt-6">
         <Button variant="secondary" @click="shortlist.clear()">Clear shortlist</Button>
-        <p class="text-sm text-slate-600 dark:text-slate-400">
+        <p class="text-sm text-muted">
           Removing a tool here also removes it from the finder.
         </p>
       </div>
@@ -131,7 +137,7 @@ const errorMessage = computed(() =>
 
     <EmptyState
       v-else
-      class="mt-6"
+      class="mt-8"
       title="Your shortlist is empty"
       message="Save a tool from the finder and it will show up here."
       action-label="Find tools"
