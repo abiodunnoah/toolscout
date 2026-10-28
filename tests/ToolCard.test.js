@@ -17,7 +17,7 @@ describe('ToolCard', () => {
     expect(wrapper.get('h3').text()).toBe('ChatPDF')
     expect(wrapper.get('a[href="/tool/chatpdf"]').text()).toBe('ChatPDF')
     expect(wrapper.text()).toContain('Freemium')
-    expect(wrapper.text()).toContain('#pdf')
+    expect(wrapper.text()).toContain('Upload a paper')
   })
 
   it('emits toggle-save with the tool id when Save is clicked', async () => {
@@ -38,6 +38,6 @@ describe('ToolCard', () => {
 
     expect(save.attributes('aria-pressed')).toBe('true')
     expect(save.text()).toBe('Saved')
-    expect(save.classes()).toContain('bg-indigo-600')
+    expect(save.find('svg').exists()).toBe(true)
   })
 })

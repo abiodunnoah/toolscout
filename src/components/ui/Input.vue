@@ -35,7 +35,7 @@ const SIZES = {
 const sizeClass = computed(() => SIZES[props.size] ?? SIZES.md)
 const paddingClass = computed(() => [
   slots.leading ? 'pl-11' : 'pl-4',
-  slots.trailing ? 'pr-10' : 'pr-4',
+  slots.trailing ? 'pr-11' : 'pr-4',
 ])
 const hintId = computed(() => (props.hint ? `${props.id}-hint` : undefined))
 </script>
@@ -48,16 +48,16 @@ const hintId = computed(() => (props.hint ? `${props.id}-hint` : undefined))
       :class="
         labelHidden
           ? 'sr-only'
-          : 'block text-sm font-medium text-slate-700 dark:text-slate-300'
+          : 'block text-sm font-medium text-ink'
       "
     >
       {{ label }}
     </label>
 
-    <div class="relative" :class="label && !labelHidden ? 'mt-1.5' : ''">
+    <div class="relative" :class="label && !labelHidden ? 'mt-2' : ''">
       <span
         v-if="$slots.leading"
-        class="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 dark:text-slate-400"
+        class="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-muted"
       >
         <slot name="leading" />
       </span>
@@ -70,17 +70,17 @@ const hintId = computed(() => (props.hint ? `${props.id}-hint` : undefined))
         :placeholder="placeholder"
         :autocomplete="autocomplete"
         :aria-describedby="hintId"
-        class="w-full rounded-xl border border-slate-500 bg-white text-slate-900 transition placeholder:text-slate-500 focus:border-indigo-500 dark:border-slate-500 dark:bg-slate-950 dark:text-slate-100 dark:placeholder:text-slate-400"
+        class="w-full rounded-lg border border-muted bg-paper text-ink transition-colors placeholder:text-muted focus:border-ink"
         :class="[sizeClass, paddingClass]"
         @input="$emit('update:modelValue', $event.target.value)"
       />
 
-      <span v-if="$slots.trailing" class="absolute right-2 top-1/2 -translate-y-1/2">
+      <span v-if="$slots.trailing" class="absolute right-1.5 top-1/2 -translate-y-1/2">
         <slot name="trailing" />
       </span>
     </div>
 
-    <p v-if="hint" :id="hintId" class="mt-1.5 text-sm text-slate-600 dark:text-slate-400">
+    <p v-if="hint" :id="hintId" class="mt-2 text-sm text-muted">
       {{ hint }}
     </p>
   </div>

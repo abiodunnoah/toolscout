@@ -6,16 +6,14 @@ const props = defineProps({
   as: { type: String, default: 'div' },
   /** Adds padding. Turn off when the card owns its own layout. */
   padded: { type: Boolean, default: true },
-  /** Adds a hover lift for cards that link somewhere. */
+  /** Adds a hover border for cards that link somewhere. */
   interactive: { type: Boolean, default: false },
 })
 
 const classes = computed(() => [
-  'rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900',
-  props.padded ? 'p-5' : '',
-  props.interactive
-    ? 'transition duration-200 hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-md dark:hover:border-slate-700'
-    : '',
+  'rounded-xl border border-line bg-paper',
+  props.padded ? 'p-5 sm:p-6' : '',
+  props.interactive ? 'transition-colors hover:border-muted' : '',
 ])
 </script>
 

@@ -12,7 +12,7 @@ describe('Button', () => {
 
     expect(wrapper.element.tagName).toBe('BUTTON')
     expect(wrapper.attributes('type')).toBe('button')
-    expect(wrapper.classes()).toContain('text-slate-600')
+    expect(wrapper.classes()).toContain('text-muted')
     expect(wrapper.text()).toBe('Ghost')
   })
 

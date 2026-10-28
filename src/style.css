@@ -9,17 +9,70 @@
     Roboto, sans-serif;
 }
 
+/*
+ * Monochrome design tokens.
+ * Light is paper + ink. Dark swaps them. Every component reads these names,
+ * so a theme change is one place, not a dark: class on every element.
+ */
+:root {
+  --paper: #ffffff;
+  --ink: #0a0a0a;
+  --muted: #6b6b6b;
+  --line: #e5e5e5;
+  --raised: #f7f7f7;
+  --focus: #0a0a0a;
+  color-scheme: light;
+}
+
+.dark {
+  --paper: #0a0a0a;
+  --ink: #fafafa;
+  --muted: #a3a3a3;
+  --line: #262626;
+  --raised: #141414;
+  --focus: #fafafa;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-raised: var(--raised);
+}
+
 @layer base {
-  :root {
-    color-scheme: light;
-  }
-
-  .dark {
-    color-scheme: dark;
-  }
-
   html {
     scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Smooth theme change, but not for people who ask for less motion */
+  @media (prefers-reduced-motion: no-preference) {
+    body {
+      transition:
+        background-color 0.25s ease,
+        color 0.25s ease;
+    }
+  }
+
+  /* Visible focus indicator for keyboard users (WCAG 2.4.7) */
+  :focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 3px;
+  }
+
+  ::selection {
+    background-color: var(--ink);
+    color: var(--paper);
   }
 
   /* Hide the browser's built-in search clear button; we render our own */
@@ -27,38 +80,5 @@
   input[type='search']::-webkit-search-decoration {
     -webkit-appearance: none;
     appearance: none;
-  }
-
-  body {
-    background-color: var(--color-slate-50);
-    color: var(--color-slate-700);
-    font-family: var(--font-sans);
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
-  }
-
-  /* Themed page background — the missing piece that broke dark mode */
-  .dark body {
-    background-color: var(--color-slate-950);
-    color: var(--color-slate-400);
-  }
-
-  /* Smooth theme change, but not for people who ask for less motion */
-  @media (prefers-reduced-motion: no-preference) {
-    body {
-      transition:
-        background-color 0.3s ease,
-        color 0.3s ease;
-    }
-  }
-
-  /* Visible focus indicator for keyboard users (WCAG 2.4.7) */
-  :focus-visible {
-    outline: 2px solid var(--color-indigo-600);
-    outline-offset: 2px;
-  }
-
-  .dark :focus-visible {
-    outline-color: var(--color-indigo-400);
   }
 }

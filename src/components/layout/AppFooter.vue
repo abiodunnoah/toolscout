@@ -5,14 +5,10 @@ defineProps({
 </script>
 
 <template>
-  <footer class="border-t border-slate-200 dark:border-slate-800">
-    <div
-      class="mx-auto flex max-w-6xl flex-col gap-1 px-4 py-6 text-sm text-slate-600 sm:flex-row sm:items-center sm:justify-between sm:px-6 dark:text-slate-400"
-    >
-      <p>
-        Shortlist:
-        <span class="font-semibold text-slate-900 dark:text-white">{{ savedCount }}</span>
-      </p>
+  <footer class="border-t border-line">
+    <div class="mx-auto max-w-6xl px-4 py-6 text-sm text-muted sm:px-6">
+      Shortlist:
+      <span class="tabular-nums text-ink">{{ savedCount }}</span>
     </div>
   </footer>
 </template>
