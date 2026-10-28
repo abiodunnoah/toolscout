@@ -126,8 +126,8 @@ Week 3 - Noah - Frontend - ToolScout
 ## Redesign (28 October)
 
 **Changed:**
-- Replaced the indigo/slate palette with five black-and-white tokens: `paper`, `ink`, `muted`,
-  `line` and `raised`.
+- Replaced the indigo/slate palette with a Tesla-inspired set: `canvas`, `paper`, `ink`, `muted`,
+  `line`, `raised`, plus `accent` and `accent-hover`.
 - Centred the home hero and removed the gradient, the rounded panel and the sidebar.
 - Filters, results count and sort now sit in one hairline toolbar. Cards are flat with a 1px border.
 - Tool cards drop the avatar and tag chips. Price is plain text; the saved state uses a check,
@@ -137,7 +137,8 @@ Week 3 - Noah - Frontend - ToolScout
 
 **Why:**
 - The references I was given were simple and classy: white space, large type and very little
-  decoration. A monochrome system is the clearest version of that.
+  decoration. A near-monochrome system with one blue accent is the clearest version of that.
+  The accent is only for primary actions, active filters, links and focus.
 - All colour now comes from one place (`src/style.css`), so the mentor's maintainability point
   still holds: no component invents its own palette.
 

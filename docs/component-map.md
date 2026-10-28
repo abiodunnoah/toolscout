@@ -70,15 +70,18 @@ button or a saved button styles itself when it is on; no extra state class is ne
 
 ### Theme tokens
 
-Colour is not set per component. Five names live in `src/style.css`:
+Colour is not set per component. Eight names live in `src/style.css`:
 
 | Token | Light | Dark | Used for |
 |---|---|---|---|
-| `paper` | `#ffffff` | `#0a0a0a` | Page and card background |
-| `ink` | `#0a0a0a` | `#fafafa` | Main text and primary buttons |
-| `muted` | `#6b6b6b` | `#a3a3a3` | Secondary text and control borders |
-| `line` | `#e5e5e5` | `#262626` | Hairlines and card borders |
-| `raised` | `#f7f7f7` | `#141414` | Hover and error backgrounds |
+| `canvas` | `#f7f8fa` | `#0b0d0f` | Page background |
+| `paper` | `#ffffff` | `#15181d` | Cards, header and inputs |
+| `ink` | `#171a20` | `#f4f4f4` | Main text |
+| `muted` | `#5c5e62` | `#a3a8b0` | Secondary text and control borders |
+| `line` | `#e3e5e8` | `#2a2f36` | Hairlines and card borders |
+| `raised` | `#eef0f2` | `#1f252b` | Hover and error backgrounds |
+| `accent` | `#3e6ae1` | `#8aa4ff` | Primary buttons, active chips, links and focus |
+| `accent-hover` | `#2f57c4` | `#a5b9ff` | Primary button hover |
 
 `.dark` swaps the values. Components use `bg-paper`, `text-ink`, `border-line`
 and so on, so there are no per-component dark overrides.

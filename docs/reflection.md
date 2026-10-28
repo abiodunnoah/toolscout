@@ -31,19 +31,25 @@ shadcn-vue exists, but adding a component library in the last week would have
 added generated code I did not understand. Four small components gave the same
 consistency and a much smaller surface.
 
-## The monochrome redesign
+## The redesign
 
-After the Week 3 checks passed, the page was rebuilt in black and white. The
-routes, store and tests did not change; only the design tokens, primitives and
-page layouts did.
+After the Week 3 checks passed, the page was rebuilt around the Tesla and Vanly
+references. The routes, store and tests did not change.
+
+My first pass was literal black and white. It was too flat. I read the colours
+off Tesla's page: ink `#171a20`, body `#393c41`, secondary `#5c5e62`, rules
+`#e2e3e3`, light surfaces `#f4f4f4`, and one blue accent `#3e6ae1`. The palette
+now has a soft grey canvas, white surfaces, five greys and that blue, used only
+for primary actions, active filters, links and focus.
 
 Three things stood out:
 
-- A monochrome page has nowhere to hide. A separator dot left at the start of a
-  line, a border that disappears, or three solid buttons competing are obvious.
-  All three went.
-- Colour was doing accessibility work. Price used to be green, amber or red. Now
-  the word and a check icon carry the meaning, so nothing depends on colour.
+- A near-monochrome page has nowhere to hide. A separator dot left at the start
+  of a line, a border that disappears, or three solid buttons competing are
+  obvious. All three went.
+- The accent needs a rule, not good taste. It is allowed on actions, active
+  states, links and focus. It is not allowed on price, category or status, so
+  those still read as text.
 - Simple is not empty. The first screen is mostly space, but the search is still
   the only action above the fold.
 

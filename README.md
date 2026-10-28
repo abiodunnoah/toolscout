@@ -108,7 +108,7 @@ This section explains each choice in plain words. It also says what the choice c
 |---|---|---|
 | **Vue 3 + Vite** | I know Vue best. The component model fits a screen made of repeated cards. Vite starts quickly and makes small builds. | New tools in this stack change often. I keep the versions pinned in `package-lock.json`. |
 | **Tailwind CSS** | Styles sit next to the markup they style. Responsive rules are easy to see and change. | Class lists in markup are long. |
-| **Black-and-white theme** | A monochrome page is calmer and makes the tools the focus. It matches the simple, classy references I was given. | Colour can no longer mark price or status, so labels and icons have to carry that meaning. |
+| **Monochrome palette with one blue accent** | Tesla and Vanly feel calm because most of the page is near-black, white and grey. A single blue accent adds life without turning the page into a rainbow. | Only one accent is allowed, so primary actions, links and focus states share it. Price and saved state use text and icons, not colour. |
 | **Vue Router** | Each screen gets its own URL. Links can be shared and the back button works. | The host must send `index.html` for unknown paths. Netlify does this with one redirect rule. |
 | **Pinia for the shortlist** | The shortlist is used on several screens. One shared store is simpler than passing data through every component. | One more dependency, and one more concept to learn. |
 | **localStorage for the shortlist** | There is no login and no server to store data. The browser can remember the list for next time. | The list stays on one browser and one device. Clearing site data removes it. |
@@ -197,8 +197,9 @@ The file must stay in the shape `{ "tools": [...] }` and must not start with a B
 
 The app aims to meet WCAG 2.2 level AA. Lighthouse scored the Week 2 site at **0.96**.
 The current build scores **1.00** on all five screens, both before and after the
-monochrome redesign. The one automated failure was dark-mode label contrast at
-3.74:1. That is now at least 6.9:1.
+near-monochrome redesign. The one automated failure was dark-mode label contrast at
+3.74:1. That is now at least 6.9:1. The blue accent is 4.8:1 on white and is used
+for primary buttons, links and the focus ring.
 
 Other changes in the pass:
 
