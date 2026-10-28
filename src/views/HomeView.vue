@@ -44,100 +44,90 @@ function onSearch() {
 
 <template>
   <div>
-    <!-- Hero + search -->
-    <section
-      class="relative overflow-hidden rounded-3xl border border-slate-200 bg-white px-6 py-10 dark:border-slate-800 dark:bg-slate-900 sm:px-10"
-    >
-      <div
-        class="pointer-events-none absolute inset-0 bg-gradient-to-br from-indigo-50 to-transparent dark:from-indigo-950/40"
-        aria-hidden="true"
-      ></div>
-      <div class="relative">
-        <h1
-          class="max-w-3xl text-3xl font-bold tracking-tight text-slate-900 sm:text-5xl dark:text-white"
-        >
-          Find the right AI tool for your task
-        </h1>
-        <p class="mt-3 max-w-2xl text-base text-slate-600 dark:text-slate-400">
-          Describe what you need to get done, then compare and shortlist the tools
-          that fit.
-        </p>
-
+    <!-- Hero -->
+    <section class="mx-auto max-w-3xl pb-12 pt-6 text-center sm:pb-20 sm:pt-14">
+      <p class="text-xs font-medium uppercase tracking-[0.2em] text-muted">
+        Task-first AI tool finder
+      </p>
+      <h1
+        class="mt-5 text-4xl font-medium leading-[1.05] tracking-[-0.04em] text-balance text-ink sm:text-6xl"
+      >
+        Find the right AI tool for your task
+      </h1>
+      <p class="mx-auto mt-5 max-w-xl text-base leading-7 text-muted">
+        Describe the job. Compare the options. Keep a shortlist.
+      </p>
+      <div class="mx-auto mt-9 max-w-2xl text-left">
         <SearchBar v-model="query" @submit="onSearch" />
       </div>
     </section>
 
-    <!-- Filters + results -->
-    <div class="mt-8 grid grid-cols-1 gap-6 lg:grid-cols-[240px_minmax(0,1fr)]">
-      <aside aria-labelledby="filters-heading" class="lg:sticky lg:top-24 lg:self-start">
-        <div
-          class="rounded-2xl border border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900"
-        >
-          <h2
-            id="filters-heading"
-            class="text-sm font-semibold text-slate-900 dark:text-white"
+    <!-- Filters and results -->
+    <section
+      ref="resultsSection"
+      aria-labelledby="results-heading"
+      :aria-busy="loading"
+      class="scroll-mt-24 border-t border-line pt-6"
+    >
+      <h2 id="results-heading" class="sr-only">Results</h2>
+
+      <div class="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+        <div class="flex flex-col gap-5 sm:flex-row sm:flex-wrap sm:items-start sm:gap-8">
+          <FilterGroup
+            legend="Category"
+            :options="categories"
+            :active="activeCategories"
+            @toggle="toggleCategory"
+          />
+          <FilterGroup
+            legend="Price"
+            :options="prices"
+            :active="activePrices"
+            @toggle="togglePrice"
+          />
+
+          <Button
+            v-if="hasActiveFilters"
+            variant="ghost"
+            size="sm"
+            class="self-start"
+            @click="clearFilters"
           >
-            Filters
-          </h2>
-          <div class="mt-4 space-y-5">
-            <FilterGroup
-              legend="Category"
-              :options="categories"
-              :active="activeCategories"
-              @toggle="toggleCategory"
-            />
-            <FilterGroup
-              legend="Price"
-              :options="prices"
-              :active="activePrices"
-              @toggle="togglePrice"
-            />
-
-            <Button
-              v-if="hasActiveFilters"
-              variant="secondary"
-              size="sm"
-              class="w-full"
-              @click="clearFilters"
-            >
-              Clear filters
-            </Button>
-          </div>
+            Clear
+          </Button>
         </div>
-      </aside>
 
-      <section
-        ref="resultsSection"
-        aria-labelledby="results-heading"
-        :aria-busy="loading"
-        class="scroll-mt-24"
-      >
-        <div class="flex flex-wrap items-center justify-between gap-3">
-          <h2 id="results-heading" class="sr-only">Results</h2>
+        <div class="flex flex-wrap items-center justify-between gap-4 lg:justify-end">
           <p
             v-if="!loading && !error"
-            class="text-sm text-slate-600 dark:text-slate-400"
+            class="text-sm text-muted"
             role="status"
             aria-live="polite"
           >
-            <span class="font-semibold text-slate-900 dark:text-white">
-              {{ sortedTools.length }}
-            </span>
-            {{ sortedTools.length === 1 ? 'tool' : 'tools' }} found
+            <span class="tabular-nums text-ink">{{ sortedTools.length }}</span>
+            {{ sortedTools.length === 1 ? 'tool' : 'tools' }}
           </p>
           <SortSelect v-model="sortBy" />
         </div>
+      </div>
 
-        <LoadingState v-if="loading" />
-        <ErrorState v-else-if="error" :message="errorMessage" @retry="retry" />
-        <ToolGrid
-          v-else-if="sortedTools.length"
-          :tools="sortedTools"
-          :saved-ids="shortlist.ids"
-          @toggle-save="shortlist.toggle"
-        />
-        <EmptyState v-else @action="clearFilters" />
-      </section>
-    </div>
+      <LoadingState v-if="loading" />
+
+      <ErrorState
+        v-else-if="error"
+        :message="errorMessage"
+        class="mt-8"
+        @retry="retry"
+      />
+
+      <ToolGrid
+        v-else-if="sortedTools.length"
+        :tools="sortedTools"
+        :saved-ids="shortlist.ids"
+        @toggle-save="shortlist.toggle"
+      />
+
+      <EmptyState v-else class="mt-8" @action="clearFilters" />
+    </section>
   </div>
 </template>

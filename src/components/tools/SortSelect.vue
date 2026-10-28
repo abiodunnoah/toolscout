@@ -8,11 +8,11 @@ defineEmits(['update:modelValue'])
 
 <template>
   <div class="flex items-center gap-2">
-    <label for="sort" class="text-sm text-slate-600 dark:text-slate-400">Sort</label>
+    <label for="sort" class="text-sm text-muted">Sort</label>
     <select
       id="sort"
       :value="modelValue"
-      class="rounded-lg border border-slate-500 bg-white px-3 py-1.5 text-sm text-slate-700 dark:border-slate-500 dark:bg-slate-900 dark:text-slate-200"
+      class="h-9 rounded-lg border border-muted bg-paper px-3 text-sm text-ink transition-colors focus:border-ink"
       @change="$emit('update:modelValue', $event.target.value)"
     >
       <option value="featured">Featured</option>

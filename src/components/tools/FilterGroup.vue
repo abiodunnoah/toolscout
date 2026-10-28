@@ -13,11 +13,11 @@ defineEmits(['toggle'])
 <template>
   <fieldset>
     <legend
-      class="text-xs font-semibold uppercase tracking-wide text-slate-600 dark:text-slate-400"
+      class="text-xs font-medium uppercase tracking-[0.14em] text-muted"
     >
       {{ legend }}
     </legend>
-    <div class="mt-2 flex flex-wrap gap-2 lg:flex-col lg:items-start">
+    <div class="mt-2 flex flex-wrap gap-2">
       <Button
         v-for="option in options"
         :key="option"
