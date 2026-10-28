@@ -13,7 +13,7 @@ const props = defineProps({
 const classes = computed(() => [
   'rounded-xl border border-line bg-paper',
   props.padded ? 'p-5 sm:p-6' : '',
-  props.interactive ? 'transition-colors hover:border-muted' : '',
+  props.interactive ? 'transition-colors hover:border-accent' : '',
 ])
 </script>
 

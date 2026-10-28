@@ -70,7 +70,7 @@ const hintId = computed(() => (props.hint ? `${props.id}-hint` : undefined))
         :placeholder="placeholder"
         :autocomplete="autocomplete"
         :aria-describedby="hintId"
-        class="w-full rounded-lg border border-muted bg-paper text-ink transition-colors placeholder:text-muted focus:border-ink"
+        class="w-full rounded-lg border border-muted bg-paper text-ink transition-colors placeholder:text-muted focus:border-accent"
         :class="[sizeClass, paddingClass]"
         @input="$emit('update:modelValue', $event.target.value)"
       />

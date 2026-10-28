@@ -110,7 +110,7 @@ const yesNo = (value) => (value ? 'Yes' : 'No')
               >
                 <RouterLink
                   :to="`/tool/${tool.id}`"
-                  class="text-base font-medium text-ink underline-offset-4 hover:underline"
+                  class="text-base font-medium text-ink underline-offset-4 hover:text-accent hover:underline"
                 >
                   {{ tool.name }}
                 </RouterLink>
@@ -305,7 +305,7 @@ const yesNo = (value) => (value ? 'Yes' : 'No')
                   :href="tool.url"
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="font-medium text-ink underline underline-offset-4 hover:opacity-70"
+                  class="font-medium text-accent underline underline-offset-4 hover:opacity-70"
                 >
                   Visit {{ tool.name }}
                   <span class="sr-only"> (opens in a new tab)</span>

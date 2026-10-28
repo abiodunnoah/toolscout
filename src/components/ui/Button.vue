@@ -18,10 +18,10 @@ const BASE =
   'inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium transition disabled:cursor-not-allowed disabled:opacity-40'
 
 const VARIANTS = {
-  primary: 'rounded-lg bg-ink text-paper hover:opacity-80',
-  secondary: 'rounded-lg border border-line text-ink hover:bg-raised aria-pressed:border-ink',
+  primary: 'rounded-lg bg-accent text-paper hover:bg-accent-hover',
+  secondary: 'rounded-lg border border-line text-ink hover:bg-raised aria-pressed:border-accent',
   ghost: 'rounded-lg text-muted hover:bg-raised hover:text-ink',
-  chip: 'rounded-full border border-line text-muted hover:border-ink hover:text-ink aria-pressed:border-ink aria-pressed:bg-ink aria-pressed:text-paper',
+  chip: 'rounded-full border border-line text-muted hover:border-accent hover:text-ink aria-pressed:border-accent aria-pressed:bg-accent aria-pressed:text-paper',
 }
 
 const SIZES = {

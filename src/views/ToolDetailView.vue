@@ -98,7 +98,7 @@ const errorMessage = computed(() =>
             >
               <svg
                 v-if="saved"
-                class="h-4 w-4"
+                class="h-4 w-4 text-accent"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"

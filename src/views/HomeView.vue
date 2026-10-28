@@ -47,6 +47,7 @@ function onSearch() {
     <!-- Hero -->
     <section class="mx-auto max-w-3xl pb-12 pt-6 text-center sm:pb-20 sm:pt-14">
       <p class="text-xs font-medium uppercase tracking-[0.2em] text-muted">
+        <span class="mx-auto mb-5 block h-px w-10 bg-accent" aria-hidden="true"></span>
         Task-first AI tool finder
       </p>
       <h1

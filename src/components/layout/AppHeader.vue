@@ -18,7 +18,7 @@ defineEmits(['toggle-theme'])
         class="flex items-center gap-2.5 rounded-md text-base font-semibold tracking-tight text-ink"
       >
         <span
-          class="grid h-7 w-7 place-items-center rounded-md bg-ink text-paper"
+          class="grid h-7 w-7 place-items-center rounded-md bg-accent text-paper"
           aria-hidden="true"
         >
           <svg

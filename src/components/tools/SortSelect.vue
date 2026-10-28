@@ -12,7 +12,7 @@ defineEmits(['update:modelValue'])
     <select
       id="sort"
       :value="modelValue"
-      class="h-9 rounded-lg border border-muted bg-paper px-3 text-sm text-ink transition-colors focus:border-ink"
+      class="h-9 rounded-lg border border-muted bg-paper px-3 text-sm text-ink transition-colors focus:border-accent"
       @change="$emit('update:modelValue', $event.target.value)"
     >
       <option value="featured">Featured</option>

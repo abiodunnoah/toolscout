@@ -10,36 +10,45 @@
 }
 
 /*
- * Monochrome design tokens.
- * Light is paper + ink. Dark swaps them. Every component reads these names,
- * so a theme change is one place, not a dark: class on every element.
+ * Tesla-inspired palette: near-black ink, layered greys, one blue accent.
+ * Light uses a soft grey canvas with white surfaces. Dark inverts the surfaces.
+ * Every component reads these names, so a theme change is one place.
  */
 :root {
+  --canvas: #f7f8fa;
   --paper: #ffffff;
-  --ink: #0a0a0a;
-  --muted: #6b6b6b;
-  --line: #e5e5e5;
-  --raised: #f7f7f7;
-  --focus: #0a0a0a;
+  --ink: #171a20;
+  --muted: #5c5e62;
+  --line: #e3e5e8;
+  --raised: #eef0f2;
+  --accent: #3e6ae1;
+  --accent-hover: #2f57c4;
+  --focus: #3e6ae1;
   color-scheme: light;
 }
 
 .dark {
-  --paper: #0a0a0a;
-  --ink: #fafafa;
-  --muted: #a3a3a3;
-  --line: #262626;
-  --raised: #141414;
-  --focus: #fafafa;
+  --canvas: #0b0d0f;
+  --paper: #15181d;
+  --ink: #f4f4f4;
+  --muted: #a3a8b0;
+  --line: #2a2f36;
+  --raised: #1f252b;
+  --accent: #8aa4ff;
+  --accent-hover: #a5b9ff;
+  --focus: #8aa4ff;
   color-scheme: dark;
 }
 
 @theme inline {
+  --color-canvas: var(--canvas);
   --color-paper: var(--paper);
   --color-ink: var(--ink);
   --color-muted: var(--muted);
   --color-line: var(--line);
   --color-raised: var(--raised);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
 }
 
 @layer base {
@@ -48,7 +57,7 @@
   }
 
   body {
-    background-color: var(--paper);
+    background-color: var(--canvas);
     color: var(--ink);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
@@ -71,7 +80,7 @@
   }
 
   ::selection {
-    background-color: var(--ink);
+    background-color: var(--accent);
     color: var(--paper);
   }
 
