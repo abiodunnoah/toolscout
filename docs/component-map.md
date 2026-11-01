@@ -43,7 +43,7 @@ Rules I followed:
 | `tools/FilterGroup.vue` | `legend`, `options`, `active` | `toggle` | Filter chips in a fieldset |
 | `tools/SortSelect.vue` | `v-model` | none | Sort order |
 | `tools/ToolGrid.vue` | `tools`, `savedIds` | `toggle-save` | Responsive list of cards |
-| `tools/ToolCard.vue` | `tool`, `saved` | `toggle-save` | One tool: name, price, summary and actions |
+| `tools/ToolCard.vue` | `tool`, `saved` | `toggle-save` | One tool: name, up to two categories, price, summary and actions |
 | `tools/EmptyState.vue` | `title`, `message`, `actionLabel` | `action` | Friendly "nothing here" panel |
 | `tools/LoadingState.vue` | none | none | Six skeleton cards with a status |
 | `tools/ErrorState.vue` | `message` | `retry` | Error panel with a retry button |
@@ -91,7 +91,7 @@ and so on, so there are no per-component dark overrides.
 | File | What it holds | Lifecycle |
 |---|---|---|
 | `composables/useTools.js` | `tools`, `loading`, `error`, `retry` | Per view. Aborts the old request when retry is pressed |
-| `composables/useFilters.js` | Query, active filters, sort, filtered list | Per view. Resets when you leave the home page |
+| `composables/useFilters.js` | Query, active filters, sort, filtered list. A category filter matches `categories`, or the primary `category` when the list is missing | Per view. Resets when you leave the home page |
 | `composables/useTheme.js` | `isDark`, `toggle` | App-wide. Reads the OS setting, then `localStorage` |
 | `stores/shortlist.js` | Saved ids, count, `has`, `toggle`, `remove`, `clear` | App-wide. Writes to `localStorage` on every change |
 
@@ -113,6 +113,7 @@ comparison can be bookmarked, shared and reloaded without extra state.
 | `tests/ToolCard.test.js` | Card render, Save click, saved state |
 | `tests/shortlist.test.js` | Store toggle, persistence, bad stored data |
 | `tests/tools-service.test.js` | Valid and malformed payloads, HTTP error, wrong shape |
+| `tests/useFilters.test.js` | Secondary categories and the primary-category fallback |
 
 `scripts/check-app.mjs` is not a unit test. It drives the built site in Chrome
 and checks keyboard use, routing, persistence and layout.

@@ -84,7 +84,9 @@ Stop the process that is using it, then start again:
 3. If the request fails, it shows an error panel with a Try again button.
 4. When the list arrives, you can type a task. The list updates on every keystroke.
    It looks in the tool name, description, tags and tasks.
-5. Category and price chips narrow the list. Chips can be combined.
+5. Category and price chips narrow the list. Chips can be combined. A category
+   matches a tool's primary category and any extra categories it belongs to;
+   cards show up to two labels and the detail page shows all.
 6. Sort changes the order: Featured, Name or Price (free first).
 7. Save adds a tool to the shortlist. The header and footer show the count.
 8. The shortlist is kept in `localStorage`, so it is still there after a reload.
@@ -114,6 +116,7 @@ This section explains each choice in plain words. It also says what the choice c
 | **localStorage for the shortlist** | There is no login and no server to store data. The browser can remember the list for next time. | The list stays on one browser and one device. Clearing site data removes it. |
 | **Compare selection in the URL** | A link with `?ids=a,b` can be refreshed, bookmarked and shared. No extra store is needed. | Only the ids are saved. If a tool leaves the dataset, its column disappears. |
 | **Curated JSON dataset** | There is no free public API that lists AI tools with the fields I need. I can control the data and keep it honest. | The data is not live. It can go stale. |
+| **One primary category plus extra categories** | General assistants belong in more than one filter. A card needs one clear label, but hiding them from Coding would be wrong. | A tool can appear in several category filters, so the counts overlap. |
 | **JSON Server in development, static file in production** | Development uses a real HTTP request. The live site has no server to run, so it needs a plain file. | The two paths can differ. The production build copies the same file, so the shapes match. |
 | **Small local UI components instead of shadcn/ui** | The mentor suggested shadcn/ui. That library is for React. Its Vue port is shadcn-vue, but adding a component library in the last week adds risk and code I do not fully know. A few local components give the same consistency. | I write the variants myself. There are fewer ready-made parts. |
 | **Vitest + Vue Test Utils** | They use the same Vite setup. Tests can render components and click buttons the way a user would. | Tests need a browser-like environment, so the config includes jsdom. |
@@ -122,7 +125,7 @@ This section explains each choice in plain words. It also says what the choice c
 ## Project structure
 
     data/
-      tools.json        # the 48-tool dataset
+      tools.json        # the 54-tool dataset
     public/api/         # generated copy of the data (not committed)
     scripts/
       sync-data.mjs     # copies the data for the production build
@@ -147,8 +150,11 @@ The full component map is in [`docs/component-map.md`](docs/component-map.md).
 
 ## The data
 
-The dataset is [`data/tools.json`](data/tools.json). It holds 48 tools across six categories,
-with 7 to 9 tools in each category.
+The dataset is [`data/tools.json`](data/tools.json). It holds 54 tools across six
+primary categories, with 7 to 11 tools in each. The six general assistants
+(ChatGPT, Claude, Gemini, DeepSeek, Microsoft Copilot and Grok) are included;
+the research behind them is in
+[`docs/dataset-research.md`](docs/dataset-research.md).
 
 Each tool has these fields:
 
@@ -156,7 +162,8 @@ Each tool has these fields:
 |---|---|---|
 | `id` | text | Unique slug. Used in URLs |
 | `name` | text | Display name |
-| `category` | one of six | Research, Writing, Coding, Study, Design, Productivity |
+| `category` | one of six | The main label: Research, Writing, Coding, Study, Design, Productivity |
+| `categories` | list of text (optional) | Every filter this tool should appear under. Falls back to `category` when missing |
 | `price` | one of three | Free, Freemium or Paid |
 | `freeTier` | true/false | Has a usable free tier |
 | `studentFriendly` | true/false | Has a free tier or a student discount |
@@ -229,12 +236,13 @@ The full record, including what is still untested, is in
 
     npm run test
 
-There are 4 test files and 13 tests:
+There are 5 test files and 15 tests:
 
 - a component render (`Button` in three forms)
 - a user interaction (`ToolCard` Save click and saved state)
 - data state (`fetchTools` with good data, bad data, an HTTP error and a retry path)
 - the shortlist store: toggle, persistence and broken stored data
+- filtering: secondary categories, and the primary-category fallback
 
 `npm run check:app` is a separate end-to-end check. It is not part of `npm run test`
 because it needs a built site, a preview server and Chrome.
@@ -242,6 +250,7 @@ because it needs a built site, a preview server and Chrome.
 ## Docs
 
 - [Component map](docs/component-map.md)
+- [Dataset research](docs/dataset-research.md)
 - [Accessibility pass](docs/accessibility.md)
 - [Technical reflection](docs/reflection.md)
 - [AI use declaration](docs/ai-use.md)
@@ -253,6 +262,10 @@ because it needs a built site, a preview server and Chrome.
 ## Known limitations
 
 - The dataset is static and hand-written. It is not live and it can go stale.
+- The 54 tools are curated, not exhaustive. The six major assistants are in;
+  smaller and regional tools are not.
+- Pricing notes are qualitative. Exact prices and plan names change often.
+- A tool can be in more than one category, so category counts overlap.
 - `editorScore` is a personal opinion, not a survey.
 - The shortlist lives in one browser. It does not follow you to another device,
   because there are no accounts.

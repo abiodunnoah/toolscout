@@ -105,3 +105,7 @@ the code.
 
 I would also add the keyboard script earlier. It found the focus bug in minutes,
 and it would have been useful in Week 2 as well.
+
+I would audit the dataset against the names people actually search for before
+building the UI. A finder that returns nothing for "Claude" is broken, however
+clean the code is. The six assistants should have been in the first version.

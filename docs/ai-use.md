@@ -15,6 +15,8 @@ same tool for scaffolding, dataset authoring and documentation drafts.
 - Rebuilt the interface in a near-monochrome palette with one blue accent after
   the design review, using design tokens and the existing primitives rather than
   new components.
+- Researched the six assistant products from their official pricing and feature
+  pages, then added them to the dataset and the multi-category filter.
 - Drafted this declaration and the weekly note.
 
 ## What I did
@@ -22,6 +24,7 @@ same tool for scaffolding, dataset authoring and documentation drafts.
 - Set the requirements: no extension, no library added in the last week, do not
   move the frozen tags, ask before a large refactor.
 - Chose the near-monochrome direction with a blue accent and supplied the reference sites.
+- Chose the six assistants to add and asked for the first four to also appear under Coding.
 - Chose the compare limit (three tools) and the decision to keep the comparison
   in the URL rather than in a store.
 - Read the diffs before each commit and rejected or changed parts that were
@@ -34,7 +37,7 @@ same tool for scaffolding, dataset authoring and documentation drafts.
 | Check | Result |
 |---|---|
 | `npm run build` before each commit | passes |
-| `npm run test` | 4 files, 13 tests, all pass |
+| `npm run test` | 5 files, 15 tests, all pass |
 | `npm run check:app` | 20 of 20 checks pass |
 | `npm run check:a11y` | 0 axe violations in light and dark |
 | Lighthouse accessibility, five screens | 1.00 each (home was 0.96 before) |

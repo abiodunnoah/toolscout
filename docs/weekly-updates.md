@@ -80,7 +80,7 @@ Week 3 - Noah - Frontend - ToolScout
 - Compare view for two or three tools; the selection lives in the URL.
 - Accessibility pass: Lighthouse 0.96 before, 1.00 after on five screens. Contrast, skip link,
   visible labels, focus after route changes, page titles.
-- 13 Vitest tests in 4 files, plus a 20-check keyboard and layout script.
+- 15 Vitest tests in 5 files, plus a 20-check keyboard and layout script.
 - axe run on five screens in both light and dark mode: no violations.
 - Repo: github.com/abiodunnoah/toolscout · Live URL: https://toolscoutt.netlify.app/
   (the live site is still the Week 2 build until `main` is pushed)
@@ -145,9 +145,37 @@ Week 3 - Noah - Frontend - ToolScout
 **Checks after the redesign:**
 - Lighthouse **1.00** on five screens.
 - axe **0 violations** in light and dark.
-- Keyboard/layout script **20/20** at 320px. Tests **13/13**.
+- Keyboard/layout script **20/20** at 320px. Tests **15/15**.
 - Reduced motion and 24px+ targets checked.
 
 **Still open:**
 - `week-3` tag and the push to `main`. `master` is the working branch.
+
+---
+
+## Dataset expansion (1 November)
+
+**Changed:**
+- Added ChatGPT, Claude, Gemini, DeepSeek, Microsoft Copilot and Grok.
+- The dataset goes from 48 to **54** tools.
+- Added an optional `categories` list. The first four assistants also match the Coding filter;
+  cards still show one primary label plus the extras.
+- Researched the official pricing and feature pages on 1 November. The sources and findings are in
+  [`dataset-research.md`](dataset-research.md).
+- Added two filter tests. Tests are now 15 in 5 files.
+
+**Why:**
+- Searching "Claude" returned nothing. The task-first dataset had specialist tools but missed the
+  assistants people ask for by name.
+- The first four are credible coding tools, so hiding them from the Coding filter would be wrong.
+  Copilot and Grok can write code too, but their official positioning is productivity and research,
+  so their coding stays in tasks and search, not the category filter.
+- Pricing notes stay qualitative because plan names and prices change often.
+
+**Checks after the expansion:**
+- `npm run build` passes.
+- 15/15 Vitest tests.
+- 20/20 keyboard/layout checks.
+- axe 0 violations in light and dark.
+- Lighthouse 1.00 on five screens.
 
