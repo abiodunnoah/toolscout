@@ -48,6 +48,29 @@ The redesign does not use colour to carry meaning. Price is written as text, the
 saved state adds a check icon and `aria-pressed`, and the error state is labelled
 in words.
 
+## Final pass (1 November)
+
+I re-ran the full audit on the current build after the palette and 404 changes.
+
+- Lighthouse: **1.00** on all five screens. The `lighthouse-after-*.json`
+  reports were regenerated.
+- axe: **0 violations** in light and dark mode.
+- Keyboard and layout: **20 of 20** checks at 320px.
+- Reduced motion: with the OS setting on, `scroll-behavior` is `auto` and
+  transitions run at 0.01ms.
+- Compare checkbox labels measure **28px** tall, above the 24px target minimum.
+
+### Contrast results
+
+| Pair | Light | Dark | Needs |
+|---|---|---|---|
+| Body text on cards | 17.43:1 | 16.18:1 | 4.5:1 |
+| Secondary text on canvas | 6.11:1 | 8.14:1 | 4.5:1 |
+| Accent link on cards | 4.82:1 | 7.49:1 | 4.5:1 |
+| Button text on accent | 4.82:1 | 7.49:1 | 4.5:1 |
+| Focus ring on canvas | 4.54:1 | 8.19:1 | 3:1 |
+| Input border on cards | 6.50:1 | 7.44:1 | 3:1 |
+
 ## What failed in the before run
 
 The only automated failure was text contrast. These elements used `slate-500` on
@@ -69,15 +92,17 @@ Because the labels are 12px, they count as normal text and need the full 4.5:1.
 | The skip link was not the first stop | page load | The router no longer moves focus on the first load, so Tab reaches the skip link first. |
 | Focus stayed on the old page after a route change | all views | The router moves focus to the `main` region after a real route change. |
 | Focus was lost after removing a compare column | `/compare` | Focus returns to the page heading, which is stable. |
-| Input and select borders were too faint | search, sort | Borders are `slate-500` in both themes, which is at least 3:1 against the page. |
+| Input and select borders were too faint | search, sort | Borders use the `muted` token (6.5:1 on white), which is at least 3:1 against the page. |
 | The empty state appeared silently | results | The empty state has `role="status"`, so it is announced. |
 | Every page had the same document title | all views | Each route sets a title. The tool page uses the tool name. |
 | The theme choice was forgotten | every page | The choice is stored in `localStorage` and restored on the next visit. |
-| The active nav link looked like the others | header | The active link uses `aria-current="page"` and a visible background. |
+| The active nav link looked like the others | header | The active link uses `aria-current="page"` and the full ink colour. |
 | The page scrolled sideways at 320px | home, tool, saved | Bare `grid` containers let their track grow to the widest child. `grid-cols-1` at the base and `minmax(0,1fr)` on the wide layout keep every track inside the viewport. |
-| Control borders were too faint to see | search, sort | Inputs and selects use the `muted` token (5.3:1 on paper). Decorative card rules stay on the lighter `line` token. |
+| Control borders were too faint to see | search, sort | Inputs and selects use the `muted` token (6.5:1 on white). Decorative card rules stay on the lighter `line` token. |
 | Colour used to mark price and saved state | cards, detail | Price is plain text. The saved state adds a check icon, the word "Saved" and `aria-pressed`. Nothing depends on colour alone. |
 | The first monochrome pass felt flat | whole page | Added Tesla's layered greys and one blue accent. The accent is limited to primary actions, active filters, links and focus, and measures 4.8:1 on white. |
+| Smooth scrolling ignored reduced motion | home, hash links | CSS and JS check `prefers-reduced-motion`; scrolling becomes instant and transitions drop to 0.01ms. |
+| Compare checkboxes were a 20px target | `/saved` | Labels now have `py-1`, giving a 28px target. WCAG 2.2 asks for 24px. |
 
 ## Keyboard and layout check
 
@@ -129,5 +154,3 @@ Result: **0 violations, 0 console errors** in both colour schemes.
 - **Real phones.** The script uses Chrome's 320px viewport, not a physical
   device. Safari on iOS may handle focus and sticky headers differently.
 - **Zoom and reflow.** The layout was checked at 320px, not at 400% zoom.
-- **Reduced motion.** The CSS respects `prefers-reduced-motion`, but I did not
-  capture a before/after comparison.

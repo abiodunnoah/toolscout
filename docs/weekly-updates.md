@@ -146,6 +146,7 @@ Week 3 - Noah - Frontend - ToolScout
 - Lighthouse **1.00** on five screens.
 - axe **0 violations** in light and dark.
 - Keyboard/layout script **20/20** at 320px. Tests **13/13**.
+- Reduced motion and 24px+ targets checked.
 
 **Still open:**
 - `week-3` tag and the push to `main`. `master` is the working branch.

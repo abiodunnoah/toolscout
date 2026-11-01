@@ -211,6 +211,8 @@ Other changes in the pass:
 - a real table for the comparison, with row and column headers
 - one `h1` per page and a title that matches the page
 - a theme that follows the operating system and remembers your choice
+- motion is turned off when the operating system asks for less of it
+- interactive targets are at least 24px; the compare checkboxes are 28px
 
 `npm run check:app` presses keys in Chrome and checks 20 things, including Tab
 order, Enter on filters, focus after removing a compare column and the 320px layout.
