@@ -71,6 +71,22 @@ I re-ran the full audit on the current build after the palette and 404 changes.
 | Focus ring on canvas | 4.54:1 | 8.19:1 | 3:1 |
 | Input border on cards | 6.50:1 | 7.44:1 | 3:1 |
 
+## Live check (1 November)
+
+The final build was deployed from `main` at `bc28d84` to
+<https://toolscoutt.netlify.app/>. I re-ran Lighthouse on the live URLs:
+
+| URL | Score |
+|---|---|
+| `/` | 1.00 |
+| `/tool/chatgpt` | 1.00 |
+| `/saved` | 1.00 |
+| `/compare?ids=chatgpt,claude` | 1.00 |
+| `/nope` | 1.00 |
+
+No scored accessibility audit failed. This also confirms that deep links and
+the Netlify redirect work in production, not just in the local preview.
+
 ## What failed in the before run
 
 The only automated failure was text contrast. These elements used `slate-500` on

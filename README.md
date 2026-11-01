@@ -204,9 +204,10 @@ The file must stay in the shape `{ "tools": [...] }` and must not start with a B
 
 The app aims to meet WCAG 2.2 level AA. Lighthouse scored the Week 2 site at **0.96**.
 The current build scores **1.00** on all five screens, both before and after the
-near-monochrome redesign. The one automated failure was dark-mode label contrast at
-3.74:1. That is now at least 6.9:1. The blue accent is 4.8:1 on white and is used
-for primary buttons, links and the focus ring.
+near-monochrome redesign. The live site was re-checked on 1 November and scored
+**1.00** on all five live URLs. The one automated failure was dark-mode label
+contrast at 3.74:1. That is now at least 6.9:1. The blue accent is 4.8:1 on white
+and is used for primary buttons, links and the focus ring.
 
 Other changes in the pass:
 
