@@ -107,7 +107,7 @@ const errorMessage = computed(() =>
 
         <ul class="mt-5 flex flex-wrap gap-x-6 gap-y-2">
           <li v-for="tool in savedTools" :key="tool.id">
-            <label class="flex items-center gap-2 text-sm text-ink">
+            <label class="flex items-center gap-2 py-1 text-sm text-ink">
               <input
                 v-model="compareIds"
                 type="checkbox"

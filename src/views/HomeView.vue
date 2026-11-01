@@ -38,7 +38,11 @@ const errorMessage = computed(() =>
 
 const resultsSection = ref(null)
 function onSearch() {
-  resultsSection.value?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  resultsSection.value?.scrollIntoView({
+    behavior: reduceMotion ? 'auto' : 'smooth',
+    block: 'start',
+  })
 }
 </script>
 

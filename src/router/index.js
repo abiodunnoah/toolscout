@@ -47,7 +47,10 @@ export const router = createRouter({
     if (savedPosition) return savedPosition
     // A query-only change (for example, removing a compare column) keeps the page in place.
     if (to.path === from.path) return false
-    if (to.hash) return { el: to.hash, behavior: 'smooth' }
+    if (to.hash) {
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      return { el: to.hash, behavior: reduceMotion ? 'auto' : 'smooth' }
+    }
     return { top: 0 }
   },
 })
