@@ -22,6 +22,9 @@ export function isValidTool(tool) {
     typeof tool.id === 'string' &&
     typeof tool.name === 'string' &&
     typeof tool.category === 'string' &&
+    (!tool.categories ||
+      (Array.isArray(tool.categories) &&
+        tool.categories.every((category) => typeof category === 'string'))) &&
     typeof tool.price === 'string' &&
     Array.isArray(tool.tasks) &&
     Array.isArray(tool.tags) &&

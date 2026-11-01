@@ -83,7 +83,14 @@ const errorMessage = computed(() =>
             <ul
               class="mt-5 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs uppercase tracking-[0.14em] text-muted"
             >
-              <li>{{ tool.category }}</li>
+              <li
+                v-for="category in tool.categories?.length
+                  ? tool.categories
+                  : [tool.category]"
+                :key="category"
+              >
+                {{ category }}
+              </li>
               <li>{{ tool.price }}</li>
               <li v-if="tool.studentFriendly">Student friendly</li>
               <li v-if="tool.freeTier">Free tier</li>

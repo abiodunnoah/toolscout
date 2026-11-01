@@ -1,6 +1,360 @@
 {
   "tools": [
     {
+      "id": "chatgpt",
+      "name": "ChatGPT",
+      "category": "Productivity",
+      "categories": [
+        "Productivity",
+        "Coding",
+        "Writing"
+      ],
+      "price": "Freemium",
+      "freeTier": true,
+      "studentFriendly": true,
+      "pricingNote": "Free plan; paid Go, Plus and Pro plans add higher limits and Codex",
+      "tagline": "General assistant for writing, research and code",
+      "description": "OpenAI's general assistant. The free plan covers text chat, limited files, images, voice and Codex; paid plans add advanced reasoning, deeper research, projects and much more Codex. It is the obvious first stop when a task spans writing, research and code.",
+      "tasks": [
+        "draft and edit writing",
+        "summarise a document",
+        "debug and explain code",
+        "research a topic",
+        "plan a project"
+      ],
+      "tags": [
+        "general assistant",
+        "chatbot",
+        "writing",
+        "coding",
+        "research",
+        "openai"
+      ],
+      "bestFor": "Students who want one assistant for mixed writing, study and coding tasks",
+      "platforms": [
+        "Web",
+        "iOS",
+        "Android",
+        "Windows",
+        "macOS"
+      ],
+      "features": [
+        "GPT-6 chat",
+        "Codex coding agent",
+        "Deep research",
+        "File and image uploads",
+        "Projects and custom GPTs",
+        "Voice mode"
+      ],
+      "pros": [
+        "One tool covers many tasks",
+        "Strong coding and writing",
+        "Free tier is usable"
+      ],
+      "limitations": [
+        "Message and feature limits on Free",
+        "Can sound confident when wrong",
+        "Best features need a paid plan"
+      ],
+      "editorScore": 4.7,
+      "url": "https://chatgpt.com",
+      "updatedAt": "2026-11-01"
+    },
+    {
+      "id": "claude",
+      "name": "Claude",
+      "category": "Writing",
+      "categories": [
+        "Writing",
+        "Coding",
+        "Research"
+      ],
+      "price": "Freemium",
+      "freeTier": true,
+      "studentFriendly": true,
+      "pricingNote": "Free plan; Pro adds Claude Code, projects and higher limits",
+      "tagline": "Long-document writing and coding assistant",
+      "description": "Anthropic's assistant, strongest on long documents, careful editing and code. The free plan includes chat, file analysis, code execution and artifacts; Pro adds Claude Code, projects and research tools.",
+      "tasks": [
+        "edit a long document",
+        "analyse a PDF or contract",
+        "write and refactor code",
+        "summarise research",
+        "create slides or docs"
+      ],
+      "tags": [
+        "general assistant",
+        "writing",
+        "coding",
+        "research",
+        "long context",
+        "anthropic"
+      ],
+      "bestFor": "Students working with long readings, drafts or codebases",
+      "platforms": [
+        "Web",
+        "iOS",
+        "Android",
+        "Windows",
+        "macOS"
+      ],
+      "features": [
+        "Up to 1M-token context",
+        "Claude Code on paid plans",
+        "Artifacts",
+        "Projects",
+        "Web search",
+        "File and code execution"
+      ],
+      "pros": [
+        "Careful, readable writing",
+        "Strong at long documents",
+        "Good coding agent"
+      ],
+      "limitations": [
+        "Free plan has tight usage limits",
+        "No image generation",
+        "Claude Code needs a paid plan"
+      ],
+      "editorScore": 4.7,
+      "url": "https://claude.ai",
+      "updatedAt": "2026-11-01"
+    },
+    {
+      "id": "gemini",
+      "name": "Gemini",
+      "category": "Research",
+      "categories": [
+        "Research",
+        "Coding",
+        "Productivity"
+      ],
+      "price": "Freemium",
+      "freeTier": true,
+      "studentFriendly": true,
+      "pricingNote": "Free plan; Google AI plans add higher limits; student offer available",
+      "tagline": "Google assistant for research and code",
+      "description": "Google's assistant, tied into Search, Gmail, Docs and Drive. It handles deep research, long context, image and video creation, and coding through Canvas, AI Studio and Antigravity. The free plan is broad; paid plans raise limits and model access.",
+      "tasks": [
+        "research a topic with sources",
+        "summarise Gmail or Docs",
+        "generate and debug code",
+        "create images or video",
+        "build a study plan"
+      ],
+      "tags": [
+        "general assistant",
+        "research",
+        "coding",
+        "google",
+        "workspace",
+        "multimodal"
+      ],
+      "bestFor": "Students already living in Google Workspace",
+      "platforms": [
+        "Web",
+        "iOS",
+        "Android",
+        "Browser extension"
+      ],
+      "features": [
+        "Gemini Pro models",
+        "Deep Research",
+        "1M-token context",
+        "Canvas coding",
+        "Workspace integration",
+        "Image and video generation"
+      ],
+      "pros": [
+        "Deep Google app integration",
+        "Strong research and multimodal tools",
+        "Generous free tier"
+      ],
+      "limitations": [
+        "Best features need a Google AI plan",
+        "Answers vary by model and region",
+        "Workspace features need a Google account"
+      ],
+      "editorScore": 4.6,
+      "url": "https://gemini.google.com",
+      "updatedAt": "2026-11-01"
+    },
+    {
+      "id": "deepseek",
+      "name": "DeepSeek",
+      "category": "Coding",
+      "categories": [
+        "Coding",
+        "Research"
+      ],
+      "price": "Freemium",
+      "freeTier": true,
+      "studentFriendly": true,
+      "pricingNote": "Free web and mobile chat; paid API billed per token",
+      "tagline": "Free reasoning and coding assistant",
+      "description": "A free assistant from DeepSeek with a thinking mode, 1M-token context, file and image input, and strong coding benchmarks. The web and mobile chat are free; developers pay per token for the API. Data is stored in China, so keep sensitive work out.",
+      "tasks": [
+        "debug a stack trace",
+        "solve a maths problem",
+        "explain unfamiliar code",
+        "summarise a file",
+        "draft a script"
+      ],
+      "tags": [
+        "coding",
+        "reasoning",
+        "maths",
+        "free",
+        "open weights",
+        "api"
+      ],
+      "bestFor": "Budget-conscious students who want a free coding and maths second opinion",
+      "platforms": [
+        "Web",
+        "iOS",
+        "Android",
+        "API"
+      ],
+      "features": [
+        "DeepSeek V4.1 Flash",
+        "Thinking mode",
+        "1M-token context",
+        "Web search",
+        "File and image input",
+        "Open-weight models"
+      ],
+      "pros": [
+        "Free chat with no ads",
+        "Strong maths and coding",
+        "Low-cost API and open weights"
+      ],
+      "limitations": [
+        "Data stored in China; privacy risk",
+        "No image generation",
+        "Reliability and features can change"
+      ],
+      "editorScore": 4.3,
+      "url": "https://chat.deepseek.com",
+      "updatedAt": "2026-11-01"
+    },
+    {
+      "id": "microsoft-copilot",
+      "name": "Microsoft Copilot",
+      "category": "Productivity",
+      "categories": [
+        "Productivity",
+        "Writing"
+      ],
+      "price": "Freemium",
+      "freeTier": true,
+      "studentFriendly": true,
+      "pricingNote": "Free chat; Copilot in Office needs a Microsoft 365 plan",
+      "tagline": "Microsoft assistant for Office and Windows",
+      "description": "Microsoft's consumer assistant, built into Windows, Edge and Microsoft 365. The free version covers chat, web answers and images; Microsoft 365 plans add Copilot inside Word, Excel, PowerPoint and Outlook, plus Researcher, Analyst and higher limits. This is the consumer Copilot, not GitHub Copilot.",
+      "tasks": [
+        "draft an email",
+        "summarise a Word document",
+        "analyse a spreadsheet",
+        "create a slide outline",
+        "search the web"
+      ],
+      "tags": [
+        "general assistant",
+        "productivity",
+        "office",
+        "windows",
+        "writing",
+        "microsoft"
+      ],
+      "bestFor": "Students and workers who use Word, Excel and Windows every day",
+      "platforms": [
+        "Web",
+        "Windows",
+        "macOS",
+        "iOS",
+        "Android",
+        "Browser extension"
+      ],
+      "features": [
+        "Web-grounded chat",
+        "Copilot in Microsoft 365 apps",
+        "Image creation",
+        "Voice and vision",
+        "Researcher and Analyst on paid plans",
+        "Windows integration"
+      ],
+      "pros": [
+        "Deep Office integration",
+        "Free chat tier",
+        "Built into Windows and Edge"
+      ],
+      "limitations": [
+        "Office features need a Microsoft 365 plan",
+        "Not a dedicated coding tool",
+        "Consumer and work versions differ"
+      ],
+      "editorScore": 4,
+      "url": "https://copilot.microsoft.com",
+      "updatedAt": "2026-11-01"
+    },
+    {
+      "id": "grok",
+      "name": "Grok",
+      "category": "Research",
+      "categories": [
+        "Research",
+        "Productivity"
+      ],
+      "price": "Freemium",
+      "freeTier": true,
+      "studentFriendly": true,
+      "pricingNote": "Free limited chat; paid X plans raise limits and add agents",
+      "tagline": "Real-time assistant with live X search",
+      "description": "xAI's assistant, with live web and X search, step-by-step reasoning, image and video generation, and code help. The free tier is limited; paid X plans add higher limits, agents, cloud coding and Cursor.",
+      "tasks": [
+        "check breaking news",
+        "research a current topic",
+        "summarise posts and threads",
+        "write and debug code",
+        "generate an image or clip"
+      ],
+      "tags": [
+        "general assistant",
+        "research",
+        "real-time",
+        "x",
+        "coding",
+        "xai"
+      ],
+      "bestFor": "Students tracking current events or public debate",
+      "platforms": [
+        "Web",
+        "iOS",
+        "Android"
+      ],
+      "features": [
+        "Live web and X search",
+        "Multi-agent reasoning",
+        "Grok Imagine image and video",
+        "Voice mode",
+        "File and PDF analysis",
+        "Code generation"
+      ],
+      "pros": [
+        "Strong real-time search",
+        "Image, video and voice in one app",
+        "Useful multi-agent mode"
+      ],
+      "limitations": [
+        "Free usage is limited",
+        "Tied closely to X and paid plans",
+        "Less mature document and Office tools"
+      ],
+      "editorScore": 3.9,
+      "url": "https://grok.com",
+      "updatedAt": "2026-11-01"
+    },
+    {
       "id": "chatpdf",
       "name": "ChatPDF",
       "category": "Research",
@@ -10,13 +364,34 @@
       "pricingNote": "Free tier with daily limits; paid plans available",
       "tagline": "Chat with any PDF and get answers fast",
       "description": "Upload a paper or report and ask questions in plain language. ChatPDF answers with references back to the page, which makes skimming long documents much faster.",
-      "tasks": ["summarise a PDF", "ask questions about a document", "extract key points"],
-      "tags": ["pdf", "summarise", "reading", "research"],
+      "tasks": [
+        "summarise a PDF",
+        "ask questions about a document",
+        "extract key points"
+      ],
+      "tags": [
+        "pdf",
+        "summarise",
+        "reading",
+        "research"
+      ],
       "bestFor": "Students and researchers skimming long papers",
-      "platforms": ["Web"],
-      "features": ["Chat with PDFs", "Page references", "Multi-document support"],
-      "pros": ["Fast to start", "Answers cite pages"],
-      "limitations": ["Free plan limits pages per day", "No offline use"],
+      "platforms": [
+        "Web"
+      ],
+      "features": [
+        "Chat with PDFs",
+        "Page references",
+        "Multi-document support"
+      ],
+      "pros": [
+        "Fast to start",
+        "Answers cite pages"
+      ],
+      "limitations": [
+        "Free plan limits pages per day",
+        "No offline use"
+      ],
       "editorScore": 4.2,
       "url": "https://www.chatpdf.com",
       "updatedAt": "2026-10-19"
@@ -31,13 +406,34 @@
       "pricingNote": "Free tier; paid plans for teams",
       "tagline": "Find and summarise papers for a research question",
       "description": "Describe a research question and Elicit returns relevant papers with extracted summaries, so you can see the evidence without reading everything.",
-      "tasks": ["find papers for a topic", "summarise research", "build a literature review"],
-      "tags": ["papers", "research", "summarise", "citations"],
+      "tasks": [
+        "find papers for a topic",
+        "summarise research",
+        "build a literature review"
+      ],
+      "tags": [
+        "papers",
+        "research",
+        "summarise",
+        "citations"
+      ],
       "bestFor": "Early-stage literature reviews",
-      "platforms": ["Web"],
-      "features": ["Paper search", "Structured summaries", "Citation export"],
-      "pros": ["Good for scoping a topic", "Shows source papers"],
-      "limitations": ["Coverage varies by field", "Best results need a precise question"],
+      "platforms": [
+        "Web"
+      ],
+      "features": [
+        "Paper search",
+        "Structured summaries",
+        "Citation export"
+      ],
+      "pros": [
+        "Good for scoping a topic",
+        "Shows source papers"
+      ],
+      "limitations": [
+        "Coverage varies by field",
+        "Best results need a precise question"
+      ],
       "editorScore": 4.4,
       "url": "https://elicit.com",
       "updatedAt": "2026-10-19"
@@ -52,13 +448,35 @@
       "pricingNote": "Free tier with limits; paid plans available",
       "tagline": "Turn papers into summaries and flashcards",
       "description": "Breaks a research paper into a structured summary, key points and flashcards. Useful when you need to revise from a dense paper quickly.",
-      "tasks": ["summarise research papers", "extract key points", "create study flashcards"],
-      "tags": ["research", "summarise", "flashcards", "reading"],
+      "tasks": [
+        "summarise research papers",
+        "extract key points",
+        "create study flashcards"
+      ],
+      "tags": [
+        "research",
+        "summarise",
+        "flashcards",
+        "reading"
+      ],
       "bestFor": "Students revising from dense papers",
-      "platforms": ["Web", "Browser extension"],
-      "features": ["Paper summaries", "Flashcards", "Reference extraction"],
-      "pros": ["Fast structured summaries", "Good for revision"],
-      "limitations": ["Occasional extraction errors", "Works best on text-based PDFs"],
+      "platforms": [
+        "Web",
+        "Browser extension"
+      ],
+      "features": [
+        "Paper summaries",
+        "Flashcards",
+        "Reference extraction"
+      ],
+      "pros": [
+        "Fast structured summaries",
+        "Good for revision"
+      ],
+      "limitations": [
+        "Occasional extraction errors",
+        "Works best on text-based PDFs"
+      ],
       "editorScore": 4.1,
       "url": "https://www.scholarcy.com",
       "updatedAt": "2026-10-19"
@@ -73,13 +491,36 @@
       "pricingNote": "Free tier; Pro plan available",
       "tagline": "Ask questions, get answers with sources",
       "description": "Answers questions and cites the pages it used, so you can check the evidence. Good for starting research without opening a dozen tabs.",
-      "tasks": ["research a topic", "get cited answers", "compare sources"],
-      "tags": ["search", "research", "citations"],
+      "tasks": [
+        "research a topic",
+        "get cited answers",
+        "compare sources"
+      ],
+      "tags": [
+        "search",
+        "research",
+        "citations"
+      ],
       "bestFor": "Quick research with visible sources",
-      "platforms": ["Web", "iOS", "Android", "Browser extension"],
-      "features": ["Cited answers", "Follow-up questions", "Web search"],
-      "pros": ["Shows its sources", "Fast"],
-      "limitations": ["Can miss niche sources", "Answers still need checking"],
+      "platforms": [
+        "Web",
+        "iOS",
+        "Android",
+        "Browser extension"
+      ],
+      "features": [
+        "Cited answers",
+        "Follow-up questions",
+        "Web search"
+      ],
+      "pros": [
+        "Shows its sources",
+        "Fast"
+      ],
+      "limitations": [
+        "Can miss niche sources",
+        "Answers still need checking"
+      ],
       "editorScore": 4.3,
       "url": "https://www.perplexity.ai",
       "updatedAt": "2026-10-19"
@@ -94,13 +535,33 @@
       "pricingNote": "Free tier with capped searches; paid plans available",
       "tagline": "Search scientific papers for evidence",
       "description": "Searches peer-reviewed literature and summarises what studies say about a question. Helpful for checking whether a claim is actually supported.",
-      "tasks": ["find evidence", "check what studies say", "answer research questions"],
-      "tags": ["papers", "evidence", "research"],
+      "tasks": [
+        "find evidence",
+        "check what studies say",
+        "answer research questions"
+      ],
+      "tags": [
+        "papers",
+        "evidence",
+        "research"
+      ],
       "bestFor": "Evidence-based questions",
-      "platforms": ["Web"],
-      "features": ["Paper search", "Evidence summaries", "Study quality signals"],
-      "pros": ["Focuses on peer-reviewed work", "Clear evidence summaries"],
-      "limitations": ["Limited to indexed papers", "Free searches are capped"],
+      "platforms": [
+        "Web"
+      ],
+      "features": [
+        "Paper search",
+        "Evidence summaries",
+        "Study quality signals"
+      ],
+      "pros": [
+        "Focuses on peer-reviewed work",
+        "Clear evidence summaries"
+      ],
+      "limitations": [
+        "Limited to indexed papers",
+        "Free searches are capped"
+      ],
       "editorScore": 4.2,
       "url": "https://consensus.app",
       "updatedAt": "2026-10-19"
@@ -115,14 +576,35 @@
       "pricingNote": "Free tier; subscription for full features",
       "tagline": "See how papers cite each other",
       "description": "Shows whether later papers support or contrast a claim, with the citing context. Useful when judging how well supported a paper really is.",
-      "tasks": ["check citation context", "evaluate a paper", "literature review"],
-      "tags": ["citations", "research", "papers"],
+      "tasks": [
+        "check citation context",
+        "evaluate a paper",
+        "literature review"
+      ],
+      "tags": [
+        "citations",
+        "research",
+        "papers"
+      ],
       "bestFor": "Judging whether a paper is well supported",
-      "platforms": ["Web", "Browser extension"],
-      "features": ["Citation context", "Reference checks", "Paper metrics"],
-      "pros": ["Separates supporting and contrasting citations", "Useful for critical reading"],
-      "limitations": ["Coverage depends on indexing", "Full features need a subscription"],
-      "editorScore": 4.0,
+      "platforms": [
+        "Web",
+        "Browser extension"
+      ],
+      "features": [
+        "Citation context",
+        "Reference checks",
+        "Paper metrics"
+      ],
+      "pros": [
+        "Separates supporting and contrasting citations",
+        "Useful for critical reading"
+      ],
+      "limitations": [
+        "Coverage depends on indexing",
+        "Full features need a subscription"
+      ],
+      "editorScore": 4,
       "url": "https://scite.ai",
       "updatedAt": "2026-10-19"
     },
@@ -136,18 +618,37 @@
       "pricingNote": "Free tier; paid plans available",
       "tagline": "Read, explain and organise research papers",
       "description": "Explains unfamiliar papers, suggests related work and keeps a reference library. Good when you are reading outside your own field.",
-      "tasks": ["explain a paper", "find related work", "manage references"],
-      "tags": ["papers", "reading", "research"],
+      "tasks": [
+        "explain a paper",
+        "find related work",
+        "manage references"
+      ],
+      "tags": [
+        "papers",
+        "reading",
+        "research"
+      ],
       "bestFor": "Reading unfamiliar papers",
-      "platforms": ["Web"],
-      "features": ["Paper explanations", "Related-paper discovery", "Reference library"],
-      "pros": ["Good for unfamiliar fields", "Combines reading and library"],
-      "limitations": ["Interface can feel busy", "Some features need a plan"],
+      "platforms": [
+        "Web"
+      ],
+      "features": [
+        "Paper explanations",
+        "Related-paper discovery",
+        "Reference library"
+      ],
+      "pros": [
+        "Good for unfamiliar fields",
+        "Combines reading and library"
+      ],
+      "limitations": [
+        "Interface can feel busy",
+        "Some features need a plan"
+      ],
       "editorScore": 3.9,
       "url": "https://scispace.com",
       "updatedAt": "2026-10-19"
     },
-  
     {
       "id": "grammarly",
       "name": "Grammarly",
@@ -158,14 +659,38 @@
       "pricingNote": "Free tier; Premium adds tone and plagiarism checks",
       "tagline": "Grammar, spelling and tone checks as you write",
       "description": "Checks grammar, clarity and tone in the browser, Word or Google Docs. The free tier covers the basics; Premium adds tone and plagiarism checks.",
-      "tasks": ["check grammar", "improve clarity", "adjust tone"],
-      "tags": ["writing", "grammar", "editing", "proofreading"],
+      "tasks": [
+        "check grammar",
+        "improve clarity",
+        "adjust tone"
+      ],
+      "tags": [
+        "writing",
+        "grammar",
+        "editing",
+        "proofreading"
+      ],
       "bestFor": "Essays and emails that need a second pair of eyes",
-      "platforms": ["Web", "Windows", "macOS", "Browser extension"],
-      "features": ["Grammar checks", "Tone suggestions", "Plagiarism check (Premium)"],
-      "pros": ["Works where you write", "Clear explanations"],
-      "limitations": ["Best features are paid", "Suggestions can flatten your voice"],
-      "editorScore": 4.0,
+      "platforms": [
+        "Web",
+        "Windows",
+        "macOS",
+        "Browser extension"
+      ],
+      "features": [
+        "Grammar checks",
+        "Tone suggestions",
+        "Plagiarism check (Premium)"
+      ],
+      "pros": [
+        "Works where you write",
+        "Clear explanations"
+      ],
+      "limitations": [
+        "Best features are paid",
+        "Suggestions can flatten your voice"
+      ],
+      "editorScore": 4,
       "url": "https://www.grammarly.com",
       "updatedAt": "2026-10-19"
     },
@@ -179,13 +704,36 @@
       "pricingNote": "Free tier with word limits; paid plans available",
       "tagline": "Paraphrase and rewrite text clearly",
       "description": "Rewrites sentences and paragraphs in different tones, and includes a grammar checker. Useful for tightening a draft without starting over.",
-      "tasks": ["paraphrase text", "shorten a sentence", "check grammar"],
-      "tags": ["writing", "paraphrase", "editing"],
+      "tasks": [
+        "paraphrase text",
+        "shorten a sentence",
+        "check grammar"
+      ],
+      "tags": [
+        "writing",
+        "paraphrase",
+        "editing"
+      ],
       "bestFor": "Rewriting drafts in your own words",
-      "platforms": ["Web", "Windows", "macOS", "Browser extension"],
-      "features": ["Paraphrasing", "Grammar check", "Summariser"],
-      "pros": ["Quick rewrites", "Useful synonym modes"],
-      "limitations": ["Free mode limits words", "Can sound generic"],
+      "platforms": [
+        "Web",
+        "Windows",
+        "macOS",
+        "Browser extension"
+      ],
+      "features": [
+        "Paraphrasing",
+        "Grammar check",
+        "Summariser"
+      ],
+      "pros": [
+        "Quick rewrites",
+        "Useful synonym modes"
+      ],
+      "limitations": [
+        "Free mode limits words",
+        "Can sound generic"
+      ],
       "editorScore": 3.9,
       "url": "https://quillbot.com",
       "updatedAt": "2026-10-19"
@@ -200,13 +748,38 @@
       "pricingNote": "Free tier with length limits; paid plans available",
       "tagline": "Accurate translation across languages",
       "description": "Translates text and documents with unusually natural phrasing. The free tier is enough for most coursework, with limits on length.",
-      "tasks": ["translate text", "translate a document", "check phrasing"],
-      "tags": ["translation", "writing", "language"],
+      "tasks": [
+        "translate text",
+        "translate a document",
+        "check phrasing"
+      ],
+      "tags": [
+        "translation",
+        "writing",
+        "language"
+      ],
       "bestFor": "Translating academic and everyday text",
-      "platforms": ["Web", "iOS", "Android", "Windows", "macOS", "Browser extension"],
-      "features": ["Text translation", "Document translation", "Formal and informal tone"],
-      "pros": ["Natural translations", "Document support"],
-      "limitations": ["Free tier has length limits", "Nuance still needs a human check"],
+      "platforms": [
+        "Web",
+        "iOS",
+        "Android",
+        "Windows",
+        "macOS",
+        "Browser extension"
+      ],
+      "features": [
+        "Text translation",
+        "Document translation",
+        "Formal and informal tone"
+      ],
+      "pros": [
+        "Natural translations",
+        "Document support"
+      ],
+      "limitations": [
+        "Free tier has length limits",
+        "Nuance still needs a human check"
+      ],
       "editorScore": 4.5,
       "url": "https://www.deepl.com",
       "updatedAt": "2026-10-19"
@@ -221,13 +794,34 @@
       "pricingNote": "Paid subscription only",
       "tagline": "AI copywriting for marketing content",
       "description": "Generates marketing copy at scale, with brand-voice settings and campaign workflows. Aimed at teams producing a lot of promotional text.",
-      "tasks": ["write marketing copy", "draft blog posts", "generate social posts"],
-      "tags": ["writing", "marketing", "copywriting"],
+      "tasks": [
+        "write marketing copy",
+        "draft blog posts",
+        "generate social posts"
+      ],
+      "tags": [
+        "writing",
+        "marketing",
+        "copywriting"
+      ],
       "bestFor": "Marketing teams producing lots of copy",
-      "platforms": ["Web", "Browser extension"],
-      "features": ["Brand voice", "Templates", "Campaign workflows"],
-      "pros": ["Strong for marketing copy", "Brand consistency tools"],
-      "limitations": ["Expensive for students", "Output needs editing"],
+      "platforms": [
+        "Web",
+        "Browser extension"
+      ],
+      "features": [
+        "Brand voice",
+        "Templates",
+        "Campaign workflows"
+      ],
+      "pros": [
+        "Strong for marketing copy",
+        "Brand consistency tools"
+      ],
+      "limitations": [
+        "Expensive for students",
+        "Output needs editing"
+      ],
       "editorScore": 3.7,
       "url": "https://www.jasper.ai",
       "updatedAt": "2026-10-19"
@@ -242,13 +836,33 @@
       "pricingNote": "Free tier; paid plans available",
       "tagline": "Generate short-form marketing copy",
       "description": "Produces first drafts of product descriptions, emails and headlines from a short prompt. Best treated as a starting point rather than a finished draft.",
-      "tasks": ["write product copy", "draft emails", "brainstorm headlines"],
-      "tags": ["writing", "marketing", "copywriting"],
+      "tasks": [
+        "write product copy",
+        "draft emails",
+        "brainstorm headlines"
+      ],
+      "tags": [
+        "writing",
+        "marketing",
+        "copywriting"
+      ],
       "bestFor": "Quick first drafts of marketing text",
-      "platforms": ["Web"],
-      "features": ["Copy templates", "Workflows", "Brand voice"],
-      "pros": ["Fast first drafts", "Many templates"],
-      "limitations": ["Generic without editing", "Best features are paid"],
+      "platforms": [
+        "Web"
+      ],
+      "features": [
+        "Copy templates",
+        "Workflows",
+        "Brand voice"
+      ],
+      "pros": [
+        "Fast first drafts",
+        "Many templates"
+      ],
+      "limitations": [
+        "Generic without editing",
+        "Best features are paid"
+      ],
       "editorScore": 3.6,
       "url": "https://www.copy.ai",
       "updatedAt": "2026-10-19"
@@ -263,13 +877,33 @@
       "pricingNote": "Free web editor; paid desktop app",
       "tagline": "Highlight unclear, wordy writing",
       "description": "Flags long sentences, passive voice and complex wording, then gives a readability score. A focused tool rather than a full writing assistant.",
-      "tasks": ["simplify sentences", "improve readability", "edit an essay"],
-      "tags": ["writing", "editing", "readability"],
+      "tasks": [
+        "simplify sentences",
+        "improve readability",
+        "edit an essay"
+      ],
+      "tags": [
+        "writing",
+        "editing",
+        "readability"
+      ],
       "bestFor": "Tightening essays and reports",
-      "platforms": ["Web"],
-      "features": ["Readability score", "Passive-voice flags", "Wordy-sentence highlights"],
-      "pros": ["Simple and focused", "Encourages clearer writing"],
-      "limitations": ["No AI rewriting", "Desktop app is paid"],
+      "platforms": [
+        "Web"
+      ],
+      "features": [
+        "Readability score",
+        "Passive-voice flags",
+        "Wordy-sentence highlights"
+      ],
+      "pros": [
+        "Simple and focused",
+        "Encourages clearer writing"
+      ],
+      "limitations": [
+        "No AI rewriting",
+        "Desktop app is paid"
+      ],
       "editorScore": 3.8,
       "url": "https://hemingwayapp.com",
       "updatedAt": "2026-10-19"
@@ -284,18 +918,38 @@
       "pricingNote": "Free plan with daily limits; paid plans available",
       "tagline": "Rewrite sentences to match your tone",
       "description": "Suggests alternative ways to phrase a sentence, including tone and length variants. Helps when a sentence is technically fine but reads awkwardly.",
-      "tasks": ["rewrite a sentence", "adjust tone", "shorten text"],
-      "tags": ["writing", "rewriting", "editing"],
+      "tasks": [
+        "rewrite a sentence",
+        "adjust tone",
+        "shorten text"
+      ],
+      "tags": [
+        "writing",
+        "rewriting",
+        "editing"
+      ],
       "bestFor": "Polishing academic and professional prose",
-      "platforms": ["Web", "Browser extension"],
-      "features": ["Sentence rewrites", "Tone options", "Summaries"],
-      "pros": ["Good tone control", "Works in the browser"],
-      "limitations": ["Free plan is limited", "Suggestions need judgement"],
+      "platforms": [
+        "Web",
+        "Browser extension"
+      ],
+      "features": [
+        "Sentence rewrites",
+        "Tone options",
+        "Summaries"
+      ],
+      "pros": [
+        "Good tone control",
+        "Works in the browser"
+      ],
+      "limitations": [
+        "Free plan is limited",
+        "Suggestions need judgement"
+      ],
       "editorScore": 3.9,
       "url": "https://www.wordtune.com",
       "updatedAt": "2026-10-19"
     },
-  
     {
       "id": "github-copilot",
       "name": "GitHub Copilot",
@@ -306,13 +960,36 @@
       "pricingNote": "Free tier; free for verified students; paid plans",
       "tagline": "AI pair programmer in your editor",
       "description": "Suggests code as you type and answers questions in the editor. Works across common IDEs and is free for verified students.",
-      "tasks": ["autocomplete code", "write tests", "explain code"],
-      "tags": ["coding", "autocomplete", "editor"],
+      "tasks": [
+        "autocomplete code",
+        "write tests",
+        "explain code"
+      ],
+      "tags": [
+        "coding",
+        "autocomplete",
+        "editor"
+      ],
       "bestFor": "Day-to-day coding in an IDE",
-      "platforms": ["Windows", "macOS", "Linux", "Browser extension"],
-      "features": ["Inline suggestions", "Chat in editor", "Test generation"],
-      "pros": ["Works across editors", "Free for verified students"],
-      "limitations": ["Suggestions need review", "Best features are paid"],
+      "platforms": [
+        "Windows",
+        "macOS",
+        "Linux",
+        "Browser extension"
+      ],
+      "features": [
+        "Inline suggestions",
+        "Chat in editor",
+        "Test generation"
+      ],
+      "pros": [
+        "Works across editors",
+        "Free for verified students"
+      ],
+      "limitations": [
+        "Suggestions need review",
+        "Best features are paid"
+      ],
       "editorScore": 4.4,
       "url": "https://github.com/features/copilot",
       "updatedAt": "2026-10-19"
@@ -327,13 +1004,35 @@
       "pricingNote": "Free tier; paid plans for heavy use",
       "tagline": "AI-first code editor",
       "description": "A code editor built around AI edits, with chat that understands the whole project. Strong at changing several files from one instruction.",
-      "tasks": ["edit code with AI", "refactor a file", "ask about a codebase"],
-      "tags": ["coding", "editor", "refactor"],
+      "tasks": [
+        "edit code with AI",
+        "refactor a file",
+        "ask about a codebase"
+      ],
+      "tags": [
+        "coding",
+        "editor",
+        "refactor"
+      ],
       "bestFor": "Editing and refactoring whole files",
-      "platforms": ["Windows", "macOS", "Linux"],
-      "features": ["Codebase chat", "Multi-file edits", "Inline AI"],
-      "pros": ["Strong whole-file edits", "Good codebase context"],
-      "limitations": ["New editor to learn", "Paid tiers for heavy use"],
+      "platforms": [
+        "Windows",
+        "macOS",
+        "Linux"
+      ],
+      "features": [
+        "Codebase chat",
+        "Multi-file edits",
+        "Inline AI"
+      ],
+      "pros": [
+        "Strong whole-file edits",
+        "Good codebase context"
+      ],
+      "limitations": [
+        "New editor to learn",
+        "Paid tiers for heavy use"
+      ],
       "editorScore": 4.5,
       "url": "https://cursor.com",
       "updatedAt": "2026-10-19"
@@ -348,13 +1047,36 @@
       "pricingNote": "Free tier; team plans available",
       "tagline": "Private code completion for teams",
       "description": "Completes code with a focus on privacy, including options to keep models inside your own infrastructure. Aimed at teams with strict data rules.",
-      "tasks": ["autocomplete code", "keep code private", "generate tests"],
-      "tags": ["coding", "autocomplete", "privacy"],
+      "tasks": [
+        "autocomplete code",
+        "keep code private",
+        "generate tests"
+      ],
+      "tags": [
+        "coding",
+        "autocomplete",
+        "privacy"
+      ],
       "bestFor": "Teams with privacy requirements",
-      "platforms": ["Windows", "macOS", "Linux", "API"],
-      "features": ["Code completion", "Private deployment", "Test generation"],
-      "pros": ["Privacy-focused", "Works in many IDEs"],
-      "limitations": ["Weaker than rivals on large models", "Team features are paid"],
+      "platforms": [
+        "Windows",
+        "macOS",
+        "Linux",
+        "API"
+      ],
+      "features": [
+        "Code completion",
+        "Private deployment",
+        "Test generation"
+      ],
+      "pros": [
+        "Privacy-focused",
+        "Works in many IDEs"
+      ],
+      "limitations": [
+        "Weaker than rivals on large models",
+        "Team features are paid"
+      ],
       "editorScore": 3.7,
       "url": "https://www.tabnine.com",
       "updatedAt": "2026-10-19"
@@ -369,14 +1091,36 @@
       "pricingNote": "Free tier with limited compute; paid plans available",
       "tagline": "Build and run apps in the browser",
       "description": "A browser-based coding environment with an AI agent that can scaffold and run projects. Good for prototypes when you do not want to set up a local toolchain.",
-      "tasks": ["build a small app", "run code online", "learn to code"],
-      "tags": ["coding", "browser", "learning"],
+      "tasks": [
+        "build a small app",
+        "run code online",
+        "learn to code"
+      ],
+      "tags": [
+        "coding",
+        "browser",
+        "learning"
+      ],
       "bestFor": "Prototyping without local setup",
-      "platforms": ["Web", "iOS", "Android"],
-      "features": ["Browser IDE", "AI agent", "Hosting"],
-      "pros": ["No setup needed", "Easy sharing"],
-      "limitations": ["Free compute is limited", "Large projects outgrow it"],
-      "editorScore": 4.0,
+      "platforms": [
+        "Web",
+        "iOS",
+        "Android"
+      ],
+      "features": [
+        "Browser IDE",
+        "AI agent",
+        "Hosting"
+      ],
+      "pros": [
+        "No setup needed",
+        "Easy sharing"
+      ],
+      "limitations": [
+        "Free compute is limited",
+        "Large projects outgrow it"
+      ],
+      "editorScore": 4,
       "url": "https://replit.com",
       "updatedAt": "2026-10-19"
     },
@@ -390,13 +1134,35 @@
       "pricingNote": "Free tier; credit-based paid plans",
       "tagline": "AI agent that edits your project",
       "description": "An editor with an agent that can make multi-file changes from a single prompt. Useful for larger refactors where you would rather review a diff than type.",
-      "tasks": ["refactor a project", "build a feature", "explain code"],
-      "tags": ["coding", "agent", "refactor"],
+      "tasks": [
+        "refactor a project",
+        "build a feature",
+        "explain code"
+      ],
+      "tags": [
+        "coding",
+        "agent",
+        "refactor"
+      ],
       "bestFor": "Multi-file changes from one prompt",
-      "platforms": ["Windows", "macOS", "Linux"],
-      "features": ["Agentic editing", "Project context", "Inline suggestions"],
-      "pros": ["Handles multi-file edits", "Good project awareness"],
-      "limitations": ["Can over-edit", "Credit-based pricing"],
+      "platforms": [
+        "Windows",
+        "macOS",
+        "Linux"
+      ],
+      "features": [
+        "Agentic editing",
+        "Project context",
+        "Inline suggestions"
+      ],
+      "pros": [
+        "Handles multi-file edits",
+        "Good project awareness"
+      ],
+      "limitations": [
+        "Can over-edit",
+        "Credit-based pricing"
+      ],
       "editorScore": 4.2,
       "url": "https://windsurf.com",
       "updatedAt": "2026-10-19"
@@ -411,13 +1177,36 @@
       "pricingNote": "Free tier; paid plans available",
       "tagline": "Ask questions across large codebases",
       "description": "Answers questions using your repository as context, which helps when joining an unfamiliar project. Also suggests inline edits and tests.",
-      "tasks": ["search a codebase", "explain code", "write code from context"],
-      "tags": ["coding", "search", "codebase"],
+      "tasks": [
+        "search a codebase",
+        "explain code",
+        "write code from context"
+      ],
+      "tags": [
+        "coding",
+        "search",
+        "codebase"
+      ],
       "bestFor": "Navigating unfamiliar repos",
-      "platforms": ["Web", "Windows", "macOS", "Linux"],
-      "features": ["Codebase search", "Chat with context", "Inline edits"],
-      "pros": ["Great for large repos", "Understands context"],
-      "limitations": ["Setup needed for self-hosting", "Free tier limits chats"],
+      "platforms": [
+        "Web",
+        "Windows",
+        "macOS",
+        "Linux"
+      ],
+      "features": [
+        "Codebase search",
+        "Chat with context",
+        "Inline edits"
+      ],
+      "pros": [
+        "Great for large repos",
+        "Understands context"
+      ],
+      "limitations": [
+        "Setup needed for self-hosting",
+        "Free tier limits chats"
+      ],
       "editorScore": 3.9,
       "url": "https://sourcegraph.com/cody",
       "updatedAt": "2026-10-19"
@@ -432,18 +1221,40 @@
       "pricingNote": "Free tier; paid professional plan",
       "tagline": "AI assistant for AWS and code",
       "description": "Suggests code and answers AWS questions inside the editor and console. Most valuable if your project already runs on AWS.",
-      "tasks": ["write cloud code", "ask about AWS", "generate tests"],
-      "tags": ["coding", "cloud", "aws"],
+      "tasks": [
+        "write cloud code",
+        "ask about AWS",
+        "generate tests"
+      ],
+      "tags": [
+        "coding",
+        "cloud",
+        "aws"
+      ],
       "bestFor": "Developers working in AWS",
-      "platforms": ["Web", "Windows", "macOS", "Linux"],
-      "features": ["Code suggestions", "AWS guidance", "Security scans"],
-      "pros": ["Deep AWS knowledge", "Security scanning"],
-      "limitations": ["Best value inside AWS", "Less general than rivals"],
+      "platforms": [
+        "Web",
+        "Windows",
+        "macOS",
+        "Linux"
+      ],
+      "features": [
+        "Code suggestions",
+        "AWS guidance",
+        "Security scans"
+      ],
+      "pros": [
+        "Deep AWS knowledge",
+        "Security scanning"
+      ],
+      "limitations": [
+        "Best value inside AWS",
+        "Less general than rivals"
+      ],
       "editorScore": 3.8,
       "url": "https://aws.amazon.com/q/developer/",
       "updatedAt": "2026-10-19"
     },
-  
     {
       "id": "otter",
       "name": "Otter.ai",
@@ -454,14 +1265,37 @@
       "pricingNote": "Free tier with monthly minutes; paid plans available",
       "tagline": "Transcribe lectures and meetings",
       "description": "Records and transcribes speech with speaker labels, then produces searchable notes. Handy for reviewing a lecture you could not keep up with live.",
-      "tasks": ["transcribe a lecture", "summarise a meeting", "take notes"],
-      "tags": ["transcription", "study", "notes"],
+      "tasks": [
+        "transcribe a lecture",
+        "summarise a meeting",
+        "take notes"
+      ],
+      "tags": [
+        "transcription",
+        "study",
+        "notes"
+      ],
       "bestFor": "Recording and reviewing lectures",
-      "platforms": ["Web", "iOS", "Android", "Browser extension"],
-      "features": ["Live transcription", "Speaker labels", "Summaries"],
-      "pros": ["Good speaker separation", "Searchable notes"],
-      "limitations": ["Free minutes are limited", "Accents can trip it"],
-      "editorScore": 4.0,
+      "platforms": [
+        "Web",
+        "iOS",
+        "Android",
+        "Browser extension"
+      ],
+      "features": [
+        "Live transcription",
+        "Speaker labels",
+        "Summaries"
+      ],
+      "pros": [
+        "Good speaker separation",
+        "Searchable notes"
+      ],
+      "limitations": [
+        "Free minutes are limited",
+        "Accents can trip it"
+      ],
+      "editorScore": 4,
       "url": "https://otter.ai",
       "updatedAt": "2026-10-19"
     },
@@ -475,13 +1309,35 @@
       "pricingNote": "Free tier; paid plan for AI features",
       "tagline": "Flashcards and practice tests",
       "description": "Builds flashcards and practice tests, with a large library of sets made by other students. The AI features are mostly behind the paid plan.",
-      "tasks": ["make flashcards", "revise for a test", "practise questions"],
-      "tags": ["study", "flashcards", "revision"],
+      "tasks": [
+        "make flashcards",
+        "revise for a test",
+        "practise questions"
+      ],
+      "tags": [
+        "study",
+        "flashcards",
+        "revision"
+      ],
       "bestFor": "Memorising terms and definitions",
-      "platforms": ["Web", "iOS", "Android"],
-      "features": ["Flashcards", "Practice tests", "Study guides"],
-      "pros": ["Huge existing set library", "Good spaced repetition"],
-      "limitations": ["AI features are paid", "User-made sets vary in quality"],
+      "platforms": [
+        "Web",
+        "iOS",
+        "Android"
+      ],
+      "features": [
+        "Flashcards",
+        "Practice tests",
+        "Study guides"
+      ],
+      "pros": [
+        "Huge existing set library",
+        "Good spaced repetition"
+      ],
+      "limitations": [
+        "AI features are paid",
+        "User-made sets vary in quality"
+      ],
       "editorScore": 3.8,
       "url": "https://quizlet.com",
       "updatedAt": "2026-10-19"
@@ -496,13 +1352,33 @@
       "pricingNote": "Free tier with upload limits; paid plans available",
       "tagline": "Turn course material into study aids",
       "description": "Turns notes and documents into flashcards, quizzes and explanations. Best when you already have decent notes to feed it.",
-      "tasks": ["summarise notes", "create a quiz", "explain a concept"],
-      "tags": ["study", "notes", "quizzes"],
+      "tasks": [
+        "summarise notes",
+        "create a quiz",
+        "explain a concept"
+      ],
+      "tags": [
+        "study",
+        "notes",
+        "quizzes"
+      ],
       "bestFor": "Turning lecture notes into revision material",
-      "platforms": ["Web"],
-      "features": ["Notes to flashcards", "Practice quizzes", "AI tutor"],
-      "pros": ["Fast revision material", "Varied formats"],
-      "limitations": ["Upload limits on free plan", "Quality depends on your notes"],
+      "platforms": [
+        "Web"
+      ],
+      "features": [
+        "Notes to flashcards",
+        "Practice quizzes",
+        "AI tutor"
+      ],
+      "pros": [
+        "Fast revision material",
+        "Varied formats"
+      ],
+      "limitations": [
+        "Upload limits on free plan",
+        "Quality depends on your notes"
+      ],
       "editorScore": 3.7,
       "url": "https://www.studyfetch.com",
       "updatedAt": "2026-10-19"
@@ -517,13 +1393,35 @@
       "pricingNote": "Free tier; paid plans available",
       "tagline": "Ask questions about your own sources",
       "description": "Answers questions using only the documents you upload, with citations back to the source. Good for working through a set of readings without losing track of where an answer came from.",
-      "tasks": ["summarise sources", "ask about documents", "make study notes"],
-      "tags": ["study", "research", "sources"],
+      "tasks": [
+        "summarise sources",
+        "ask about documents",
+        "make study notes"
+      ],
+      "tags": [
+        "study",
+        "research",
+        "sources"
+      ],
       "bestFor": "Working through a set of readings",
-      "platforms": ["Web", "iOS", "Android"],
-      "features": ["Source-grounded answers", "Citations", "Audio overview"],
-      "pros": ["Answers stay tied to sources", "Handles many documents"],
-      "limitations": ["Needs good source documents", "Audio overview is a novelty for some"],
+      "platforms": [
+        "Web",
+        "iOS",
+        "Android"
+      ],
+      "features": [
+        "Source-grounded answers",
+        "Citations",
+        "Audio overview"
+      ],
+      "pros": [
+        "Answers stay tied to sources",
+        "Handles many documents"
+      ],
+      "limitations": [
+        "Needs good source documents",
+        "Audio overview is a novelty for some"
+      ],
       "editorScore": 4.4,
       "url": "https://notebooklm.google.com",
       "updatedAt": "2026-10-19"
@@ -538,13 +1436,33 @@
       "pricingNote": "Paid subscription",
       "tagline": "AI tutor that guides rather than answers",
       "description": "A tutoring assistant that asks questions and nudges you toward the answer instead of handing it over. Built around school-level subjects.",
-      "tasks": ["get tutored", "practise maths", "understand a concept"],
-      "tags": ["study", "tutoring", "learning"],
+      "tasks": [
+        "get tutored",
+        "practise maths",
+        "understand a concept"
+      ],
+      "tags": [
+        "study",
+        "tutoring",
+        "learning"
+      ],
       "bestFor": "Guided practice in school subjects",
-      "platforms": ["Web"],
-      "features": ["Socratic tutoring", "Practice problems", "Teacher tools"],
-      "pros": ["Encourages reasoning", "Curriculum-aligned"],
-      "limitations": ["Paid subscription", "Focused on school-level content"],
+      "platforms": [
+        "Web"
+      ],
+      "features": [
+        "Socratic tutoring",
+        "Practice problems",
+        "Teacher tools"
+      ],
+      "pros": [
+        "Encourages reasoning",
+        "Curriculum-aligned"
+      ],
+      "limitations": [
+        "Paid subscription",
+        "Focused on school-level content"
+      ],
       "editorScore": 3.9,
       "url": "https://www.khanmigo.ai",
       "updatedAt": "2026-10-19"
@@ -559,13 +1477,34 @@
       "pricingNote": "Free",
       "tagline": "Photo-based homework explanations",
       "description": "Point your phone at a question and get an explanation with related resources. Simple and free, though explanations can be shallow.",
-      "tasks": ["explain homework", "solve a problem", "understand a topic"],
-      "tags": ["study", "homework", "learning"],
+      "tasks": [
+        "explain homework",
+        "solve a problem",
+        "understand a topic"
+      ],
+      "tags": [
+        "study",
+        "homework",
+        "learning"
+      ],
       "bestFor": "Quick help on school questions",
-      "platforms": ["iOS", "Android"],
-      "features": ["Photo questions", "Step explanations", "Related resources"],
-      "pros": ["Free and fast", "Handles photos"],
-      "limitations": ["Mobile only", "Explanations can be shallow"],
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "features": [
+        "Photo questions",
+        "Step explanations",
+        "Related resources"
+      ],
+      "pros": [
+        "Free and fast",
+        "Handles photos"
+      ],
+      "limitations": [
+        "Mobile only",
+        "Explanations can be shallow"
+      ],
       "editorScore": 3.6,
       "url": "https://socratic.org",
       "updatedAt": "2026-10-19"
@@ -580,18 +1519,37 @@
       "pricingNote": "Free tier with limits; paid plans available",
       "tagline": "Notes and quizzes from lecture recordings",
       "description": "Turns recorded lectures into summaries, quizzes and flashcards. Saves note-taking time when you already record your classes.",
-      "tasks": ["summarise a lecture", "make a quiz", "revise notes"],
-      "tags": ["study", "lectures", "notes"],
+      "tasks": [
+        "summarise a lecture",
+        "make a quiz",
+        "revise notes"
+      ],
+      "tags": [
+        "study",
+        "lectures",
+        "notes"
+      ],
       "bestFor": "Turning recorded lectures into revision",
-      "platforms": ["Web"],
-      "features": ["Lecture summaries", "Quiz generation", "Flashcards"],
-      "pros": ["Saves note-taking time", "Multiple study formats"],
-      "limitations": ["Transcription errors carry through", "Free tier is limited"],
+      "platforms": [
+        "Web"
+      ],
+      "features": [
+        "Lecture summaries",
+        "Quiz generation",
+        "Flashcards"
+      ],
+      "pros": [
+        "Saves note-taking time",
+        "Multiple study formats"
+      ],
+      "limitations": [
+        "Transcription errors carry through",
+        "Free tier is limited"
+      ],
       "editorScore": 3.6,
       "url": "https://www.turbolearn.ai",
       "updatedAt": "2026-10-19"
     },
-  
     {
       "id": "canva-magic",
       "name": "Canva Magic Studio",
@@ -602,14 +1560,38 @@
       "pricingNote": "Free tier; Pro adds more AI tools",
       "tagline": "Generate designs and presentations",
       "description": "Generates layouts, images and presentation slides from a prompt, using templates as a starting point. Easy to get something presentable without design experience.",
-      "tasks": ["make a presentation", "design a poster", "generate images"],
-      "tags": ["design", "slides", "images"],
+      "tasks": [
+        "make a presentation",
+        "design a poster",
+        "generate images"
+      ],
+      "tags": [
+        "design",
+        "slides",
+        "images"
+      ],
       "bestFor": "Quick visual material without design skills",
-      "platforms": ["Web", "iOS", "Android", "Windows", "macOS"],
-      "features": ["Magic design", "Text to image", "Templates"],
-      "pros": ["Very easy to start", "Huge template library"],
-      "limitations": ["Output can look templated", "Best features need Pro"],
-      "editorScore": 4.0,
+      "platforms": [
+        "Web",
+        "iOS",
+        "Android",
+        "Windows",
+        "macOS"
+      ],
+      "features": [
+        "Magic design",
+        "Text to image",
+        "Templates"
+      ],
+      "pros": [
+        "Very easy to start",
+        "Huge template library"
+      ],
+      "limitations": [
+        "Output can look templated",
+        "Best features need Pro"
+      ],
+      "editorScore": 4,
       "url": "https://www.canva.com/magic-studio/",
       "updatedAt": "2026-10-19"
     },
@@ -623,13 +1605,35 @@
       "pricingNote": "Free tier; paid plans for teams",
       "tagline": "AI helpers inside a design tool",
       "description": "Adds AI features to an existing UI design workflow: generating layouts, renaming layers and drafting placeholder text.",
-      "tasks": ["prototype an interface", "generate UI copy", "rename layers"],
-      "tags": ["design", "ui", "prototype"],
+      "tasks": [
+        "prototype an interface",
+        "generate UI copy",
+        "rename layers"
+      ],
+      "tags": [
+        "design",
+        "ui",
+        "prototype"
+      ],
       "bestFor": "UI design and prototyping",
-      "platforms": ["Web", "Windows", "macOS"],
-      "features": ["Auto layer naming", "UI generation", "Prototyping"],
-      "pros": ["Fits an existing design workflow", "Strong collaboration"],
-      "limitations": ["AI features are still limited", "Learning curve"],
+      "platforms": [
+        "Web",
+        "Windows",
+        "macOS"
+      ],
+      "features": [
+        "Auto layer naming",
+        "UI generation",
+        "Prototyping"
+      ],
+      "pros": [
+        "Fits an existing design workflow",
+        "Strong collaboration"
+      ],
+      "limitations": [
+        "AI features are still limited",
+        "Learning curve"
+      ],
       "editorScore": 4.2,
       "url": "https://www.figma.com",
       "updatedAt": "2026-10-19"
@@ -644,13 +1648,33 @@
       "pricingNote": "Subscription only",
       "tagline": "High-quality AI image generation",
       "description": "Generates stylised artwork and concept images with strong visual consistency. No free tier; you need a subscription to use it.",
-      "tasks": ["generate artwork", "create concept images", "explore styles"],
-      "tags": ["images", "art", "design"],
+      "tasks": [
+        "generate artwork",
+        "create concept images",
+        "explore styles"
+      ],
+      "tags": [
+        "images",
+        "art",
+        "design"
+      ],
       "bestFor": "Stylised artwork and concepts",
-      "platforms": ["Web"],
-      "features": ["Image generation", "Style references", "Upscaling"],
-      "pros": ["Distinctive visual style", "Strong image quality"],
-      "limitations": ["Subscription only", "No free tier"],
+      "platforms": [
+        "Web"
+      ],
+      "features": [
+        "Image generation",
+        "Style references",
+        "Upscaling"
+      ],
+      "pros": [
+        "Distinctive visual style",
+        "Strong image quality"
+      ],
+      "limitations": [
+        "Subscription only",
+        "No free tier"
+      ],
       "editorScore": 4.3,
       "url": "https://www.midjourney.com",
       "updatedAt": "2026-10-19"
@@ -665,13 +1689,34 @@
       "pricingNote": "Free credits; paid plans available",
       "tagline": "Generate and edit images from prompts",
       "description": "Creates images from text prompts and can edit parts of an existing image. Built into familiar tools, which makes it easy to try.",
-      "tasks": ["generate an image", "edit a photo", "illustrate a concept"],
-      "tags": ["images", "design", "editing"],
+      "tasks": [
+        "generate an image",
+        "edit a photo",
+        "illustrate a concept"
+      ],
+      "tags": [
+        "images",
+        "design",
+        "editing"
+      ],
       "bestFor": "Everyday image generation",
-      "platforms": ["Web", "API"],
-      "features": ["Text to image", "Inpainting", "Prompt editing"],
-      "pros": ["Easy to use", "Built into familiar tools"],
-      "limitations": ["Credits are limited", "Text rendering is imperfect"],
+      "platforms": [
+        "Web",
+        "API"
+      ],
+      "features": [
+        "Text to image",
+        "Inpainting",
+        "Prompt editing"
+      ],
+      "pros": [
+        "Easy to use",
+        "Built into familiar tools"
+      ],
+      "limitations": [
+        "Credits are limited",
+        "Text rendering is imperfect"
+      ],
       "editorScore": 3.9,
       "url": "https://openai.com/dall-e-3",
       "updatedAt": "2026-10-19"
@@ -686,14 +1731,36 @@
       "pricingNote": "Free credits; paid plans available",
       "tagline": "Commercially safe image generation",
       "description": "Generates images with an emphasis on commercial safety, and plugs into Creative Cloud apps for edits like generative fill.",
-      "tasks": ["generate images", "remove backgrounds", "extend a photo"],
-      "tags": ["images", "design", "adobe"],
+      "tasks": [
+        "generate images",
+        "remove backgrounds",
+        "extend a photo"
+      ],
+      "tags": [
+        "images",
+        "design",
+        "adobe"
+      ],
       "bestFor": "Design work inside Adobe apps",
-      "platforms": ["Web", "Windows", "macOS"],
-      "features": ["Text to image", "Generative fill", "Commercial safety"],
-      "pros": ["Fits Creative Cloud", "Designed for commercial use"],
-      "limitations": ["Best inside Adobe apps", "Credits for heavy use"],
-      "editorScore": 4.0,
+      "platforms": [
+        "Web",
+        "Windows",
+        "macOS"
+      ],
+      "features": [
+        "Text to image",
+        "Generative fill",
+        "Commercial safety"
+      ],
+      "pros": [
+        "Fits Creative Cloud",
+        "Designed for commercial use"
+      ],
+      "limitations": [
+        "Best inside Adobe apps",
+        "Credits for heavy use"
+      ],
+      "editorScore": 4,
       "url": "https://www.adobe.com/products/firefly.html",
       "updatedAt": "2026-10-19"
     },
@@ -707,13 +1774,34 @@
       "pricingNote": "Free low-resolution downloads; credits for full size",
       "tagline": "Remove image backgrounds automatically",
       "description": "Cuts the subject out of a photo automatically. Free downloads are lower resolution; full-size output uses credits.",
-      "tasks": ["remove a background", "make a transparent PNG", "clean up a photo"],
-      "tags": ["images", "editing", "background"],
+      "tasks": [
+        "remove a background",
+        "make a transparent PNG",
+        "clean up a photo"
+      ],
+      "tags": [
+        "images",
+        "editing",
+        "background"
+      ],
       "bestFor": "Cutting subjects out of photos",
-      "platforms": ["Web", "API"],
-      "features": ["Auto background removal", "Batch processing", "API"],
-      "pros": ["Very fast", "Good edge detection"],
-      "limitations": ["Full resolution needs payment", "Struggles with fine detail"],
+      "platforms": [
+        "Web",
+        "API"
+      ],
+      "features": [
+        "Auto background removal",
+        "Batch processing",
+        "API"
+      ],
+      "pros": [
+        "Very fast",
+        "Good edge detection"
+      ],
+      "limitations": [
+        "Full resolution needs payment",
+        "Struggles with fine detail"
+      ],
       "editorScore": 3.8,
       "url": "https://www.remove.bg",
       "updatedAt": "2026-10-19"
@@ -728,18 +1816,37 @@
       "pricingNote": "Free tier; paid plans available",
       "tagline": "Turn sketches into UI designs",
       "description": "Converts rough sketches or text prompts into editable UI mockups. Good for early ideation, not for finished production design.",
-      "tasks": ["turn a sketch into UI", "prototype an app", "generate a theme"],
-      "tags": ["design", "ui", "prototype"],
+      "tasks": [
+        "turn a sketch into UI",
+        "prototype an app",
+        "generate a theme"
+      ],
+      "tags": [
+        "design",
+        "ui",
+        "prototype"
+      ],
       "bestFor": "Early UI mockups from rough ideas",
-      "platforms": ["Web"],
-      "features": ["Sketch to design", "Theme generation", "Prototyping"],
-      "pros": ["Fast early mockups", "Low learning curve"],
-      "limitations": ["Not for production design", "Exports need cleanup"],
+      "platforms": [
+        "Web"
+      ],
+      "features": [
+        "Sketch to design",
+        "Theme generation",
+        "Prototyping"
+      ],
+      "pros": [
+        "Fast early mockups",
+        "Low learning curve"
+      ],
+      "limitations": [
+        "Not for production design",
+        "Exports need cleanup"
+      ],
       "editorScore": 3.5,
       "url": "https://uizard.io",
       "updatedAt": "2026-10-19"
     },
-  
     {
       "id": "notion-ai",
       "name": "Notion AI",
@@ -750,14 +1857,38 @@
       "pricingNote": "Free tier; AI features are a paid add-on",
       "tagline": "AI writing and search inside your notes",
       "description": "Adds writing help and workspace search on top of Notion pages. Most useful if your notes and projects already live in Notion.",
-      "tasks": ["summarise notes", "draft a document", "find information"],
-      "tags": ["productivity", "notes", "writing"],
+      "tasks": [
+        "summarise notes",
+        "draft a document",
+        "find information"
+      ],
+      "tags": [
+        "productivity",
+        "notes",
+        "writing"
+      ],
       "bestFor": "Working inside an existing Notion workspace",
-      "platforms": ["Web", "iOS", "Android", "Windows", "macOS"],
-      "features": ["AI writing", "Workspace Q&A", "Summaries"],
-      "pros": ["Fits existing notes", "Good search across pages"],
-      "limitations": ["Add-on cost", "Best within Notion"],
-      "editorScore": 4.0,
+      "platforms": [
+        "Web",
+        "iOS",
+        "Android",
+        "Windows",
+        "macOS"
+      ],
+      "features": [
+        "AI writing",
+        "Workspace Q&A",
+        "Summaries"
+      ],
+      "pros": [
+        "Fits existing notes",
+        "Good search across pages"
+      ],
+      "limitations": [
+        "Add-on cost",
+        "Best within Notion"
+      ],
+      "editorScore": 4,
       "url": "https://www.notion.so/product/ai",
       "updatedAt": "2026-10-19"
     },
@@ -771,13 +1902,38 @@
       "pricingNote": "Free tier; paid plans for AI assistance",
       "tagline": "Task manager with AI assistance",
       "description": "Captures tasks quickly and can break a big goal into smaller steps. AI help sits behind the paid plan; the free task manager is solid on its own.",
-      "tasks": ["plan tasks", "break down a project", "organise deadlines"],
-      "tags": ["productivity", "tasks", "planning"],
+      "tasks": [
+        "plan tasks",
+        "break down a project",
+        "organise deadlines"
+      ],
+      "tags": [
+        "productivity",
+        "tasks",
+        "planning"
+      ],
       "bestFor": "Personal task and deadline tracking",
-      "platforms": ["Web", "iOS", "Android", "Windows", "macOS", "Browser extension"],
-      "features": ["Natural-language tasks", "Project breakdown", "Reminders"],
-      "pros": ["Fast capture", "Works everywhere"],
-      "limitations": ["AI help is paid", "Simple by design"],
+      "platforms": [
+        "Web",
+        "iOS",
+        "Android",
+        "Windows",
+        "macOS",
+        "Browser extension"
+      ],
+      "features": [
+        "Natural-language tasks",
+        "Project breakdown",
+        "Reminders"
+      ],
+      "pros": [
+        "Fast capture",
+        "Works everywhere"
+      ],
+      "limitations": [
+        "AI help is paid",
+        "Simple by design"
+      ],
       "editorScore": 3.9,
       "url": "https://www.todoist.com",
       "updatedAt": "2026-10-19"
@@ -792,13 +1948,34 @@
       "pricingNote": "Free tier with task limits; paid plans available",
       "tagline": "Automate work between apps",
       "description": "Connects apps so repetitive steps happen automatically. The free tier is enough for simple two-step automations.",
-      "tasks": ["automate a workflow", "connect two apps", "avoid manual copying"],
-      "tags": ["productivity", "automation", "workflow"],
+      "tasks": [
+        "automate a workflow",
+        "connect two apps",
+        "avoid manual copying"
+      ],
+      "tags": [
+        "productivity",
+        "automation",
+        "workflow"
+      ],
       "bestFor": "Repetitive multi-app tasks",
-      "platforms": ["Web", "API"],
-      "features": ["App integrations", "AI actions", "Workflows"],
-      "pros": ["Huge integration list", "No code needed"],
-      "limitations": ["Task limits on free tier", "Complex flows get pricey"],
+      "platforms": [
+        "Web",
+        "API"
+      ],
+      "features": [
+        "App integrations",
+        "AI actions",
+        "Workflows"
+      ],
+      "pros": [
+        "Huge integration list",
+        "No code needed"
+      ],
+      "limitations": [
+        "Task limits on free tier",
+        "Complex flows get pricey"
+      ],
       "editorScore": 4.1,
       "url": "https://zapier.com",
       "updatedAt": "2026-10-19"
@@ -813,13 +1990,37 @@
       "pricingNote": "Paid subscription only",
       "tagline": "Fast email with AI writing",
       "description": "An email client built around keyboard shortcuts and AI drafting. Fast for people who live in their inbox, but expensive for occasional use.",
-      "tasks": ["clear an inbox", "write emails faster", "follow up"],
-      "tags": ["productivity", "email", "writing"],
+      "tasks": [
+        "clear an inbox",
+        "write emails faster",
+        "follow up"
+      ],
+      "tags": [
+        "productivity",
+        "email",
+        "writing"
+      ],
       "bestFor": "Heavy email users",
-      "platforms": ["Web", "Windows", "macOS", "iOS", "Android"],
-      "features": ["AI compose", "Inbox shortcuts", "Follow-up reminders"],
-      "pros": ["Very fast keyboard workflow", "Strong AI compose"],
-      "limitations": ["Expensive", "Email only"],
+      "platforms": [
+        "Web",
+        "Windows",
+        "macOS",
+        "iOS",
+        "Android"
+      ],
+      "features": [
+        "AI compose",
+        "Inbox shortcuts",
+        "Follow-up reminders"
+      ],
+      "pros": [
+        "Very fast keyboard workflow",
+        "Strong AI compose"
+      ],
+      "limitations": [
+        "Expensive",
+        "Email only"
+      ],
       "editorScore": 3.8,
       "url": "https://superhuman.com",
       "updatedAt": "2026-10-19"
@@ -834,13 +2035,35 @@
       "pricingNote": "Free tier; paid plans available",
       "tagline": "Notes that surface related ideas",
       "description": "Captures notes with very little friction and surfaces related notes when you need them. Aimed at personal knowledge rather than team docs.",
-      "tasks": ["take notes", "find related notes", "organise research"],
-      "tags": ["productivity", "notes", "research"],
+      "tasks": [
+        "take notes",
+        "find related notes",
+        "organise research"
+      ],
+      "tags": [
+        "productivity",
+        "notes",
+        "research"
+      ],
       "bestFor": "Personal knowledge capture",
-      "platforms": ["Web", "macOS", "iOS"],
-      "features": ["AI note organisation", "Related notes", "Search"],
-      "pros": ["Low-friction capture", "Good connections between notes"],
-      "limitations": ["Small ecosystem", "AI features still maturing"],
+      "platforms": [
+        "Web",
+        "macOS",
+        "iOS"
+      ],
+      "features": [
+        "AI note organisation",
+        "Related notes",
+        "Search"
+      ],
+      "pros": [
+        "Low-friction capture",
+        "Good connections between notes"
+      ],
+      "limitations": [
+        "Small ecosystem",
+        "AI features still maturing"
+      ],
       "editorScore": 3.5,
       "url": "https://mem.ai",
       "updatedAt": "2026-10-19"
@@ -855,13 +2078,34 @@
       "pricingNote": "Free tier; paid plans available",
       "tagline": "AI scheduling for focus time",
       "description": "Schedules focus blocks around your meetings and moves them when your calendar changes. Needs access to your calendar to be useful.",
-      "tasks": ["plan my week", "protect focus time", "schedule meetings"],
-      "tags": ["productivity", "calendar", "scheduling"],
+      "tasks": [
+        "plan my week",
+        "protect focus time",
+        "schedule meetings"
+      ],
+      "tags": [
+        "productivity",
+        "calendar",
+        "scheduling"
+      ],
       "bestFor": "Balancing meetings and deep work",
-      "platforms": ["Web", "Browser extension"],
-      "features": ["Smart scheduling", "Habit blocks", "Calendar sync"],
-      "pros": ["Protects focus time", "Works with Google Calendar"],
-      "limitations": ["Needs calendar access", "Free tier is limited"],
+      "platforms": [
+        "Web",
+        "Browser extension"
+      ],
+      "features": [
+        "Smart scheduling",
+        "Habit blocks",
+        "Calendar sync"
+      ],
+      "pros": [
+        "Protects focus time",
+        "Works with Google Calendar"
+      ],
+      "limitations": [
+        "Needs calendar access",
+        "Free tier is limited"
+      ],
       "editorScore": 3.7,
       "url": "https://reclaim.ai",
       "updatedAt": "2026-10-19"
@@ -876,13 +2120,36 @@
       "pricingNote": "Free tier with limited minutes; paid plans available",
       "tagline": "Meeting notes and action items",
       "description": "Joins calls, transcribes them and pulls out action items. Best for teams that review meetings afterwards.",
-      "tasks": ["record a meeting", "summarise a call", "extract action items"],
-      "tags": ["productivity", "meetings", "notes"],
+      "tasks": [
+        "record a meeting",
+        "summarise a call",
+        "extract action items"
+      ],
+      "tags": [
+        "productivity",
+        "meetings",
+        "notes"
+      ],
       "bestFor": "Teams reviewing meetings",
-      "platforms": ["Web", "iOS", "Android", "Browser extension"],
-      "features": ["Meeting transcription", "Action items", "Search across meetings"],
-      "pros": ["Automatic notes", "Good search"],
-      "limitations": ["Free minutes are limited", "Needs meeting access"],
+      "platforms": [
+        "Web",
+        "iOS",
+        "Android",
+        "Browser extension"
+      ],
+      "features": [
+        "Meeting transcription",
+        "Action items",
+        "Search across meetings"
+      ],
+      "pros": [
+        "Automatic notes",
+        "Good search"
+      ],
+      "limitations": [
+        "Free minutes are limited",
+        "Needs meeting access"
+      ],
       "editorScore": 3.9,
       "url": "https://fireflies.ai",
       "updatedAt": "2026-10-19"
@@ -897,14 +2164,36 @@
       "pricingNote": "Free to use",
       "tagline": "Test Gemini models in a browser playground",
       "description": "A browser playground for prompting Gemini models, tuning parameters and generating API keys. Free to use, which makes it a good place to prototype an idea.",
-      "tasks": ["test an AI model", "prototype with an API", "compare prompts"],
-      "tags": ["coding", "api", "prototype", "gemini"],
+      "tasks": [
+        "test an AI model",
+        "prototype with an API",
+        "compare prompts"
+      ],
+      "tags": [
+        "coding",
+        "api",
+        "prototype",
+        "gemini"
+      ],
       "bestFor": "Prototyping with an LLM API",
-      "platforms": ["Web", "API"],
-      "features": ["Prompt playground", "API keys", "Model comparison"],
-      "pros": ["Free to use", "Good for API prototyping"],
-      "limitations": ["Rate limits apply", "Not a general assistant"],
-      "editorScore": 4.0,
+      "platforms": [
+        "Web",
+        "API"
+      ],
+      "features": [
+        "Prompt playground",
+        "API keys",
+        "Model comparison"
+      ],
+      "pros": [
+        "Free to use",
+        "Good for API prototyping"
+      ],
+      "limitations": [
+        "Rate limits apply",
+        "Not a general assistant"
+      ],
+      "editorScore": 4,
       "url": "https://aistudio.google.com",
       "updatedAt": "2026-10-20"
     },
@@ -918,13 +2207,35 @@
       "pricingNote": "Free",
       "tagline": "Free academic search with AI summaries",
       "description": "Searches a large corpus of papers and adds AI-generated summaries and citation context. Free to use, with an API for building on top of it.",
-      "tasks": ["find papers", "summarise a paper", "explore citations"],
-      "tags": ["papers", "research", "citations", "summarise"],
+      "tasks": [
+        "find papers",
+        "summarise a paper",
+        "explore citations"
+      ],
+      "tags": [
+        "papers",
+        "research",
+        "citations",
+        "summarise"
+      ],
       "bestFor": "Free literature search",
-      "platforms": ["Web", "API"],
-      "features": ["Paper search", "TLDR summaries", "Citation graph"],
-      "pros": ["Completely free", "Strong citation tools"],
-      "limitations": ["Summaries are short", "Coverage varies by field"],
+      "platforms": [
+        "Web",
+        "API"
+      ],
+      "features": [
+        "Paper search",
+        "TLDR summaries",
+        "Citation graph"
+      ],
+      "pros": [
+        "Completely free",
+        "Strong citation tools"
+      ],
+      "limitations": [
+        "Summaries are short",
+        "Coverage varies by field"
+      ],
       "editorScore": 4.1,
       "url": "https://www.semanticscholar.org",
       "updatedAt": "2026-10-20"
@@ -939,13 +2250,33 @@
       "pricingNote": "Free",
       "tagline": "Map papers and discover related work",
       "description": "Builds a visual map of papers around a seed paper or author, so you can see the shape of a field. Free, and useful for finding work a keyword search misses.",
-      "tasks": ["find related papers", "map a research field", "build a reading list"],
-      "tags": ["papers", "research", "discovery"],
+      "tasks": [
+        "find related papers",
+        "map a research field",
+        "build a reading list"
+      ],
+      "tags": [
+        "papers",
+        "research",
+        "discovery"
+      ],
       "bestFor": "Exploring a new research area",
-      "platforms": ["Web"],
-      "features": ["Citation maps", "Author tracking", "Collections"],
-      "pros": ["Free", "Great for discovering adjacent work"],
-      "limitations": ["No writing assistance", "Relies on citation data"],
+      "platforms": [
+        "Web"
+      ],
+      "features": [
+        "Citation maps",
+        "Author tracking",
+        "Collections"
+      ],
+      "pros": [
+        "Free",
+        "Great for discovering adjacent work"
+      ],
+      "limitations": [
+        "No writing assistance",
+        "Relies on citation data"
+      ],
       "editorScore": 3.9,
       "url": "https://www.researchrabbit.ai",
       "updatedAt": "2026-10-20"
@@ -960,13 +2291,33 @@
       "pricingNote": "Free",
       "tagline": "Chat with open-source models",
       "description": "A free chat interface for open models hosted by Hugging Face. Useful for trying models you can later self-host or call through an API.",
-      "tasks": ["try an open model", "draft text", "compare model answers"],
-      "tags": ["chat", "open-source", "models"],
+      "tasks": [
+        "try an open model",
+        "draft text",
+        "compare model answers"
+      ],
+      "tags": [
+        "chat",
+        "open-source",
+        "models"
+      ],
       "bestFor": "Trying open models without an account",
-      "platforms": ["Web"],
-      "features": ["Open model chat", "Model switching", "Community models"],
-      "pros": ["Free", "Many models to choose from"],
-      "limitations": ["Rate limits", "Interface is basic"],
+      "platforms": [
+        "Web"
+      ],
+      "features": [
+        "Open model chat",
+        "Model switching",
+        "Community models"
+      ],
+      "pros": [
+        "Free",
+        "Many models to choose from"
+      ],
+      "limitations": [
+        "Rate limits",
+        "Interface is basic"
+      ],
       "editorScore": 3.7,
       "url": "https://huggingface.co/chat",
       "updatedAt": "2026-10-20"
@@ -981,13 +2332,33 @@
       "pricingNote": "Paid subscription only",
       "tagline": "AI writing partner for fiction",
       "description": "Built for fiction writers: it drafts scenes, suggests descriptions and helps you get unstuck. Not aimed at academic or business writing.",
-      "tasks": ["draft a story", "describe a scene", "overcome writer's block"],
-      "tags": ["writing", "fiction", "creative"],
+      "tasks": [
+        "draft a story",
+        "describe a scene",
+        "overcome writer's block"
+      ],
+      "tags": [
+        "writing",
+        "fiction",
+        "creative"
+      ],
       "bestFor": "Fiction and creative writing",
-      "platforms": ["Web"],
-      "features": ["Scene drafting", "Description suggestions", "Story bible"],
-      "pros": ["Purpose-built for fiction", "Good at descriptive prose"],
-      "limitations": ["Subscription only", "Not for academic writing"],
+      "platforms": [
+        "Web"
+      ],
+      "features": [
+        "Scene drafting",
+        "Description suggestions",
+        "Story bible"
+      ],
+      "pros": [
+        "Purpose-built for fiction",
+        "Good at descriptive prose"
+      ],
+      "limitations": [
+        "Subscription only",
+        "Not for academic writing"
+      ],
       "editorScore": 3.8,
       "url": "https://www.sudowrite.com",
       "updatedAt": "2026-10-20"
@@ -1002,13 +2373,37 @@
       "pricingNote": "Paid subscription only",
       "tagline": "AI scheduling for tasks and meetings",
       "description": "Plans your day around deadlines and meetings, reshuffling automatically when things change. Aimed at people with packed calendars.",
-      "tasks": ["plan my day", "schedule tasks", "manage deadlines"],
-      "tags": ["productivity", "calendar", "scheduling"],
+      "tasks": [
+        "plan my day",
+        "schedule tasks",
+        "manage deadlines"
+      ],
+      "tags": [
+        "productivity",
+        "calendar",
+        "scheduling"
+      ],
       "bestFor": "Busy schedules that change often",
-      "platforms": ["Web", "iOS", "Android", "Windows", "macOS"],
-      "features": ["Auto-scheduling", "Task planning", "Calendar sync"],
-      "pros": ["Reshuffles automatically", "Combines tasks and meetings"],
-      "limitations": ["Subscription only", "Requires calendar access"],
+      "platforms": [
+        "Web",
+        "iOS",
+        "Android",
+        "Windows",
+        "macOS"
+      ],
+      "features": [
+        "Auto-scheduling",
+        "Task planning",
+        "Calendar sync"
+      ],
+      "pros": [
+        "Reshuffles automatically",
+        "Combines tasks and meetings"
+      ],
+      "limitations": [
+        "Subscription only",
+        "Requires calendar access"
+      ],
       "editorScore": 3.6,
       "url": "https://www.usemotion.com",
       "updatedAt": "2026-10-20"

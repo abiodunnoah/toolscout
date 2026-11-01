@@ -1,15 +1,22 @@
 <script setup>
+import { computed } from 'vue'
 import { RouterLink } from 'vue-router'
 import Badge from '../ui/Badge.vue'
 import Button from '../ui/Button.vue'
 import Card from '../ui/Card.vue'
 
-defineProps({
+const props = defineProps({
   tool: { type: Object, required: true },
   saved: { type: Boolean, default: false },
 })
 
 defineEmits(['toggle-save'])
+
+const categories = computed(() =>
+  props.tool.categories?.length
+    ? props.tool.categories.slice(0, 2)
+    : [props.tool.category],
+)
 </script>
 
 <template>
@@ -25,7 +32,7 @@ defineEmits(['toggle-save'])
           </RouterLink>
         </h3>
         <p class="mt-1 text-xs uppercase tracking-[0.14em] text-muted">
-          {{ tool.category }}
+          {{ categories.join(' · ') }}
         </p>
       </div>
       <Badge variant="outline" class="shrink-0">{{ tool.price }}</Badge>

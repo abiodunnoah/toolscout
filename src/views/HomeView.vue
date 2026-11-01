@@ -27,9 +27,15 @@ const {
   clearFilters,
 } = useFilters(() => tools.value)
 
-const categories = computed(() => [
-  ...new Set(tools.value.map((tool) => tool.category)),
-])
+const CATEGORY_ORDER = ['Research', 'Writing', 'Coding', 'Study', 'Design', 'Productivity']
+
+const categories = computed(() =>
+  [...new Set(tools.value.map((tool) => tool.category))].sort((a, b) => {
+    const aIndex = CATEGORY_ORDER.indexOf(a)
+    const bIndex = CATEGORY_ORDER.indexOf(b)
+    return (aIndex === -1 ? 99 : aIndex) - (bIndex === -1 ? 99 : bIndex)
+  }),
+)
 const prices = ['Free', 'Freemium', 'Paid']
 
 const errorMessage = computed(() =>

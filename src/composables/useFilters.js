@@ -23,7 +23,9 @@ export function useFilters(getTools) {
         tool.tasks.some((task) => task.toLowerCase().includes(q))
       const matchesCategory =
         activeCategories.value.length === 0 ||
-        activeCategories.value.includes(tool.category)
+        (tool.categories?.length ? tool.categories : [tool.category]).some((category) =>
+          activeCategories.value.includes(category),
+        )
       const matchesPrice =
         activePrices.value.length === 0 || activePrices.value.includes(tool.price)
       return matchesQuery && matchesCategory && matchesPrice
