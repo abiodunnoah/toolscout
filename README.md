@@ -77,6 +77,17 @@ Stop the process that is using it, then start again:
 
     Get-NetTCPConnection -LocalPort 3001 -State Listen | ForEach-Object { Stop-Process -Id $_.OwningProcess -Force }
 
+## Deploy
+
+Netlify builds the site from `main`:
+
+- Build command: `npm run build`
+- Publish directory: `dist`
+- [`netlify.toml`](netlify.toml) sends `index.html` for unknown paths, so `/tool/:id`,
+  `/saved` and `/compare` work as deep links.
+- `master` is the working branch. Work is pushed there first, then fast-forwarded
+  to `main` when it is ready to go live.
+
 ## How it works
 
 1. The app asks the data endpoint for the list of tools.
@@ -203,11 +214,10 @@ The file must stay in the shape `{ "tools": [...] }` and must not start with a B
 ## Accessibility
 
 The app aims to meet WCAG 2.2 level AA. Lighthouse scored the Week 2 site at **0.96**.
-The current build scores **1.00** on all five screens, both before and after the
-near-monochrome redesign. The live site was re-checked on 1 November and scored
-**1.00** on all five live URLs. The one automated failure was dark-mode label
-contrast at 3.74:1. That is now at least 6.9:1. The blue accent is 4.8:1 on white
-and is used for primary buttons, links and the focus ring.
+The current build scores **1.00** on all five screens. The live site was re-checked
+on 1 November and also scored **1.00** on all five live URLs. The one automated
+failure was dark-mode label contrast at 3.74:1. That is now at least 6.9:1. The blue
+accent is 4.8:1 on white and is used for primary buttons, links and the focus ring.
 
 Other changes in the pass:
 
@@ -303,6 +313,7 @@ because it needs a built site, a preview server and Chrome.
 | **Route** | A URL pattern matched to a view, such as `/tool/:id` |
 | **Single-page app (SPA)** | A site that loads once and swaps screens in the browser without full page reloads |
 | **Skip link** | The first link on a page. It jumps keyboard users past the header to the content |
+| **Tag (Git)** | A named pointer to one commit. This project tags each submitted week |
 | **Store** | A shared container for state, in this project a Pinia store |
 | **Variant** | A named style option on a component, such as `primary` or `ghost` on a button |
 | **WCAG** | Web Content Accessibility Guidelines. The standard used for the accessibility pass |

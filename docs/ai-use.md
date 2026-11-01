@@ -41,6 +41,7 @@ same tool for scaffolding, dataset authoring and documentation drafts.
 | `npm run check:app` | 20 of 20 checks pass |
 | `npm run check:a11y` | 0 axe violations in light and dark |
 | Lighthouse accessibility, five screens | 1.00 each (home was 0.96 before) |
+| Lighthouse accessibility, five live URLs | 1.00 each on 1 November |
 | Manual colour-contrast calculation, light and dark | passes 4.5:1 for body text |
 
 The reports are in [`docs/`](.) and the checks are described in

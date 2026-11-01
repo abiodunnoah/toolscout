@@ -44,9 +44,9 @@ design review. Every surface changed, so I re-ran the same checks.
 - Keyboard and layout script: **20 of 20** checks pass at 320px.
 - Console: no errors or warnings.
 
-The redesign does not use colour to carry meaning. Price is written as text, the
-saved state adds a check icon and `aria-pressed`, and the error state is labelled
-in words.
+The redesign does not use colour alone to carry meaning. Price is written as text,
+the saved state adds a check icon and `aria-pressed`, and the error state is
+labelled in words.
 
 ## Final pass (1 November)
 
