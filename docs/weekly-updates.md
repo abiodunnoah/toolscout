@@ -83,7 +83,7 @@ Week 3 - Noah - Frontend - ToolScout
 - 21 Vitest tests in 9 files, plus a 20-check keyboard and layout script.
 - axe run on five screens in both light and dark mode: no violations.
 - Repo: github.com/abiodunnoah/toolscout · Live URL: https://toolscoutt.netlify.app/
-  (deployed from `main`)
+  · Tag: `week-3` (deployed from `main`)
 
 **Changed after feedback:**
 - **Mentor: "some of the AI-generated documentation is difficult to understand".** I rewrote the
@@ -112,7 +112,7 @@ Week 3 - Noah - Frontend - ToolScout
 - The dataset is hand-written and can go stale.
 - No screen-reader or physical-device test yet.
 - Search and filters are not in the URL, so a filtered list cannot be shared.
-- The `week-3` tag is still to do. The live site is deployed from `main`.
+- The live site is deployed from `main`.
 
 **AI and sources used:**
 - AI assistant (opencode) used for the docs rewrite, the file move, the first versions of the
@@ -148,9 +148,6 @@ Week 3 - Noah - Frontend - ToolScout
 - Keyboard/layout script **20/20** at 320px. Tests **21/21**.
 - Reduced motion and 24px+ targets checked.
 
-**Still open:**
-- `week-3` tag, the walkthrough video and the final package. `master` is the working branch.
-
 ---
 
 ## Dataset expansion (1 November)
@@ -159,7 +156,7 @@ Week 3 - Noah - Frontend - ToolScout
 - Added ChatGPT, Claude, Gemini, DeepSeek, Microsoft Copilot and Grok.
 - The dataset goes from 48 to **54** tools.
 - Added an optional `categories` list. The first four assistants also match the Coding filter;
-  cards still show one primary label plus the extras.
+  cards show up to two labels and the detail page shows all.
 - Researched the official pricing and feature pages on 1 November. The sources and findings are in
   [`dataset-research.md`](dataset-research.md).
 - Added two filter tests. Tests are now 21 in 9 files.
@@ -179,4 +176,14 @@ Week 3 - Noah - Frontend - ToolScout
 - axe 0 violations in light and dark.
 - Lighthouse 1.00 on five screens.
 - Live Lighthouse 1.00 on five live URLs after deploy.
+
+---
+
+## Submission status
+
+- Live site: <https://toolscoutt.netlify.app/> (deployed from `main`).
+- Tag: `week-3`, created at the final commit.
+- Loom demo: submitted through the submission form. The link is kept in the form,
+  not in the repository.
+- Still open: the final package.
 
