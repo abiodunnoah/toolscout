@@ -27,7 +27,7 @@ const shortlist = useShortlistStore()
     <main
       id="main"
       tabindex="-1"
-      class="mx-auto w-full max-w-6xl flex-1 px-4 py-10 sm:px-6 sm:py-14"
+      class="mx-auto flex w-full max-w-6xl flex-1 flex-col px-4 py-10 sm:px-6 sm:py-14"
     >
       <RouterView />
     </main>
