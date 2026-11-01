@@ -237,13 +237,17 @@ The full record, including what is still untested, is in
 
     npm run test
 
-There are 5 test files and 15 tests:
+There are 9 test files and 21 tests:
 
 - a component render (`Button` in three forms)
 - a user interaction (`ToolCard` Save click and saved state)
+- input accessibility: label, hint and emitted value (`Input`)
 - data state (`fetchTools` with good data, bad data, an HTTP error and a retry path)
+- fetching state (`useTools` loading, error and retry)
 - the shortlist store: toggle, persistence and broken stored data
+- theme: system preference, stored choice and toggling
 - filtering: secondary categories, and the primary-category fallback
+- the compare URL: four ids are capped at three tools
 
 `npm run check:app` is a separate end-to-end check. It is not part of `npm run test`
 because it needs a built site, a preview server and Chrome.

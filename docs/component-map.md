@@ -107,13 +107,19 @@ comparison can be bookmarked, shared and reloaded without extra state.
 
 ## Tests
 
+Nine files, 21 tests.
+
 | File | Covers |
 |---|---|
 | `tests/Button.test.js` | Button render in three forms: button, link, router link |
 | `tests/ToolCard.test.js` | Card render, Save click, saved state |
+| `tests/Input.test.js` | Label, hint, `aria-describedby` and emitted value |
 | `tests/shortlist.test.js` | Store toggle, persistence, bad stored data |
+| `tests/useTheme.test.js` | System preference, stored choice and toggling |
+| `tests/useTools.test.js` | Loading, fetched tools, error and retry |
 | `tests/tools-service.test.js` | Valid and malformed payloads, HTTP error, wrong shape |
 | `tests/useFilters.test.js` | Secondary categories and the primary-category fallback |
+| `tests/CompareView.test.js` | Four ids are capped at three columns |
 
 `scripts/check-app.mjs` is not a unit test. It drives the built site in Chrome
 and checks keyboard use, routing, persistence and layout.

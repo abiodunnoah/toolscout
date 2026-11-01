@@ -80,7 +80,7 @@ Week 3 - Noah - Frontend - ToolScout
 - Compare view for two or three tools; the selection lives in the URL.
 - Accessibility pass: Lighthouse 0.96 before, 1.00 after on five screens. Contrast, skip link,
   visible labels, focus after route changes, page titles.
-- 15 Vitest tests in 5 files, plus a 20-check keyboard and layout script.
+- 21 Vitest tests in 9 files, plus a 20-check keyboard and layout script.
 - axe run on five screens in both light and dark mode: no violations.
 - Repo: github.com/abiodunnoah/toolscout · Live URL: https://toolscoutt.netlify.app/
   (deployed from `main`)
@@ -145,7 +145,7 @@ Week 3 - Noah - Frontend - ToolScout
 **Checks after the redesign:**
 - Lighthouse **1.00** on five screens.
 - axe **0 violations** in light and dark.
-- Keyboard/layout script **20/20** at 320px. Tests **15/15**.
+- Keyboard/layout script **20/20** at 320px. Tests **21/21**.
 - Reduced motion and 24px+ targets checked.
 
 **Still open:**
@@ -162,7 +162,7 @@ Week 3 - Noah - Frontend - ToolScout
   cards still show one primary label plus the extras.
 - Researched the official pricing and feature pages on 1 November. The sources and findings are in
   [`dataset-research.md`](dataset-research.md).
-- Added two filter tests. Tests are now 15 in 5 files.
+- Added two filter tests. Tests are now 21 in 9 files.
 
 **Why:**
 - Searching "Claude" returned nothing. The task-first dataset had specialist tools but missed the
@@ -174,7 +174,7 @@ Week 3 - Noah - Frontend - ToolScout
 
 **Checks after the expansion:**
 - `npm run build` passes.
-- 15/15 Vitest tests.
+- 21/21 Vitest tests.
 - 20/20 keyboard/layout checks.
 - axe 0 violations in light and dark.
 - Lighthouse 1.00 on five screens.

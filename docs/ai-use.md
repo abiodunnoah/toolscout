@@ -37,7 +37,7 @@ same tool for scaffolding, dataset authoring and documentation drafts.
 | Check | Result |
 |---|---|
 | `npm run build` before each commit | passes |
-| `npm run test` | 5 files, 15 tests, all pass |
+| `npm run test` | 9 files, 21 tests, all pass |
 | `npm run check:app` | 20 of 20 checks pass |
 | `npm run check:a11y` | 0 axe violations in light and dark |
 | Lighthouse accessibility, five screens | 1.00 each (home was 0.96 before) |
